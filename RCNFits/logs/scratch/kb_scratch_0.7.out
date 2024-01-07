@@ -1,0 +1,66 @@
+theta ansatz max err: 3.552713678800501e-15
+grid spacing: 0.17184021972462915 0.17184021972462915
+FD theta_x max err: 3.175237850427948e-14
+FD theta_y max err: 0.04199971596891289
+Init Vals: 0.714142842854285 0.714142842854285 0.714142842854285 -0.714142842854285
+Objective increased, decreasing step size
+Step:  1
+Gradient Norm 1.596387611999593
+Obj Function Norm:  0.01591268175425045
+New Vals:  0.7138857499491909 0.6855967639890432 0.7138890151137781 -0.6862542388021493
+Objective increased, decreasing step size
+Step:  2
+Gradient Norm 1.590610768130418
+Obj Function Norm:  0.015835365652389948
+New Vals:  0.7146332298295075 0.7146599812406897 0.7145987720989624 -0.7133751450672776
+Objective increased, decreasing step size
+Step:  3
+Gradient Norm 1.5874822216559366
+Obj Function Norm:  0.015811569569738504
+New Vals:  0.7133939479024076 0.685082886447161 0.7134538614145535 -0.686966600977333
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  4
+Gradient Norm 1.5865472886407201
+Obj Function Norm:  2.5764707829099996e-06
+New Vals:  0.7142578201224454 0.7001249869154795 0.7142376088988437 -0.6998381432276868
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  5
+Gradient Norm 0.02036820634391643
+Obj Function Norm:  7.337804190010555e-10
+New Vals:  0.7141409679935528 0.6999964773223688 0.7141431498595301 -0.6999985515433359
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  6
+Gradient Norm 0.0003448991435056313
+Obj Function Norm:  5.686191973299248e-13
+New Vals:  0.7141428260949142 0.7000000848802465 0.7141429254462343 -0.6999999900871869
+Objective increased, decreasing step size
+Step:  7
+Gradient Norm 9.483275945604056e-06
+Obj Function Norm:  5.464609277505945e-13
+New Vals:  0.7141428519773121 0.699999912117901 0.7141427662194293 -0.7000000084699154
+Objective increased, decreasing step size
+Step:  8
+Gradient Norm 9.32735866537543e-06
+Obj Function Norm:  5.389489030906207e-13
+New Vals:  0.714142840717547 0.7000000911375889 0.7141429143955247 -0.6999999928565847
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  9
+Gradient Norm 9.290368027453753e-06
+Obj Function Norm:  7.111462469974592e-16
+New Vals:  0.7141428396422184 0.699999998246342 0.7141428450161627 -0.6999999993871364
+exact kx: 0.714142842854285
+exact ky: 0.7
+found kx: 0.7141428396422184
+found ky: 0.699999998246342
+Est Field max err: 3.552713678800501e-15
+Ansatz theta_x max err: 3.212066834734628e-09
+Ansatz theta_y max err: 4.194139468858974e-08
+FiniteDiff theta_x max err: 3.175237850427948e-14
+FiniteDiff theta_y max err: 0.04199971596891289
+Shape of sampled local spec derivs: (127, 127)
+LocalSpec theta_x max err: 6.539213615042172e-14
+LocaSpec theta_y max err: 6.350475700855895e-14

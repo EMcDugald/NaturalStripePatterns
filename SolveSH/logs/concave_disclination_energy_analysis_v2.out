@@ -1,0 +1,120 @@
+Generating SH Fields for alpha = 1.963e-01
+time to generate solutions:  86.00777816772461
+total energy at time 0.000e+00:  -41.29188297383814
+total energy at time 2.500e+01:  -2033.3053238402852
+total energy at time 2.495e+02:  -2036.3024191731774
+energy of lower third 2.495e+02:  -59.881015746935
+energy of right third 2.495e+02:  -985.2981913851991
+energy of left third 2.495e+02:  -991.1232120410434
+Generating SH Fields for alpha = 4.072e-01
+time to generate solutions:  69.48071002960205
+total energy at time 0.000e+00:  -64.91380807603174
+total energy at time 2.500e+01:  -2031.6154396295535
+total energy at time 2.495e+02:  -2032.5631629752154
+energy of lower third 2.495e+02:  -123.09763375722004
+energy of right third 2.495e+02:  -951.8498217708062
+energy of left third 2.495e+02:  -957.6157074471893
+Generating SH Fields for alpha = 6.181e-01
+time to generate solutions:  72.54530715942383
+total energy at time 0.000e+00:  -53.081830088148365
+total energy at time 2.500e+01:  -2029.641289331979
+total energy at time 2.495e+02:  -2030.282375828687
+energy of lower third 2.495e+02:  -187.73925885562394
+energy of right third 2.495e+02:  -918.455455820655
+energy of left third 2.495e+02:  -924.0876611524078
+Generating SH Fields for alpha = 8.290e-01
+time to generate solutions:  65.03945183753967
+total energy at time 0.000e+00:  -45.97644702082874
+total energy at time 2.500e+01:  -2027.1309020328235
+total energy at time 2.495e+02:  -2028.1241254917404
+energy of lower third 2.495e+02:  -254.24548195454383
+energy of right third 2.495e+02:  -884.16995869013
+energy of left third 2.495e+02:  -889.7086848470658
+Generating SH Fields for alpha = 1.040e+00
+time to generate solutions:  64.67165088653564
+total energy at time 0.000e+00:  -52.46433930242088
+total energy at time 2.500e+01:  -2027.5077620143588
+total energy at time 2.495e+02:  -2028.5913400291367
+energy of lower third 2.495e+02:  -322.48743907381987
+energy of right third 2.495e+02:  -850.342511492384
+energy of left third 2.495e+02:  -855.7613894629332
+Generating SH Fields for alpha = 1.251e+00
+time to generate solutions:  66.40966010093689
+total energy at time 0.000e+00:  -52.4251477596014
+total energy at time 2.500e+01:  -2029.0684107233203
+total energy at time 2.495e+02:  -2030.1263115807078
+energy of lower third 2.495e+02:  -392.6558375064422
+energy of right third 2.495e+02:  -816.1212219076576
+energy of left third 2.495e+02:  -821.3492521666082
+Generating SH Fields for alpha = 1.462e+00
+time to generate solutions:  65.72083401679993
+total energy at time 0.000e+00:  -54.393442219741075
+total energy at time 2.500e+01:  -2030.2260963724066
+total energy at time 2.495e+02:  -2031.5490031328068
+energy of lower third 2.495e+02:  -462.9287873787987
+energy of right third 2.495e+02:  -781.7917591726398
+energy of left third 2.495e+02:  -786.8284565813688
+Generating SH Fields for alpha = 1.673e+00
+time to generate solutions:  66.22493433952332
+total energy at time 0.000e+00:  -63.450682694609554
+total energy at time 2.500e+01:  -2031.603192564195
+total energy at time 2.495e+02:  -2032.9390957809696
+energy of lower third 2.495e+02:  -533.7003705226822
+energy of right third 2.495e+02:  -747.1978894417692
+energy of left third 2.495e+02:  -752.0408358165179
+Generating SH Fields for alpha = 1.884e+00
+time to generate solutions:  62.69579792022705
+total energy at time 0.000e+00:  -60.441160897297294
+total energy at time 2.500e+01:  -2032.6794167126654
+total energy at time 2.495e+02:  -2033.8721213364147
+energy of lower third 2.495e+02:  -604.525762787616
+energy of right third 2.495e+02:  -712.3744969155017
+energy of left third 2.495e+02:  -716.9718616332973
+Generating SH Fields for alpha = 2.094e+00
+time to generate solutions:  66.06044507026672
+total energy at time 0.000e+00:  -62.24571471639764
+total energy at time 2.500e+01:  -2033.0897083621198
+total energy at time 2.495e+02:  -2034.3959901268433
+energy of lower third 2.495e+02:  -675.2806663474092
+energy of right third 2.495e+02:  -677.3890366308614
+energy of left third 2.495e+02:  -681.7262871485726
+Generating SH Fields for alpha = 2.409e+00
+time to generate solutions:  65.06007885932922
+total energy at time 0.000e+00:  -62.86924639991152
+total energy at time 2.500e+01:  -2032.0087502183335
+total energy at time 2.495e+02:  -2033.1125030417682
+energy of lower third 2.495e+02:  -779.1340387593517
+energy of right third 2.495e+02:  -625.0618205618222
+energy of left third 2.495e+02:  -628.9166437205947
+Generating SH Fields for alpha = 2.592e+00
+time to generate solutions:  62.766502141952515
+total energy at time 0.000e+00:  -63.3751522042559
+total energy at time 2.500e+01:  -2032.3121895934942
+total energy at time 2.495e+02:  -2033.4280847049788
+energy of lower third 2.495e+02:  -840.2201138660258
+energy of right third 2.495e+02:  -594.7981331664346
+energy of left third 2.495e+02:  -598.4098376725185
+Generating SH Fields for alpha = 2.775e+00
+time to generate solutions:  60.66710019111633
+total energy at time 0.000e+00:  -59.59766493827237
+total energy at time 2.500e+01:  -2029.8380968322597
+total energy at time 2.495e+02:  -2031.186187179359
+energy of lower third 2.495e+02:  -899.6062890997476
+energy of right third 2.495e+02:  -564.0928373924037
+energy of left third 2.495e+02:  -567.4870606872073
+Generating SH Fields for alpha = 2.958e+00
+time to generate solutions:  61.45795679092407
+total energy at time 0.000e+00:  -56.51265125724521
+total energy at time 2.500e+01:  -2026.5615170879726
+total energy at time 2.495e+02:  -2028.2625031914333
+energy of lower third 2.495e+02:  -958.690408244561
+energy of right third 2.495e+02:  -533.1854256348107
+energy of left third 2.495e+02:  -536.3866693120618
+Generating SH Fields for alpha = 3.142e+00
+time to generate solutions:  62.884227991104126
+total energy at time 0.000e+00:  -17.489035166126342
+total energy at time 2.500e+01:  -2023.7028415807024
+total energy at time 2.495e+02:  -2025.0828627050043
+energy of lower third 2.495e+02:  -1017.5577609275485
+energy of right third 2.495e+02:  -502.3754317438383
+energy of left third 2.495e+02:  -505.149670033618

@@ -1,0 +1,186 @@
+Grid Dims: Nx =  512 Ny =  512
+Dom Size: Lx =  70.3857539992079 Ly =  70.3857539992079
+Approximation length scale: 0.75
+Approximation subsampling: 4
+Objective Function: (w - cos(1.0*log(exp(k11*x + k12*y) + exp(k21*x + k22*y))))**2
+Objective Function Analytical Derivative in k11: 2.0*x*(w - cos(1.0*log(exp(k11*x + k12*y) + exp(k21*x + k22*y))))*exp(k11*x + k12*y)*sin(1.0*log(exp(k11*x + k12*y) + exp(k21*x + k22*y)))/(exp(k11*x + k12*y) + exp(k21*x + k22*y))
+Objecctive Function Analytical Derivative in k12: 2.0*y*(w - cos(1.0*log(exp(k11*x + k12*y) + exp(k21*x + k22*y))))*exp(k11*x + k12*y)*sin(1.0*log(exp(k11*x + k12*y) + exp(k21*x + k22*y)))/(exp(k11*x + k12*y) + exp(k21*x + k22*y))
+Objective Function Analytical Derivative in k21: 2.0*x*(w - cos(1.0*log(exp(k11*x + k12*y) + exp(k21*x + k22*y))))*exp(k21*x + k22*y)*sin(1.0*log(exp(k11*x + k12*y) + exp(k21*x + k22*y)))/(exp(k11*x + k12*y) + exp(k21*x + k22*y))
+Objective Function Analytical Derivative in k22: 2.0*y*(w - cos(1.0*log(exp(k11*x + k12*y) + exp(k21*x + k22*y))))*exp(k21*x + k22*y)*sin(1.0*log(exp(k11*x + k12*y) + exp(k21*x + k22*y)))/(exp(k11*x + k12*y) + exp(k21*x + k22*y))
+Phase Function Partial in x: k11
+Phase Function Partial in y: k12*tanh(k12*y)
+Phase Function Partial in xx: 0
+Phase Function Partial in yy: k12**2/cosh(k12*y)**2
+Phase Function Partial in xy: 0
+Phase Function Partial in yx: 0
+Phase Function all gradient terms:
+2.0*x*(w - cos(1.0*log(exp(k11*x + k12*y) + exp(k21*x + k22*y))))*exp(k11*x + k12*y)*sin(1.0*log(exp(k11*x + k12*y) + exp(k21*x + k22*y)))/(exp(k11*x + k12*y) + exp(k21*x + k22*y))
+2.0*y*(w - cos(1.0*log(exp(k11*x + k12*y) + exp(k21*x + k22*y))))*exp(k11*x + k12*y)*sin(1.0*log(exp(k11*x + k12*y) + exp(k21*x + k22*y)))/(exp(k11*x + k12*y) + exp(k21*x + k22*y))
+2.0*x*(w - cos(1.0*log(exp(k11*x + k12*y) + exp(k21*x + k22*y))))*exp(k21*x + k22*y)*sin(1.0*log(exp(k11*x + k12*y) + exp(k21*x + k22*y)))/(exp(k11*x + k12*y) + exp(k21*x + k22*y))
+2.0*y*(w - cos(1.0*log(exp(k11*x + k12*y) + exp(k21*x + k22*y))))*exp(k21*x + k22*y)*sin(1.0*log(exp(k11*x + k12*y) + exp(k21*x + k22*y)))/(exp(k11*x + k12*y) + exp(k21*x + k22*y))
+Init Vals: 0.714142842854285 0.714142842854285 0.714142842854285 -0.714142842854285
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  1
+Gradient Norm 4.02676829252721
+Obj Function Norm:  0.002755988669671686
+New Vals:  0.7140681280100776 0.6962447711843021 0.714069161640303 -0.696449875308296
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  2
+Gradient Norm 1.0655338928689109
+Obj Function Norm:  0.0002297092540602692
+New Vals:  0.714182076573224 0.7011089826062473 0.714179530904274 -0.7009956841851837
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  3
+Gradient Norm 0.3080425993774823
+Obj Function Norm:  1.9470035094800335e-05
+New Vals:  0.7141258811282332 0.6996700858030004 0.7141275017212327 -0.6997188282245962
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  4
+Gradient Norm 0.08970896519950763
+Obj Function Norm:  1.658094596413902e-06
+New Vals:  0.7141493919914406 0.7000982322784483 0.7141486107210779 -0.7000794602603337
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  5
+Gradient Norm 0.02618493237963591
+Obj Function Norm:  1.4173698392078489e-07
+New Vals:  0.7141404592552439 0.6999707415039947 0.714140790153081 -0.6999775368714451
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  6
+Gradient Norm 0.00765730381298017
+Obj Function Norm:  1.21587942864729e-08
+New Vals:  0.7141436767881345 0.7000087169264961 0.7141435473552972 -0.700006352058646
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  7
+Gradient Norm 0.0022431811259364673
+Obj Function Norm:  1.0465962411273842e-09
+New Vals:  0.7141425589444793 0.6999974023300043 0.7141426069901248 -0.6999982032466182
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  8
+Gradient Norm 0.0006582486282313293
+Obj Function Norm:  9.038256684873153e-11
+New Vals:  0.714142937573872 0.7000007742983995 0.7141429203984341 -0.7000005083895349
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  9
+Gradient Norm 0.00019347299565022837
+Obj Function Norm:  7.829596480445011e-12
+New Vals:  0.7141428117401243 0.6999997691487647 0.7141428177095935 -0.6999998561052633
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  10
+Gradient Norm 5.695362048830661e-05
+Obj Function Norm:  6.802525734323012e-13
+New Vals:  0.7141428529500538 0.7000000688415897 0.7141428509201291 -0.7000000407417317
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  11
+Gradient Norm 1.6790211546682797e-05
+Obj Function Norm:  5.926540134731563e-14
+New Vals:  0.7141428396108928 0.6999999794666412 0.7141428402892909 -0.6999999884605015
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  12
+Gradient Norm 4.956633091555731e-06
+Obj Function Norm:  5.176721969926842e-15
+New Vals:  0.7141428438877467 0.7000000061256918 0.714142843664199 -0.7000000032695967
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  13
+Gradient Norm 1.4651236380298104e-06
+Obj Function Norm:  4.532659097283876e-16
+New Vals:  0.714142842527243 0.6999999981721855 0.7141428426000559 -0.6999999990732372
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  14
+Gradient Norm 4.3359045031757224e-07
+Obj Function Norm:  3.9775763977740656e-17
+New Vals:  0.7141428429571766 0.7000000005454898 0.7141428429336896 -0.7000000002627953
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  15
+Gradient Norm 1.284589809982922e-07
+Obj Function Norm:  3.497647448090239e-18
+New Vals:  0.7141428428220754 0.6999999998371772 0.7141428428295894 -0.6999999999254496
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  16
+Gradient Norm 3.809702624519776e-08
+Obj Function Norm:  3.0814214102942014e-19
+New Vals:  0.7141428428643244 0.7000000000486085 0.7141428428619373 -0.7000000000211578
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  17
+Gradient Norm 1.1308954365815096e-08
+Obj Function Norm:  2.71943422906318e-20
+New Vals:  0.7141428428511675 0.6999999999854862 0.7141428428519213 -0.6999999999939924
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  18
+Gradient Norm 3.359898892993633e-09
+Obj Function Norm:  2.4037492699196183e-21
+New Vals:  0.7141428428552498 0.7000000000043342 0.714142842855013 -0.7000000000017065
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  19
+Gradient Norm 9.9900563687213e-10
+Obj Function Norm:  2.127831989229347e-22
+New Vals:  0.7141428428539872 0.6999999999987054 0.7141428428540613 -0.6999999999995149
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  20
+Gradient Norm 2.9725217546269113e-10
+Obj Function Norm:  1.8858927232598725e-23
+New Vals:  0.7141428428543766 0.7000000000003866 0.7141428428543535 -0.7000000000001378
+exact kx: 0.714142842854285
+exact ky: 0.7
+found kx: 0.7141428428543766
+found ky: 0.7000000000003866
+Est Field max err: 1.6697362242856784e-11
+Est Field mean err: 3.0506208672965985e-12
+Shape of subsampled interior grid: (95, 95)
+rmax_x: 7.469401433009286 rmax_y: 7.469401433009286
+Making derivative grids
+time to make derivatives: 618.4872577190399
+Intended Lengths of interior grid: xlength= 52.78931549940593 ylength= 52.78931549940593
+Actual Lengths of interior grid: xlength= 51.68953809316831 ylength= 51.68953809316831
+theta_x max err: 7.758037545713137e-10
+theta_x mean err: 7.756547864819877e-10
+theta_y max err: 7.603739859973757e-10
+theta_y mean err: 6.983053278463776e-10
+wave num max err: 1.0862434285385802e-09
+wave num mean err: 1.0488824469478778e-09
+Div(k) max err: 3.3478576035396964e-07
+Div(k) mean err: 1.1236288188360128e-07
+Curl(k) max err: 0.0
+Curl(k) mean err: 0.0
+J(k) max err: 4.237548262911977e-08
+J(k) mean err: 1.1480801955243688e-09
+Total Time: 634.1779747009277
