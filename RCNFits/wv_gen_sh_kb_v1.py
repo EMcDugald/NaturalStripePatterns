@@ -42,7 +42,7 @@ def freq_grids(xlen,xnum,ylen,ynum):
 # mu determines sharpness of knee bend
 mu = .3
 
-logfile = open(os.getcwd()+"/logs/sh_pgbs/wv_gen_sh_kb_mu_{}.out".format(mu), 'w')
+logfile = open(os.getcwd()+"/logs/sh_pgbs/wv_gen_sh_kb_v1_mu_{}.out".format(mu), 'w')
 sys.stdout = logfile
 
 start = time.time()
@@ -53,9 +53,9 @@ print_hess = False
 
 # set params for SH Solver
 Nx = 256
-tmax = 100
+tmax = 200
 R = .5
-h = .5
+h = 1
 
 Wfull,Xfull,Yfull = solve_sh_zigzag(Nx,mu,tmax,R,h)
 W,X,Y = get_centered_pattern(Wfull,Xfull,Yfull)
@@ -209,11 +209,16 @@ plt.colorbar(im1,ax=axs[1])
 plt.colorbar(im2,ax=axs[2])
 plt.suptitle("Pattern, Approx Pattern, and Error")
 plt.tight_layout()
-plt.savefig(os.getcwd()+"/figs/sh_pgbs/FieldEst_mu_{}.png".format(mu))
+plt.savefig(os.getcwd()+"/figs/sh_pgbs/FieldEst_v1_mu_{}.png".format(mu))
 print("Est Field max err:", np.max(np.abs(W-final_pattern)))
 print("Est Field mean err:", np.mean(np.abs(W-final_pattern)))
 
-
+fig, ax = plt.subplots()
+im0 = ax.imshow(final_theta)
+plt.colorbar(im0,ax=ax)
+plt.suptitle("Phase Estimate")
+plt.tight_layout()
+plt.savefig(os.getcwd()+"/figs/sh_pgbs/PhaseEst_v1_mu_{}.png".format(mu))
 
 
 logfile.close()
