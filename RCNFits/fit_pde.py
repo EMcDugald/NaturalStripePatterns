@@ -126,7 +126,8 @@ def STRidge(X0, y, lam, maxit, tol, normalize=2, print_results=False):
             w[biginds] = np.linalg.lstsq(X[:, biginds], y, rcond=None)[0]
 
     # Now that we have the sparsity pattern, use standard least squares to get w
-    if biginds != []: w[biginds] = np.linalg.lstsq(X[:, biginds], y, rcond=None)[0]
+    #if biginds != []: w[biginds] = np.linalg.lstsq(X[:, biginds], y, rcond=None)[0]
+    if len(biginds) != 0: w[biginds] = np.linalg.lstsq(X[:, biginds], y, rcond=None)[0]
 
     if normalize != 0:
         return np.multiply(Mreg, w)

@@ -5,6 +5,10 @@ import sys
 import time
 from solve_sh import solve_sh_zigzag
 import matplotlib.pyplot as plt
+from utils import t6hat
+import math
+import scipy.io as sio
+
 
 #########################################################################################################################
     ### Same as v4, but also includes A3
@@ -36,6 +40,26 @@ def freq_grids(xlen,xnum,ylen,ynum):
     kyy = (2. * np.pi / ylen) * fftfreq(Ny, 1. / ynum)
     return np.meshgrid(kxx, kyy)
 
+def column_samples(scale,subsampling_factor,xlength):
+    """
+    Returns column indices of middle, subsampled rectangle of a meshgrid where X changes along columns and is centered at 0
+    """
+    return np.where((X[0, :] > -round(scale * xlength / 2))
+                    & (X[0, :] < round(scale * xlength / 2)))[0][::subsampling_factor]
+
+def row_samples(scale, subsampling_factor,ylength):
+    """
+    Returns row indices of middle, subsampled rectangle of a meshgrid where Y changes along rows and is centered at 0
+    """
+    return np.where((Y[:,0]>-round(scale*ylength/2)) &
+                    (Y[:,0]<round(scale*ylength/2)))[0][::subsampling_factor]
+
+def sigma(rmax_x,rmin_x,rmax_y,rmin_y,xshift,yshift):
+    """
+    makes a smooth indicator function
+    """
+    return t6hat(rmax_x, rmin_x, X - xshift) * t6hat(rmax_y, rmin_y, Y - yshift)
+
 
 # mu determines sharpness of knee bend
 mu = .3
@@ -52,10 +76,10 @@ print_hess = False
 amp_pos = True
 
 # set params for SH Solver
-Nx = 256
-tmax = 2000
+Nx = 512
+tmax = 1000
 R = .5
-h = .5
+h = 1
 
 Wfull,Xfull,Yfull = solve_sh_zigzag(Nx,mu,tmax,R,h)
 W,X,Y = get_centered_pattern(Wfull,Xfull,Yfull)
@@ -228,10 +252,10 @@ if print_grad:
 
 #perform gradient descent on objective function, MSE((A1*cos(phase(k11,k12,k21,k22))-W)^2)
 step = .01
-max_its = 10000
+max_its = 5000
 i = 0
 print("Init Vals:",k110, k120, phi0)
-while np.linalg.norm(grad_obj(k110,k120,phi0))>1e-6 and i < max_its:
+while np.linalg.norm(grad_obj(k110,k120,phi0))>1e-4 and i < max_its:
     curr = np.array([k110,k120,phi0])
     grad = grad_obj(curr[0],curr[1],curr[2])
     d = step
@@ -295,6 +319,98 @@ plt.tight_layout()
 plt.savefig(os.getcwd()+"/figs/sh_pgbs/AmpEsts_v5_mu_{}.png".format(mu))
 
 
+# use sliding gaussian /smooth indicator window and ffts to get partial derivatives of phase
+cols = column_samples(len_scale,ss_factor,Lx)
+rows = row_samples(len_scale,ss_factor,Ly)
+theta_x_approx = np.zeros((len(rows),len(cols)))
+theta_y_approx = np.zeros((len(rows),len(cols)))
+theta_xx_approx = np.zeros((len(rows),len(cols)))
+theta_yy_approx = np.zeros((len(rows),len(cols)))
+theta_xy_approx = np.zeros((len(rows),len(cols)))
+theta_yx_approx = np.zeros((len(rows),len(cols)))
+print("Shape of subsampled interior grid:",np.shape(theta_x_approx))
+r_shift = rows[0]
+c_shift = cols[0]
+dx = xx[1]-xx[0]
+dy = yy[1]-yy[0]
+rmax_x = .95*(math.floor((1-len_scale)*Lx/2)-dx)
+rmax_y = .95*(math.floor((1-len_scale)*Ly/2)-dy)
+print("rmax_x:",rmax_x,"rmax_y:",rmax_y)
+print("Making derivative grids")
+start2 = time.time()
+for r in rows:
+    for c in cols:
+        s = sigma(rmax_x, .05*rmax_x, rmax_y, .05*rmax_y, X[r, c], Y[r, c])
+        f = s*final_theta
+        dfdx = np.real(ifft2(1j*xi*fft2(f)))
+        theta_x_approx[round((r - r_shift)/ss_factor), round((c - c_shift)/ss_factor)] += dfdx[r,c]
+        dfdy = np.real(ifft2(1j*eta*fft2(f)))
+        theta_y_approx[round((r - r_shift)/ss_factor), round((c - c_shift)/ss_factor)] += dfdy[r, c]
+        dfdxx = np.real(ifft2((1j*xi)**2*fft2(f)))
+        theta_xx_approx[round((r - r_shift) / ss_factor), round((c - c_shift) / ss_factor)] += dfdxx[r, c]
+        dfdyy = np.real(ifft2((1j * eta) ** 2 * fft2(f)))
+        theta_yy_approx[round((r - r_shift) / ss_factor), round((c - c_shift) / ss_factor)] += dfdyy[r, c]
+        dfdxy = np.real(ifft2((1j*eta)*(1j * xi) * fft2(f)))
+        theta_xy_approx[round((r - r_shift) / ss_factor), round((c - c_shift) / ss_factor)] += dfdxy[r, c]
+        dfdyx = np.real(ifft2((1j * xi) *(1j * eta) * fft2(f)))
+        theta_yx_approx[round((r - r_shift) / ss_factor), round((c - c_shift) / ss_factor)] += dfdyx[r, c]
+end2 = time.time()
+print("time to make derivatives:",end2-start2)
+
+
+divk_approx = theta_xx_approx+theta_yy_approx
+curlk_approx = theta_yx_approx-theta_xy_approx
+Jk_approx = theta_xx_approx*theta_yy_approx - theta_xy_approx*theta_yx_approx
+
+# get coordinates cooresponding to derivative arrays
+Xinterior = X[rows[0]:rows[-1]+ss_factor,cols[0]:cols[-1]+ss_factor][::ss_factor,::ss_factor]
+Yinterior = Y[rows[0]:rows[-1]+ss_factor,cols[0]:cols[-1]+ss_factor][::ss_factor,::ss_factor]
+lenXint = Xinterior[0,:][-1]-Xinterior[0,:][0]
+lenYint = Yinterior[:,0][-1]-Yinterior[:,0][0]
+print("Intended Lengths of interior grid:", "xlength=",len_scale*Lx, "ylength=",len_scale*Ly)
+print("Actual Lengths of interior grid:", "xlength=",lenXint,"ylength=",lenYint)
+
+
+#compare recovered phase gradient to exact phase gradient
+fig, axs = plt.subplots(nrows=1,ncols=2)
+im0 = axs[0].imshow(theta_x_approx)
+im1 = axs[1].imshow(theta_y_approx)
+plt.colorbar(im0,ax=axs[0])
+plt.colorbar(im1,ax=axs[1])
+plt.suptitle("Found Phase Gradient")
+plt.tight_layout()
+plt.savefig(os.getcwd()+"/figs/sh_pgbs/PhaseGradients_v5_mu_{}.png".format(mu))
+
+#compare recovered wave nums to exact wave nums
+wavenums_approx = np.sqrt(theta_x_approx**2+theta_y_approx**2)
+fig, axs = plt.subplots()
+im0 = axs.imshow(wavenums_approx)
+plt.colorbar(im0,ax=axs)
+plt.suptitle("Found Wave Nums")
+plt.tight_layout()
+plt.savefig(os.getcwd()+"/figs/sh_pgbs/WaveNums_v5_mu_{}.png".format(mu))
+
+#compare recovered divk to exact divk
+fig, axs = plt.subplots(nrows=1,ncols=3,figsize=(20,6))
+im0 = axs[0].imshow(divk_approx)
+im1 = axs[1].imshow(curlk_approx)
+im2 = axs[2].imshow(Jk_approx)
+plt.colorbar(im0,ax=axs[0])
+plt.colorbar(im1,ax=axs[1])
+plt.colorbar(im2,ax=axs[2])
+plt.suptitle("Div(k), Curl(k), J(k)")
+plt.tight_layout()
+plt.savefig(os.getcwd()+"/figs/sh_pgbs/DivKCurlkJk_v5_mu_{}.png".format(mu))
+
+
+mdict = {'theta_x_approx':theta_x_approx,'theta_y_approx': theta_y_approx,
+         'theta_xx_approx': theta_xx_approx, 'theta_yy_approx': theta_yy_approx,
+         'theta_xy_approx':theta_xy_approx,'theta_yx_approx':theta_yx_approx,
+         'divk_approx': divk_approx,'curlk_approx': curlk_approx,'Jk_approx':Jk_approx,
+         'wavenums_approx':wavenums_approx,'Xinterior':Xinterior,'Yinterior':Yinterior}
+
+sio.savemat(os.getcwd()+"/data/sh_pgbs/v5_mu_{}.mat".format(mu),mdict)
+logfile.close()
 
 
 logfile.close()

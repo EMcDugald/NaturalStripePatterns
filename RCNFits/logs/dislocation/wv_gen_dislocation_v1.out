@@ -1,0 +1,643 @@
+Grid Dims: Nx =  512 Ny =  512
+Dom Size: Lx =  94.24777960769379 Ly =  94.24777960769379
+Approximation length scale: 0.75
+Approximation subsampling: 4
+Max tst_theta_x: 5.164878802896778
+Min tst_theta_x: -3.164878802869759
+Max tst_theta_y: 0.5833945031734317
+Min tst_theta_y: -0.583394503175299
+Max tst_divk: 50.11165824669264
+Min tst_divk: -51.25576222018373
+Max tst_curlk: 4.440892098500626e-16
+Min tst_curlk: -1.5543122344752192e-15
+Max tst_Jk: -3.248769899920999e-206
+Min tst_Jk: -10.03081987875208
+Phase Function: 
+ X*kb + 1.0*np.log((0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 0.5*np.exp(np.pi*beta*np.sign(X)) + 0.5)/beta
+Objective Function: 
+ (-W + np.cos(X*kb + 1.0*np.log((0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 0.5*np.exp(np.pi*beta*np.sign(X)) + 0.5)/beta))**2
+Objective Function Partial in kb: 
+ -2*(-W + np.cos(X*kb + 1.0*np.log((0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 0.5*np.exp(np.pi*beta*np.sign(X)) + 0.5)/beta))*(X + 1.0*Y*np.sqrt(beta*kb)*(0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*np.exp(-Y**2*beta*kb/np.abs(X))/(np.sqrt(np.pi)*beta*kb*((0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 0.5*np.exp(np.pi*beta*np.sign(X)) + 0.5)*np.sqrt(np.abs(X))))*np.sin(X*kb + 1.0*np.log((0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 0.5*np.exp(np.pi*beta*np.sign(X)) + 0.5)/beta)
+Objective Function Partial in beta: 
+ -2*(-W + np.cos(X*kb + 1.0*np.log((0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 0.5*np.exp(np.pi*beta*np.sign(X)) + 0.5)/beta))*(1.0*(Y*np.sqrt(beta*kb)*(0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*np.exp(-Y**2*beta*kb/np.abs(X))/(np.sqrt(np.pi)*beta*np.sqrt(np.abs(X))) - 0.5*np.pi*np.exp(np.pi*beta*np.sign(X))*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X)))*np.sign(X) + 0.5*np.pi*np.exp(np.pi*beta*np.sign(X))*np.sign(X))/(beta*((0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 0.5*np.exp(np.pi*beta*np.sign(X)) + 0.5)) - 1.0*np.log((0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 0.5*np.exp(np.pi*beta*np.sign(X)) + 0.5)/beta**2)*np.sin(X*kb + 1.0*np.log((0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 0.5*np.exp(np.pi*beta*np.sign(X)) + 0.5)/beta)
+Phase Function Partial in x: 
+ kb + 1.0*(-Y*np.sqrt(beta*kb)*(0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*np.exp(-Y**2*beta*kb/np.abs(X))*np.sign(X)/(np.sqrt(np.pi)*np.abs(X)**(3/2)) - 1.0*np.pi*beta*np.exp(np.pi*beta*np.sign(X))*DiracDelta(X)*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 1.0*np.pi*beta*np.exp(np.pi*beta*np.sign(X))*DiracDelta(X))/(beta*((0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 0.5*np.exp(np.pi*beta*np.sign(X)) + 0.5))
+Phase Function Partial in y: 
+ 2.0*np.sqrt(beta*kb)*(0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*np.exp(-Y**2*beta*kb/np.abs(X))/(np.sqrt(np.pi)*beta*((0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 0.5*np.exp(np.pi*beta*np.sign(X)) + 0.5)*np.sqrt(np.abs(X)))
+Phase Function Partial in xx: 
+ 1.0*(2.0*np.sqrt(np.pi)*Y*beta*np.sqrt(beta*kb)*np.exp(np.pi*beta*np.sign(X))*np.exp(-Y**2*beta*kb/np.abs(X))*DiracDelta(X)*np.sign(X)/np.abs(X)**(3/2) - 2*Y*np.sqrt(beta*kb)*(0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*np.exp(-Y**2*beta*kb/np.abs(X))*DiracDelta(X)/(np.sqrt(np.pi)*np.abs(X)**(3/2)) + 3*Y*np.sqrt(beta*kb)*(0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*np.exp(-Y**2*beta*kb/np.abs(X))*np.sign(X)**2/(2*np.sqrt(np.pi)*np.abs(X)**(5/2)) - 2.0*np.pi**2*beta**2*np.exp(np.pi*beta*np.sign(X))*DiracDelta(X)**2*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 2.0*np.pi**2*beta**2*np.exp(np.pi*beta*np.sign(X))*DiracDelta(X)**2 - 1.0*np.pi*beta*np.exp(np.pi*beta*np.sign(X))*DiracDelta(X, 1)*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 1.0*np.pi*beta*np.exp(np.pi*beta*np.sign(X))*DiracDelta(X, 1) - Y**3*beta*kb*np.sqrt(beta*kb)*(0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*np.exp(-Y**2*beta*kb/np.abs(X))*np.sign(X)**2/(np.sqrt(np.pi)*X**2*np.abs(X)**(3/2)))/(beta*((0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 0.5*np.exp(np.pi*beta*np.sign(X)) + 0.5)) + 1.0*(-Y*np.sqrt(beta*kb)*(0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*np.exp(-Y**2*beta*kb/np.abs(X))*np.sign(X)/(np.sqrt(np.pi)*np.abs(X)**(3/2)) - 1.0*np.pi*beta*np.exp(np.pi*beta*np.sign(X))*DiracDelta(X)*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 1.0*np.pi*beta*np.exp(np.pi*beta*np.sign(X))*DiracDelta(X))*(Y*np.sqrt(beta*kb)*(0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*np.exp(-Y**2*beta*kb/np.abs(X))*np.sign(X)/(np.sqrt(np.pi)*np.abs(X)**(3/2)) + 1.0*np.pi*beta*np.exp(np.pi*beta*np.sign(X))*DiracDelta(X)*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) - 1.0*np.pi*beta*np.exp(np.pi*beta*np.sign(X))*DiracDelta(X))/(beta*((0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 0.5*np.exp(np.pi*beta*np.sign(X)) + 0.5)**2)
+Phase Function Partial in yy: 
+ -4.0*Y*kb*np.sqrt(beta*kb)*(0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*np.exp(-Y**2*beta*kb/np.abs(X))/(np.sqrt(np.pi)*((0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 0.5*np.exp(np.pi*beta*np.sign(X)) + 0.5)*np.abs(X)**(3/2)) - 4.0*beta*kb*0.25*(1 - np.exp(np.pi*beta*np.sign(X)))**2*np.exp(-2*Y**2*beta*kb/np.abs(X))/(np.pi*beta*((0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 0.5*np.exp(np.pi*beta*np.sign(X)) + 0.5)**2*np.abs(X))
+Phase Function Partial in xy: 
+ -2.0*np.sqrt(beta*kb)*(0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*(-Y*np.sqrt(beta*kb)*(0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*np.exp(-Y**2*beta*kb/np.abs(X))*np.sign(X)/(np.sqrt(np.pi)*np.abs(X)**(3/2)) - 1.0*np.pi*beta*np.exp(np.pi*beta*np.sign(X))*DiracDelta(X)*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 1.0*np.pi*beta*np.exp(np.pi*beta*np.sign(X))*DiracDelta(X))*np.exp(-Y**2*beta*kb/np.abs(X))/(np.sqrt(np.pi)*beta*((0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 0.5*np.exp(np.pi*beta*np.sign(X)) + 0.5)**2*np.sqrt(np.abs(X))) + 1.0*(2*Y**2*beta*kb*np.sqrt(beta*kb)*(0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*np.exp(-Y**2*beta*kb/np.abs(X))*np.sign(X)/(np.sqrt(np.pi)*np.abs(X)**(5/2)) - 2.0*np.sqrt(np.pi)*beta*np.sqrt(beta*kb)*np.exp(np.pi*beta*np.sign(X))*np.exp(-Y**2*beta*kb/np.abs(X))*DiracDelta(X)/np.sqrt(np.abs(X)) - np.sqrt(beta*kb)*(0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*np.exp(-Y**2*beta*kb/np.abs(X))*np.sign(X)/(np.sqrt(np.pi)*np.abs(X)**(3/2)))/(beta*((0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 0.5*np.exp(np.pi*beta*np.sign(X)) + 0.5))
+Phase Function Partial in yx: 
+ -2.0*np.sqrt(np.pi)*np.sqrt(beta*kb)*np.exp(np.pi*beta*np.sign(X))*np.exp(-Y**2*beta*kb/np.abs(X))*DiracDelta(X)/(((0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 0.5*np.exp(np.pi*beta*np.sign(X)) + 0.5)*np.sqrt(np.abs(X))) - 1.0*np.sqrt(beta*kb)*(0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*np.exp(-Y**2*beta*kb/np.abs(X))*np.sign(X)/(np.sqrt(np.pi)*beta*((0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 0.5*np.exp(np.pi*beta*np.sign(X)) + 0.5)*np.abs(X)**(3/2)) + 2.0*np.sqrt(beta*kb)*(0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*(Y*np.sqrt(beta*kb)*(0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*np.exp(-Y**2*beta*kb/np.abs(X))*np.sign(X)/(np.sqrt(np.pi)*np.abs(X)**(3/2)) + 1.0*np.pi*beta*np.exp(np.pi*beta*np.sign(X))*DiracDelta(X)*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) - 1.0*np.pi*beta*np.exp(np.pi*beta*np.sign(X))*DiracDelta(X))*np.exp(-Y**2*beta*kb/np.abs(X))/(np.sqrt(np.pi)*beta*((0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 0.5*np.exp(np.pi*beta*np.sign(X)) + 0.5)**2*np.sqrt(np.abs(X))) + 2.0*Y**2*kb*np.sqrt(beta*kb)*(0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*np.exp(-Y**2*beta*kb/np.abs(X))*np.sign(X)/(np.sqrt(np.pi)*X**2*((0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 0.5*np.exp(np.pi*beta*np.sign(X)) + 0.5)*np.sqrt(np.abs(X)))
+Init Vals: 1.002219758558194 0.2505549396395485
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  1
+Gradient Norm 1.484207444130303
+Obj Function Norm:  0.20738278691522652
+New Vals:  0.9985582458961548 0.2499538794235129
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  2
+Gradient Norm 0.5789717310606486
+Obj Function Norm:  0.20701837235277254
+New Vals:  0.9998736142928937 0.24934984495478899
+Objective increased, decreasing step size
+Step:  3
+Gradient Norm 0.3105591194561257
+Obj Function Norm:  0.2067920713911829
+New Vals:  0.9989044228762358 0.24813664993138554
+Objective increased, decreasing step size
+Step:  4
+Gradient Norm 0.41590861212679037
+Obj Function Norm:  0.20670151519362046
+New Vals:  1.0005879771730157 0.24691593527561018
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  5
+Gradient Norm 0.6330790312821565
+Obj Function Norm:  0.20627969472039642
+New Vals:  0.9991295225580119 0.24630124693178768
+Objective increased, decreasing step size
+Step:  6
+Gradient Norm 0.32633967571233335
+Obj Function Norm:  0.2060584839856584
+New Vals:  1.0001977166131262 0.24506779605752502
+Objective increased, decreasing step size
+Step:  7
+Gradient Norm 0.4463998181790565
+Obj Function Norm:  0.20600286609825755
+New Vals:  0.9983434063118007 0.2438254783654045
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  8
+Gradient Norm 0.6930421752116805
+Obj Function Norm:  0.20551927460250058
+New Vals:  0.999959453595733 0.24320072819134808
+Objective increased, decreasing step size
+Step:  9
+Gradient Norm 0.34783568552635485
+Obj Function Norm:  0.20531044616027472
+New Vals:  0.9987558713327431 0.2419452874960718
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  10
+Gradient Norm 0.4901440277823841
+Obj Function Norm:  0.20501236985060783
+New Vals:  0.9998058203410022 0.24131353249619217
+Step:  11
+Gradient Norm 0.2981914686675895
+Obj Function Norm:  0.20479269571692751
+New Vals:  0.9982400909258602 0.2387757565807157
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  12
+Gradient Norm 0.7508188205078191
+Obj Function Norm:  0.20423954936239844
+New Vals:  1.0000036464621445 0.23813296773270973
+Objective increased, decreasing step size
+Step:  13
+Gradient Norm 0.37012520575445035
+Obj Function Norm:  0.20403574150693804
+New Vals:  0.9986787993126273 0.2368408389741158
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  14
+Gradient Norm 0.5319539562760686
+Obj Function Norm:  0.20369851150881693
+New Vals:  0.9998387977074913 0.23619045635872785
+Step:  15
+Gradient Norm 0.31424273230813365
+Obj Function Norm:  0.20354535268590235
+New Vals:  0.998093699043949 0.23357712895188598
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  16
+Gradient Norm 0.8319786484685411
+Obj Function Norm:  0.20288794897159507
+New Vals:  1.0000654049889128 0.23291489514610741
+Objective increased, decreasing step size
+Step:  17
+Gradient Norm 0.4004217231217049
+Obj Function Norm:  0.20270050971875728
+New Vals:  0.9985705017849569 0.23158309061108878
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  18
+Gradient Norm 0.5900860032646167
+Obj Function Norm:  0.20230636900867302
+New Vals:  0.9998845278047135 0.2309125721999264
+Step:  19
+Gradient Norm 0.3353411268615441
+Obj Function Norm:  0.202276440272271
+New Vals:  0.9978891644314788 0.22821741132435136
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  20
+Gradient Norm 0.9451857334797386
+Obj Function Norm:  0.20145943985331538
+New Vals:  1.000151192573127 0.2275341623735829
+Objective increased, decreasing step size
+Step:  21
+Gradient Norm 0.4422593001394375
+Obj Function Norm:  0.20130829745142614
+New Vals:  0.9984192741375456 0.226159283925687
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  22
+Gradient Norm 0.6712821029843824
+Obj Function Norm:  0.20082843737709094
+New Vals:  0.9999480036471458 0.22546692637886076
+Objective increased, decreasing step size
+Step:  23
+Gradient Norm 0.3639902574955721
+Obj Function Norm:  0.20054440648118257
+New Vals:  0.9987756854910439 0.2240748441867233
+Objective increased, decreasing step size
+Step:  24
+Gradient Norm 0.5005045094345701
+Obj Function Norm:  0.2004780197353378
+New Vals:  1.0008479949173752 0.22267193551519593
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  25
+Gradient Norm 0.7833364519507787
+Obj Function Norm:  0.19986299468846286
+New Vals:  0.9990219858874935 0.2219642696309269
+Objective increased, decreasing step size
+Step:  26
+Gradient Norm 0.39789505812884113
+Obj Function Norm:  0.1996060271161886
+New Vals:  1.0004139601460893 0.22054285498505807
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  27
+Gradient Norm 0.5693616584381352
+Obj Function Norm:  0.19921304436213402
+New Vals:  0.9991844243374132 0.2198256931774411
+Step:  28
+Gradient Norm 0.34440216283476244
+Obj Function Norm:  0.19900559895089204
+New Vals:  1.001071808277776 0.21694488307641283
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  29
+Gradient Norm 0.9039841094134329
+Obj Function Norm:  0.19822513545910572
+New Vals:  0.998934010992122 0.21621191431623285
+Objective increased, decreasing step size
+Step:  30
+Gradient Norm 0.4415023707066355
+Obj Function Norm:  0.19799926907719484
+New Vals:  1.0005783784735809 0.21473910605667892
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  31
+Gradient Norm 0.6549084968789297
+Obj Function Norm:  0.19751615941099593
+New Vals:  0.9991196545342154 0.21399561322601526
+Objective increased, decreasing step size
+Step:  32
+Gradient Norm 0.3746581457099914
+Obj Function Norm:  0.19716736010645156
+New Vals:  1.0002501196011302 0.2125018706490775
+Objective increased, decreasing step size
+Step:  33
+Gradient Norm 0.5026599351126304
+Obj Function Norm:  0.19702639595900404
+New Vals:  0.9982398112590182 0.21099344908041018
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  34
+Gradient Norm 0.780164558634017
+Obj Function Norm:  0.19640446200566683
+New Vals:  1.0000358716593474 0.2102330073309657
+Objective increased, decreasing step size
+Step:  35
+Gradient Norm 0.41705347372315515
+Obj Function Norm:  0.19609148280996533
+New Vals:  0.9986195914144494 0.20870248772425504
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  36
+Gradient Norm 0.5936439442160357
+Obj Function Norm:  0.19565833561394086
+New Vals:  0.9998870051551447 0.20793031903280915
+Step:  37
+Gradient Norm 0.3697345183070749
+Obj Function Norm:  0.19540531248948284
+New Vals:  0.9978826050424267 0.20482343287607405
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  38
+Gradient Norm 0.9749976187021729
+Obj Function Norm:  0.19451741735340164
+New Vals:  1.000188191415758 0.20403245329158567
+Objective increased, decreasing step size
+Step:  39
+Gradient Norm 0.48703995733547734
+Obj Function Norm:  0.19427669820425747
+New Vals:  0.998346777498315 0.2024389060579961
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  40
+Gradient Norm 0.7367205940164996
+Obj Function Norm:  0.1936886568542227
+New Vals:  1.0000037238662547 0.2016346912582867
+Objective increased, decreasing step size
+Step:  41
+Gradient Norm 0.4187385994627006
+Obj Function Norm:  0.19330251545393584
+New Vals:  0.9986763433501286 0.20001555218692552
+Objective increased, decreasing step size
+Step:  42
+Gradient Norm 0.579755126959279
+Obj Function Norm:  0.19322345235992658
+New Vals:  1.0010697122915688 0.19838010567571263
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  43
+Gradient Norm 0.9215907467316086
+Obj Function Norm:  0.19239042764456613
+New Vals:  0.9989192709564806 0.19755311627600608
+Objective increased, decreasing step size
+Step:  44
+Gradient Norm 0.47783834421774063
+Obj Function Norm:  0.19207061249704213
+New Vals:  1.0006343616626783 0.1958897759771997
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  45
+Gradient Norm 0.7039562166575335
+Obj Function Norm:  0.19149983780995208
+New Vals:  0.9990886611125667 0.1950483340434027
+Step:  46
+Gradient Norm 0.419900026543973
+Obj Function Norm:  0.19145552337885863
+New Vals:  1.0015737768151907 0.19166369179144535
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  47
+Gradient Norm 1.194823494959707
+Obj Function Norm:  0.1901727714817909
+New Vals:  0.9987148560912364 0.19079819066792303
+Objective increased, decreasing step size
+Step:  48
+Gradient Norm 0.5777527153410995
+Obj Function Norm:  0.18999512389219242
+New Vals:  1.00101906367435 0.1890558983801531
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  49
+Gradient Norm 0.9067013584369025
+Obj Function Norm:  0.1891631352080459
+New Vals:  0.9989309980207015 0.18817376869311736
+Objective increased, decreasing step size
+Step:  50
+Gradient Norm 0.4913928307461617
+Obj Function Norm:  0.18876539909592557
+New Vals:  1.0006295555743816 0.1863985010824303
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  51
+Gradient Norm 0.714768392784149
+Obj Function Norm:  0.18815858160793097
+New Vals:  0.9990853915399123 0.18549925471439668
+Step:  52
+Gradient Norm 0.44176606696488574
+Obj Function Norm:  0.18799953512073408
+New Vals:  1.00161812684187 0.18187972744106676
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  53
+Gradient Norm 1.2311395676644001
+Obj Function Norm:  0.1866333748681108
+New Vals:  0.9986835507769023 0.18095160175555894
+Objective increased, decreasing step size
+Step:  54
+Gradient Norm 0.6108679582806255
+Obj Function Norm:  0.1864152361284129
+New Vals:  1.0010987135026428 0.17908184760874113
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  55
+Gradient Norm 0.9616443223741301
+Obj Function Norm:  0.18548093113080227
+New Vals:  0.9988894518278313 0.1781337381111493
+Objective increased, decreasing step size
+Step:  56
+Gradient Norm 0.5297890536303673
+Obj Function Norm:  0.18502875081211637
+New Vals:  1.000725296440132 0.17622413459388456
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  57
+Gradient Norm 0.7775783404033795
+Obj Function Norm:  0.1843206445357313
+New Vals:  0.9990400132380994 0.17525524553903904
+Step:  58
+Gradient Norm 0.4818510941869802
+Obj Function Norm:  0.18424299562897975
+New Vals:  1.0018654586740545 0.17135205379568846
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  59
+Gradient Norm 1.379342741699277
+Obj Function Norm:  0.18256774670423506
+New Vals:  0.9985665228723113 0.17034796835598862
+Objective increased, decreasing step size
+Step:  60
+Gradient Norm 0.6873363176613793
+Obj Function Norm:  0.18239854293129723
+New Vals:  1.0013431186811925 0.16832280267054203
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  61
+Gradient Norm 1.1060845916852442
+Obj Function Norm:  0.1812116372441903
+New Vals:  0.998776436227928 0.16729395102483402
+Objective increased, decreasing step size
+Step:  62
+Gradient Norm 0.6023546122044605
+Obj Function Norm:  0.18075304292620736
+New Vals:  1.000959710811211 0.16521932116264412
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  63
+Gradient Norm 0.913827732014897
+Obj Function Norm:  0.1798352641940715
+New Vals:  0.9989332418256758 0.16416448445755147
+Objective increased, decreasing step size
+Step:  64
+Gradient Norm 0.549728162272611
+Obj Function Norm:  0.17918445804080366
+New Vals:  1.0006739378046197 0.16203727882132835
+Objective increased, decreasing step size
+Step:  65
+Gradient Norm 0.7800087310599916
+Obj Function Norm:  0.17915577089186133
+New Vals:  0.997429851295295 0.15987250556916924
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  66
+Gradient Norm 1.294955629928991
+Obj Function Norm:  0.1776349637213003
+New Vals:  1.0004752536757442 0.15877422857180723
+Objective increased, decreasing step size
+Step:  67
+Gradient Norm 0.6964234109936939
+Obj Function Norm:  0.17726827460703137
+New Vals:  0.9977954997159264 0.15655070481449243
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  68
+Gradient Norm 1.1064746030774422
+Obj Function Norm:  0.17604658121408936
+New Vals:  1.0003204330845277 0.1554208821383745
+Objective increased, decreasing step size
+Step:  69
+Gradient Norm 0.6399365663605546
+Obj Function Norm:  0.1754352332612438
+New Vals:  0.9980822454640079 0.1531342937627622
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  70
+Gradient Norm 0.9663137807261003
+Obj Function Norm:  0.1743955434834274
+New Vals:  1.000199389892493 0.15197080161127752
+Objective increased, decreasing step size
+Step:  71
+Gradient Norm 0.6040338684005998
+Obj Function Norm:  0.17359597685970204
+New Vals:  0.9983079791878237 0.1496162340499965
+Objective increased, decreasing step size
+Step:  72
+Gradient Norm 0.8641348531391371
+Obj Function Norm:  0.1735904025182094
+New Vals:  1.001901199721638 0.1472168607348121
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  73
+Gradient Norm 1.4449177153174613
+Obj Function Norm:  0.17169936114763532
+New Vals:  0.9985029141005838 0.1459919832458465
+Objective increased, decreasing step size
+Step:  74
+Gradient Norm 0.7842858789605813
+Obj Function Norm:  0.1712944038230669
+New Vals:  1.001542458214934 0.14351432708016412
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  75
+Gradient Norm 1.2622630104153711
+Obj Function Norm:  0.1697278950858305
+New Vals:  0.9986521838051052 0.14224764311897567
+Objective increased, decreasing step size
+Step:  76
+Gradient Norm 0.732605330534726
+Obj Function Norm:  0.16902511187667296
+New Vals:  1.0012694027324296 0.13968484594700653
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  77
+Gradient Norm 1.130166971352308
+Obj Function Norm:  0.16764957047867787
+New Vals:  0.9987671383900583 0.13837272674301057
+Objective increased, decreasing step size
+Step:  78
+Gradient Norm 0.7018846585739524
+Obj Function Norm:  0.16670717310346667
+New Vals:  1.0010610405323905 0.1357167777958468
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  79
+Gradient Norm 1.0368103052580926
+Obj Function Norm:  0.16543614187635752
+New Vals:  0.9988556336272563 0.13435487547203834
+Objective increased, decreasing step size
+Step:  80
+Gradient Norm 0.6870414392459236
+Obj Function Norm:  0.16428538652659713
+New Vals:  1.0009029236074483 0.13159638816591682
+Objective increased, decreasing step size
+Step:  81
+Gradient Norm 0.9738134963006133
+Obj Function Norm:  0.1641396144562387
+New Vals:  0.9969433986303896 0.12876266621493446
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  82
+Gradient Norm 1.6518089469538155
+Obj Function Norm:  0.16173462994859253
+New Vals:  1.0008099197688278 0.1273125044071559
+Objective increased, decreasing step size
+Step:  83
+Gradient Norm 0.9465298359035353
+Obj Function Norm:  0.16127072268153114
+New Vals:  0.9971138053889771 0.12435671233946072
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  84
+Gradient Norm 1.5745334104241249
+Obj Function Norm:  0.15898460941081216
+New Vals:  1.000746376796947 0.12284041863625296
+Objective increased, decreasing step size
+Step:  85
+Gradient Norm 0.9368015056512221
+Obj Function Norm:  0.1582443757602298
+New Vals:  0.9972285596976058 0.11974770310126699
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  86
+Gradient Norm 1.531092632346471
+Obj Function Norm:  0.15599102907396242
+New Vals:  1.0007101435011971 0.11815707326572045
+Objective increased, decreasing step size
+Step:  87
+Gradient Norm 0.9431741354938117
+Obj Function Norm:  0.15499969491113588
+New Vals:  0.997290778760871 0.11490940009570667
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  88
+Gradient Norm 1.519728839425041
+Obj Function Norm:  0.1527013057900572
+New Vals:  1.0007009116455368 0.11323433528575234
+Objective increased, decreasing step size
+Step:  89
+Gradient Norm 0.9653263904983042
+Obj Function Norm:  0.1514727262487681
+New Vals:  0.9972999052650505 0.1098094949092232
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  90
+Gradient Norm 1.5409349309320421
+Obj Function Norm:  0.14905017834326337
+New Vals:  1.0007204601230164 0.1080374036736526
+Objective increased, decreasing step size
+Step:  91
+Gradient Norm 1.0042439624490085
+Obj Function Norm:  0.14759153036017597
+New Vals:  0.9972510191439097 0.10440757892645372
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  92
+Gradient Norm 1.5979879697285388
+Obj Function Norm:  0.14495378060061645
+New Vals:  1.000773271763895 0.10252250036648898
+Objective increased, decreasing step size
+Step:  93
+Gradient Norm 1.0626193123651635
+Obj Function Norm:  0.1432716361497098
+New Vals:  0.9971333050465809 0.09865214671699767
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  94
+Gradient Norm 1.6980621906425182
+Obj Function Norm:  0.14030110789282302
+New Vals:  1.0008677587125379 0.09663343404864143
+Objective increased, decreasing step size
+Step:  95
+Gradient Norm 1.14565075709707
+Obj Function Norm:  0.13841251839488034
+New Vals:  0.9969270809382619 0.09247603701320513
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  96
+Gradient Norm 1.854361778989355
+Obj Function Norm:  0.13494127856253546
+New Vals:  1.0010185898961228 0.09029632040459584
+Objective increased, decreasing step size
+Step:  97
+Gradient Norm 1.2626030533497519
+Obj Function Norm:  0.13289846420764773
+New Vals:  0.996598140382231 0.08578923843803063
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  98
+Gradient Norm 2.0902023805123155
+Obj Function Norm:  0.1286643313084418
+New Vals:  1.001251166459716 0.08341115921960322
+Objective increased, decreasing step size
+Step:  99
+Gradient Norm 1.4299074705229422
+Obj Function Norm:  0.1266158875174598
+New Vals:  0.9960867160330135 0.07846703784704716
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  100
+Gradient Norm 2.447058209587187
+Obj Function Norm:  0.12117337025215133
+New Vals:  1.0016105501094257 0.07583780909070173
+Objective increased, decreasing step size
+Step:  101
+Gradient Norm 1.6775507806078143
+Obj Function Norm:  0.11952921484918781
+New Vals:  0.9952849643804812 0.07032950801653005
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  102
+Gradient Norm 3.0011523657892907
+Obj Function Norm:  0.11205161031367902
+New Vals:  1.0021801514419681 0.06737153279623649
+Objective increased, decreasing step size
+Step:  103
+Gradient Norm 2.0628737385721285
+Obj Function Norm:  0.11196994257364024
+New Vals:  0.9939883845930239 0.06110406461324574
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  104
+Gradient Norm 3.8993924981637886
+Obj Function Norm:  0.10076483320603812
+New Vals:  1.0031227049515918 0.05769861630514411
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  105
+Gradient Norm 2.7017803417576114
+Obj Function Norm:  0.09278050775593365
+New Vals:  0.9974537508405418 0.054026346485096396
+Objective increased, decreasing step size
+Step:  106
+Gradient Norm 2.125640294099688
+Obj Function Norm:  0.0863622569812807
+New Vals:  1.0046558502057683 0.046210437630016934
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  107
+Gradient Norm 3.7764938470246814
+Obj Function Norm:  0.07330096620374045
+New Vals:  0.9963532632592026 0.04171555597433763
+Objective increased, decreasing step size
+Step:  108
+Gradient Norm 2.9823622462178077
+Obj Function Norm:  0.07030776506485718
+New Vals:  1.0076446647805624 0.03197561932797956
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  109
+Gradient Norm 5.909203978194327
+Obj Function Norm:  0.04611247310560389
+New Vals:  0.9940414177970966 0.02621423977476026
+Objective increased, decreasing step size
+Objective increased, decreasing step size
+Step:  110
+Gradient Norm 4.749590774126273
+Obj Function Norm:  0.025390155764767074
+New Vals:  1.0041820189019794 0.02003689912590032
+Step:  111
+Gradient Norm 4.079866023579119
+Obj Function Norm:  nan
+New Vals:  0.9726297389893391 -0.0058278318672866335
+exact kb: 1.0
+exact beta: 0.01
+found kb: 0.9726297389893391
+found beta: -0.0058278318672866335
+Est Field max err: nan
+Est Field mean err: nan
+Shape of subsampled interior grid: (95, 95)
+rmax_x: 10.274783971375129 rmax_y: 10.274783971375129
+Making derivative grids
