@@ -1,0 +1,1717 @@
+Grid Dims: Nx =  512 Ny =  512
+Dom Size: Lx =  62.83185307179586 Ly =  62.83185307179586
+Approximation subsampling: 2
+Max tst_theta_x: 7.247878785964106
+Min tst_theta_x: -5.247878785924174
+Max tst_theta_y: 0.7146585314412531
+Min tst_theta_y: -0.7146585314435668
+Max tst_divk: 112.88062675524131
+Min tst_divk: -115.47306332060494
+Max tst_curlk: 2.6645352591003757e-15
+Min tst_curlk: -2.220446049250313e-15
+Max tst_Jk: -3.836921080798682e-136
+Min tst_Jk: -33.854519701133015
+Phase Function: 
+ X*kb + 1.0*np.log((0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 0.5*np.exp(np.pi*beta*np.sign(X)) + 0.5)/beta
+Objective Function: 
+ (-W + np.cos(X*kb + 1.0*np.log((0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 0.5*np.exp(np.pi*beta*np.sign(X)) + 0.5)/beta))**2
+Objective Function Partial in kb: 
+ -2*(-W + np.cos(X*kb + 1.0*np.log((0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 0.5*np.exp(np.pi*beta*np.sign(X)) + 0.5)/beta))*(X + 1.0*Y*np.sqrt(beta*kb)*(0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*np.exp(-Y**2*beta*kb/np.abs(X))/(np.sqrt(np.pi)*beta*kb*((0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 0.5*np.exp(np.pi*beta*np.sign(X)) + 0.5)*np.sqrt(np.abs(X))))*np.sin(X*kb + 1.0*np.log((0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 0.5*np.exp(np.pi*beta*np.sign(X)) + 0.5)/beta)
+Objective Function Partial in beta: 
+ -2*(-W + np.cos(X*kb + 1.0*np.log((0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 0.5*np.exp(np.pi*beta*np.sign(X)) + 0.5)/beta))*(1.0*(Y*np.sqrt(beta*kb)*(0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*np.exp(-Y**2*beta*kb/np.abs(X))/(np.sqrt(np.pi)*beta*np.sqrt(np.abs(X))) - 0.5*np.pi*np.exp(np.pi*beta*np.sign(X))*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X)))*np.sign(X) + 0.5*np.pi*np.exp(np.pi*beta*np.sign(X))*np.sign(X))/(beta*((0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 0.5*np.exp(np.pi*beta*np.sign(X)) + 0.5)) - 1.0*np.log((0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 0.5*np.exp(np.pi*beta*np.sign(X)) + 0.5)/beta**2)*np.sin(X*kb + 1.0*np.log((0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 0.5*np.exp(np.pi*beta*np.sign(X)) + 0.5)/beta)
+Phase Function Partial in x: 
+ kb + 1.0*(-Y*np.sqrt(beta*kb)*(0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*np.exp(-Y**2*beta*kb/np.abs(X))*np.sign(X)/(np.sqrt(np.pi)*np.abs(X)**(3/2)) - 1.0*np.pi*beta*np.exp(np.pi*beta*np.sign(X))*DiracDelta(X)*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 1.0*np.pi*beta*np.exp(np.pi*beta*np.sign(X))*DiracDelta(X))/(beta*((0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 0.5*np.exp(np.pi*beta*np.sign(X)) + 0.5))
+Phase Function Partial in y: 
+ 2.0*np.sqrt(beta*kb)*(0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*np.exp(-Y**2*beta*kb/np.abs(X))/(np.sqrt(np.pi)*beta*((0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 0.5*np.exp(np.pi*beta*np.sign(X)) + 0.5)*np.sqrt(np.abs(X)))
+Phase Function Partial in xx: 
+ 1.0*(2.0*np.sqrt(np.pi)*Y*beta*np.sqrt(beta*kb)*np.exp(np.pi*beta*np.sign(X))*np.exp(-Y**2*beta*kb/np.abs(X))*DiracDelta(X)*np.sign(X)/np.abs(X)**(3/2) - 2*Y*np.sqrt(beta*kb)*(0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*np.exp(-Y**2*beta*kb/np.abs(X))*DiracDelta(X)/(np.sqrt(np.pi)*np.abs(X)**(3/2)) + 3*Y*np.sqrt(beta*kb)*(0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*np.exp(-Y**2*beta*kb/np.abs(X))*np.sign(X)**2/(2*np.sqrt(np.pi)*np.abs(X)**(5/2)) - 2.0*np.pi**2*beta**2*np.exp(np.pi*beta*np.sign(X))*DiracDelta(X)**2*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 2.0*np.pi**2*beta**2*np.exp(np.pi*beta*np.sign(X))*DiracDelta(X)**2 - 1.0*np.pi*beta*np.exp(np.pi*beta*np.sign(X))*DiracDelta(X, 1)*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 1.0*np.pi*beta*np.exp(np.pi*beta*np.sign(X))*DiracDelta(X, 1) - Y**3*beta*kb*np.sqrt(beta*kb)*(0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*np.exp(-Y**2*beta*kb/np.abs(X))*np.sign(X)**2/(np.sqrt(np.pi)*X**2*np.abs(X)**(3/2)))/(beta*((0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 0.5*np.exp(np.pi*beta*np.sign(X)) + 0.5)) + 1.0*(-Y*np.sqrt(beta*kb)*(0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*np.exp(-Y**2*beta*kb/np.abs(X))*np.sign(X)/(np.sqrt(np.pi)*np.abs(X)**(3/2)) - 1.0*np.pi*beta*np.exp(np.pi*beta*np.sign(X))*DiracDelta(X)*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 1.0*np.pi*beta*np.exp(np.pi*beta*np.sign(X))*DiracDelta(X))*(Y*np.sqrt(beta*kb)*(0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*np.exp(-Y**2*beta*kb/np.abs(X))*np.sign(X)/(np.sqrt(np.pi)*np.abs(X)**(3/2)) + 1.0*np.pi*beta*np.exp(np.pi*beta*np.sign(X))*DiracDelta(X)*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) - 1.0*np.pi*beta*np.exp(np.pi*beta*np.sign(X))*DiracDelta(X))/(beta*((0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 0.5*np.exp(np.pi*beta*np.sign(X)) + 0.5)**2)
+Phase Function Partial in yy: 
+ -4.0*Y*kb*np.sqrt(beta*kb)*(0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*np.exp(-Y**2*beta*kb/np.abs(X))/(np.sqrt(np.pi)*((0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 0.5*np.exp(np.pi*beta*np.sign(X)) + 0.5)*np.abs(X)**(3/2)) - 4.0*beta*kb*0.25*(1 - np.exp(np.pi*beta*np.sign(X)))**2*np.exp(-2*Y**2*beta*kb/np.abs(X))/(np.pi*beta*((0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 0.5*np.exp(np.pi*beta*np.sign(X)) + 0.5)**2*np.abs(X))
+Phase Function Partial in xy: 
+ -2.0*np.sqrt(beta*kb)*(0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*(-Y*np.sqrt(beta*kb)*(0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*np.exp(-Y**2*beta*kb/np.abs(X))*np.sign(X)/(np.sqrt(np.pi)*np.abs(X)**(3/2)) - 1.0*np.pi*beta*np.exp(np.pi*beta*np.sign(X))*DiracDelta(X)*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 1.0*np.pi*beta*np.exp(np.pi*beta*np.sign(X))*DiracDelta(X))*np.exp(-Y**2*beta*kb/np.abs(X))/(np.sqrt(np.pi)*beta*((0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 0.5*np.exp(np.pi*beta*np.sign(X)) + 0.5)**2*np.sqrt(np.abs(X))) + 1.0*(2*Y**2*beta*kb*np.sqrt(beta*kb)*(0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*np.exp(-Y**2*beta*kb/np.abs(X))*np.sign(X)/(np.sqrt(np.pi)*np.abs(X)**(5/2)) - 2.0*np.sqrt(np.pi)*beta*np.sqrt(beta*kb)*np.exp(np.pi*beta*np.sign(X))*np.exp(-Y**2*beta*kb/np.abs(X))*DiracDelta(X)/np.sqrt(np.abs(X)) - np.sqrt(beta*kb)*(0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*np.exp(-Y**2*beta*kb/np.abs(X))*np.sign(X)/(np.sqrt(np.pi)*np.abs(X)**(3/2)))/(beta*((0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 0.5*np.exp(np.pi*beta*np.sign(X)) + 0.5))
+Phase Function Partial in yx: 
+ -2.0*np.sqrt(np.pi)*np.sqrt(beta*kb)*np.exp(np.pi*beta*np.sign(X))*np.exp(-Y**2*beta*kb/np.abs(X))*DiracDelta(X)/(((0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 0.5*np.exp(np.pi*beta*np.sign(X)) + 0.5)*np.sqrt(np.abs(X))) - 1.0*np.sqrt(beta*kb)*(0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*np.exp(-Y**2*beta*kb/np.abs(X))*np.sign(X)/(np.sqrt(np.pi)*beta*((0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 0.5*np.exp(np.pi*beta*np.sign(X)) + 0.5)*np.abs(X)**(3/2)) + 2.0*np.sqrt(beta*kb)*(0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*(Y*np.sqrt(beta*kb)*(0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*np.exp(-Y**2*beta*kb/np.abs(X))*np.sign(X)/(np.sqrt(np.pi)*np.abs(X)**(3/2)) + 1.0*np.pi*beta*np.exp(np.pi*beta*np.sign(X))*DiracDelta(X)*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) - 1.0*np.pi*beta*np.exp(np.pi*beta*np.sign(X))*DiracDelta(X))*np.exp(-Y**2*beta*kb/np.abs(X))/(np.sqrt(np.pi)*beta*((0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 0.5*np.exp(np.pi*beta*np.sign(X)) + 0.5)**2*np.sqrt(np.abs(X))) + 2.0*Y**2*kb*np.sqrt(beta*kb)*(0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*np.exp(-Y**2*beta*kb/np.abs(X))*np.sign(X)/(np.sqrt(np.pi)*X**2*((0.5 - 0.5*np.exp(np.pi*beta*np.sign(X)))*special.erf(Y*np.sqrt(beta*kb)/np.sqrt(np.abs(X))) + 0.5*np.exp(np.pi*beta*np.sign(X)) + 0.5)*np.sqrt(np.abs(X)))
+Init Vals: 1.0 0.25
+Step:  1
+Gradient Norm 0.4248170998382543
+Obj Function Norm:  0.23902162328115123
+New Vals:  0.9996954599629547 0.2497038160467692
+Step:  2
+Gradient Norm 0.37783613635601376
+Obj Function Norm:  0.23888514398862978
+New Vals:  0.9994614736495973 0.2494071503239467
+Step:  3
+Gradient Norm 0.34724461502113046
+Obj Function Norm:  0.23876824571148073
+New Vals:  0.9992817913941078 0.24911000875882433
+Step:  4
+Gradient Norm 0.3280207092350461
+Obj Function Norm:  0.2386627901528579
+New Vals:  0.9991438714110993 0.24881239211954823
+Step:  5
+Gradient Norm 0.31631994582443945
+Obj Function Norm:  0.2385639647274873
+New Vals:  0.9990380483004194 0.24851429854804352
+Step:  6
+Gradient Norm 0.3094094413770107
+Obj Function Norm:  0.23846892664997663
+New Vals:  0.9989568817130793 0.24821572495994038
+Step:  7
+Gradient Norm 0.30546375088750893
+Obj Function Norm:  0.2383759979453395
+New Vals:  0.9988946489596469 0.24791666779566154
+Step:  8
+Gradient Norm 0.30331816358443403
+Obj Function Norm:  0.23828418858234016
+New Vals:  0.9988469513030295 0.24761712340510575
+Step:  9
+Gradient Norm 0.30225224959283004
+Obj Function Norm:  0.23819291444721907
+New Vals:  0.9988104093317252 0.24731708822930612
+Step:  10
+Gradient Norm 0.30182919537912695
+Obj Function Norm:  0.23810183075712624
+New Vals:  0.9987824277491743 0.247016558872635
+Step:  11
+Gradient Norm 0.30178743111648804
+Obj Function Norm:  0.2380107337555204
+New Vals:  0.9987610140420918 0.24671553211846042
+Step:  12
+Gradient Norm 0.3019715215165089
+Obj Function Norm:  0.23791950274475368
+New Vals:  0.9987446388481913 0.24641400491764479
+Step:  13
+Gradient Norm 0.3022895339582968
+Obj Function Norm:  0.23782806592438815
+New Vals:  0.9987321285286634 0.2461119743658027
+Step:  14
+Gradient Norm 0.3026872527328526
+Obj Function Norm:  0.23773638026824398
+New Vals:  0.9987225825733864 0.24580943767760635
+Step:  15
+Gradient Norm 0.30313276436382125
+Obj Function Norm:  0.23764441967543126
+New Vals:  0.9987153101316273 0.2455063921621772
+Step:  16
+Gradient Norm 0.3036073071095532
+Obj Function Norm:  0.23755216799548587
+New Vals:  0.9987097812593683 0.24520283520129202
+Step:  17
+Gradient Norm 0.3040998619101556
+Obj Function Norm:  0.23745961492366569
+New Vals:  0.998705589482895 0.2448987642309187
+Step:  18
+Gradient Norm 0.3046039631906475
+Obj Function Norm:  0.2373667535858392
+New Vals:  0.9987024230592968 0.24459417672599926
+Step:  19
+Gradient Norm 0.3051158214859904
+Obj Function Norm:  0.23727357911772476
+New Vals:  0.9987000429180303 0.24428907018813317
+Step:  20
+Gradient Norm 0.30563321940273963
+Obj Function Norm:  0.23718008782919114
+New Vals:  0.9986982657332598 0.24398344213572834
+Step:  21
+Gradient Norm 0.30615486278652265
+Obj Function Norm:  0.2370862767127305
+New Vals:  0.9986969509353837 0.24367729009618855
+Step:  22
+Gradient Norm 0.30667999957922215
+Obj Function Norm:  0.23699214315436207
+New Vals:  0.998695990746256 0.24337061159974846
+Step:  23
+Gradient Norm 0.30720819599596355
+Obj Function Norm:  0.23689768476357964
+New Vals:  0.9986953025349772 0.2430634041746228
+Step:  24
+Gradient Norm 0.30773920511852065
+Obj Function Norm:  0.2368028992732949
+New Vals:  0.9986948229543735 0.24275566534319357
+Step:  25
+Gradient Norm 0.3082728897614505
+Obj Function Norm:  0.2367077844809309
+New Vals:  0.998694503443725 0.2424473926190112
+Step:  26
+Gradient Norm 0.30880917720313855
+Obj Function Norm:  0.2366123382137054
+New Vals:  0.9986943067796461 0.2421385835044305
+Step:  27
+Gradient Norm 0.3093480326220957
+Obj Function Norm:  0.23651655830812895
+New Vals:  0.9986942044310131 0.24182923548873955
+Step:  28
+Gradient Norm 0.3098894435118083
+Obj Function Norm:  0.2364204425978583
+New Vals:  0.998694174530631 0.24151934604667025
+Step:  29
+Gradient Norm 0.310433410538304
+Obj Function Norm:  0.23632398890645684
+New Vals:  0.998694200319931 0.24120891263720318
+Step:  30
+Gradient Norm 0.31097994217811714
+Obj Function Norm:  0.23622719504303671
+New Vals:  0.9986942689564522 0.24089793270259946
+Step:  31
+Gradient Norm 0.31152905157424443
+Obj Function Norm:  0.2361300587995939
+New Vals:  0.9986943705995386 0.24058640366760684
+Step:  32
+Gradient Norm 0.3120807546932752
+Obj Function Norm:  0.236032577949334
+New Vals:  0.9986944977093802 0.24027432293879936
+Step:  33
+Gradient Norm 0.3126350692457866
+Obj Function Norm:  0.235934750245581
+New Vals:  0.9986946445096473 0.23996168790401917
+Step:  34
+Gradient Norm 0.31319201405443337
+Obj Function Norm:  0.2358365734210251
+New Vals:  0.9986948065755584 0.23964849593189647
+Step:  35
+Gradient Norm 0.31375160868460983
+Obj Function Norm:  0.23573804518716812
+New Vals:  0.998694980518121 0.23933474437142838
+Step:  36
+Gradient Norm 0.3143138732291264
+Obj Function Norm:  0.23563916323388442
+New Vals:  0.9986951637421031 0.23902043055160294
+Step:  37
+Gradient Norm 0.314878828183207
+Obj Function Norm:  0.2355399252290455
+New Vals:  0.99869535426053 0.23870555178105662
+Step:  38
+Gradient Norm 0.3154464943724789
+Obj Function Norm:  0.23544032881818316
+New Vals:  0.9986955505525121 0.23839010534775718
+Step:  39
+Gradient Norm 0.31601689291204504
+Obj Function Norm:  0.23534037162417132
+New Vals:  0.9986957514542879 0.2380740885187049
+Step:  40
+Gradient Norm 0.31659004518381184
+Obj Function Norm:  0.2352400512469181
+New Vals:  0.9986959560757266 0.2377574985396475
+Step:  41
+Gradient Norm 0.31716597282454184
+Obj Function Norm:  0.2351393652630599
+New Vals:  0.9986961637363447 0.23744033263480463
+Step:  42
+Gradient Norm 0.3177446977202147
+Obj Function Norm:  0.23503831122565924
+New Vals:  0.998696373916279 0.23712258800659872
+Step:  43
+Gradient Norm 0.31832624200411463
+Obj Function Norm:  0.2349368866638963
+New Vals:  0.9986965862187207 0.2368042618353904
+Step:  44
+Gradient Norm 0.31891062805712866
+Obj Function Norm:  0.2348350890827619
+New Vals:  0.9986968003411347 0.23648535127921613
+Step:  45
+Gradient Norm 0.3194978785093598
+Obj Function Norm:  0.23473291596274257
+New Vals:  0.9986970160532093 0.23616585347352684
+Step:  46
+Gradient Norm 0.3200880162425476
+Obj Function Norm:  0.23463036475950402
+New Vals:  0.9986972331799635 0.2358457655309266
+Step:  47
+Gradient Norm 0.3206810643929785
+Obj Function Norm:  0.23452743290356873
+New Vals:  0.9986974515888075 0.23552508454091037
+Step:  48
+Gradient Norm 0.32127704635471344
+Obj Function Norm:  0.23442411779998845
+New Vals:  0.9986976711796302 0.23520380756960013
+Step:  49
+Gradient Norm 0.3218759857830318
+Obj Function Norm:  0.23432041682801236
+New Vals:  0.9986978918772067 0.23488193165947888
+Step:  50
+Gradient Norm 0.3224779065980232
+Obj Function Norm:  0.23421632734074832
+New Vals:  0.9986981136253842 0.23455945382912213
+Step:  51
+Gradient Norm 0.3230828329883006
+Obj Function Norm:  0.23411184666482157
+New Vals:  0.9986983363826278 0.23423637107292652
+Step:  52
+Gradient Norm 0.3236907894148069
+Obj Function Norm:  0.23400697210002377
+New Vals:  0.9986985601186108 0.2339126803608352
+Step:  53
+Gradient Norm 0.32430180061471053
+Obj Function Norm:  0.2339017009189604
+New Vals:  0.9986987848116027 0.23358837863805995
+Step:  54
+Gradient Norm 0.32491589160537865
+Obj Function Norm:  0.23379603036669036
+New Vals:  0.9986990104464698 0.23326346282479962
+Step:  55
+Gradient Norm 0.3255330876884283
+Obj Function Norm:  0.2336899576603588
+New Vals:  0.9986992370131446 0.2329379298159549
+Step:  56
+Gradient Norm 0.3261534144538531
+Obj Function Norm:  0.2335834799888264
+New Vals:  0.9986994645054533 0.2326117764808391
+Step:  57
+Gradient Norm 0.32677689778422553
+Obj Function Norm:  0.2334765945122899
+New Vals:  0.9986996929202194 0.23228499966288504
+Step:  58
+Gradient Norm 0.32740356385897734
+Obj Function Norm:  0.2333692983618993
+New Vals:  0.9986999222565763 0.2319575961793477
+Step:  59
+Gradient Norm 0.32803343915875144
+Obj Function Norm:  0.2332615886393647
+New Vals:  0.9987001525154426 0.23162956282100258
+Step:  60
+Gradient Norm 0.3286665504698418
+Obj Function Norm:  0.23315346241656007
+New Vals:  0.99870038369912 0.23130089635183992
+Step:  61
+Gradient Norm 0.329302924888705
+Obj Function Norm:  0.23304491673511976
+New Vals:  0.9987006158109855 0.2309715935087542
+Step:  62
+Gradient Norm 0.32994258982655583
+Obj Function Norm:  0.23293594860602612
+New Vals:  0.9987008488552568 0.2306416510012293
+Step:  63
+Gradient Norm 0.33058557301405106
+Obj Function Norm:  0.23282655500919303
+New Vals:  0.9987010828368125 0.23031106551101888
+Step:  64
+Gradient Norm 0.33123190250604684
+Obj Function Norm:  0.23271673289303976
+New Vals:  0.9987013177610544 0.22997983369182215
+Step:  65
+Gradient Norm 0.3318816066864593
+Obj Function Norm:  0.23260647917405977
+New Vals:  0.9987015536338036 0.22964795216895467
+Step:  66
+Gradient Norm 0.33253471427319486
+Obj Function Norm:  0.23249579073638124
+New Vals:  0.9987017904612198 0.22931541753901438
+Step:  67
+Gradient Norm 0.3331912543231857
+Obj Function Norm:  0.23238466443131958
+New Vals:  0.9987020282497403 0.22898222636954244
+Step:  68
+Gradient Norm 0.33385125623751405
+Obj Function Norm:  0.23227309707692256
+New Vals:  0.9987022670060346 0.22864837519867914
+Step:  69
+Gradient Norm 0.33451474976662404
+Obj Function Norm:  0.2321610854575091
+New Vals:  0.9987025067369684 0.22831386053481445
+Step:  70
+Gradient Norm 0.33518176501563973
+Obj Function Norm:  0.23204862632319737
+New Vals:  0.998702747449577 0.22797867885623335
+Step:  71
+Gradient Norm 0.33585233244977575
+Obj Function Norm:  0.23193571638942795
+New Vals:  0.9987029891510458 0.22764282661075574
+Step:  72
+Gradient Norm 0.3365264828998471
+Obj Function Norm:  0.23182235233647452
+New Vals:  0.9987032318486948 0.2273063002153708
+Step:  73
+Gradient Norm 0.3372042475678936
+Obj Function Norm:  0.2317085308089508
+New Vals:  0.9987034755499672 0.22696909605586574
+Step:  74
+Gradient Norm 0.3378856580328901
+Obj Function Norm:  0.2315942484153058
+New Vals:  0.9987037202624215 0.2266312104864489
+Step:  75
+Gradient Norm 0.33857074625658246
+Obj Function Norm:  0.23147950172730994
+New Vals:  0.9987039659937254 0.226292639829367
+Step:  76
+Gradient Norm 0.33925954458942326
+Obj Function Norm:  0.23136428727953467
+New Vals:  0.9987042127516511 0.22595338037451637
+Step:  77
+Gradient Norm 0.33995208577662256
+Obj Function Norm:  0.2312486015688205
+New Vals:  0.9987044605440729 0.2256134283790482
+Step:  78
+Gradient Norm 0.34064840296431514
+Obj Function Norm:  0.2311324410537366
+New Vals:  0.9987047093789648 0.22527278006696763
+Step:  79
+Gradient Norm 0.3413485297058417
+Obj Function Norm:  0.23101580215403114
+New Vals:  0.9987049592643996 0.22493143162872659
+Step:  80
+Gradient Norm 0.34205249996815085
+Obj Function Norm:  0.2308986812500705
+New Vals:  0.9987052102085483 0.22458937922081004
+Step:  81
+Gradient Norm 0.3427603481383322
+Obj Function Norm:  0.2307810746822702
+New Vals:  0.9987054622196799 0.22424661896531606
+Step:  82
+Gradient Norm 0.343472109030257
+Obj Function Norm:  0.23066297875051403
+New Vals:  0.9987057153061619 0.22390314694952884
+Step:  83
+Gradient Norm 0.34418781789136715
+Obj Function Norm:  0.23054438971356347
+New Vals:  0.9987059694764607 0.2235589592254853
+Step:  84
+Gradient Norm 0.3449075104095826
+Obj Function Norm:  0.2304253037884575
+New Vals:  0.9987062247391424 0.22321405180953444
+Step:  85
+Gradient Norm 0.3456312227203464
+Obj Function Norm:  0.23030571714989825
+New Vals:  0.9987064811028739 0.22286842068188994
+Step:  86
+Gradient Norm 0.34635899141381
+Obj Function Norm:  0.23018562592962985
+New Vals:  0.9987067385764239 0.22252206178617545
+Step:  87
+Gradient Norm 0.34709085354215574
+Obj Function Norm:  0.2300650262158016
+New Vals:  0.9987069971686643 0.22217497102896247
+Step:  88
+Gradient Norm 0.3478268466270637
+Obj Function Norm:  0.22994391405232323
+New Vals:  0.9987072568885715 0.22182714427930095
+Step:  89
+Gradient Norm 0.3485670086673298
+Obj Function Norm:  0.22982228543820557
+New Vals:  0.9987075177452279 0.2214785773682421
+Step:  90
+Gradient Norm 0.34931137814662505
+Obj Function Norm:  0.22970013632689087
+New Vals:  0.9987077797478231 0.22112926608835362
+Step:  91
+Gradient Norm 0.35005999404142085
+Obj Function Norm:  0.22957746262556844
+New Vals:  0.9987080429056557 0.22077920619322675
+Step:  92
+Gradient Norm 0.3508128958290644
+Obj Function Norm:  0.22945426019448129
+New Vals:  0.9987083072281351 0.22042839339697554
+Step:  93
+Gradient Norm 0.35157012349601385
+Obj Function Norm:  0.229330524846215
+New Vals:  0.9987085727247825 0.22007682337372764
+Step:  94
+Gradient Norm 0.35233171754624965
+Obj Function Norm:  0.22920625234497827
+New Vals:  0.9987088394052336 0.21972449175710684
+Step:  95
+Gradient Norm 0.35309771900984027
+Obj Function Norm:  0.22908143840586556
+New Vals:  0.9987091072792393 0.21937139413970697
+Step:  96
+Gradient Norm 0.35386816945169247
+Obj Function Norm:  0.22895607869410903
+New Vals:  0.9987093763566685 0.21901752607255703
+Step:  97
+Gradient Norm 0.35464311098047446
+Obj Function Norm:  0.22883016882431484
+New Vals:  0.9987096466475089 0.2186628830645775
+Step:  98
+Gradient Norm 0.35542258625771944
+Obj Function Norm:  0.228703704359684
+New Vals:  0.99870991816187 0.2183074605820274
+Step:  99
+Gradient Norm 0.35620663850711914
+Obj Function Norm:  0.22857668081122196
+New Vals:  0.9987101909099843 0.2179512540479422
+Step:  100
+Gradient Norm 0.35699531152400354
+Obj Function Norm:  0.22844909363692784
+New Vals:  0.998710464902209 0.21759425884156208
+Step:  101
+Gradient Norm 0.3577886496850195
+Obj Function Norm:  0.22832093824097258
+New Vals:  0.9987107401490293 0.21723647029775078
+Step:  102
+Gradient Norm 0.35858669795800474
+Obj Function Norm:  0.22819220997285933
+New Vals:  0.9987110166610587 0.21687788370640426
+Step:  103
+Gradient Norm 0.35938950191206986
+Obj Function Norm:  0.22806290412656774
+New Vals:  0.9987112944490425 0.2165184943118495
+Step:  104
+Gradient Norm 0.36019710772789
+Obj Function Norm:  0.22793301593968124
+New Vals:  0.9987115735238594 0.21615829731223293
+Step:  105
+Gradient Norm 0.36100956220820746
+Obj Function Norm:  0.22780254059249794
+New Vals:  0.9987118538965235 0.21579728785889835
+Step:  106
+Gradient Norm 0.3618269127885621
+Obj Function Norm:  0.22767147320712458
+New Vals:  0.9987121355781868 0.21543546105575415
+Step:  107
+Gradient Norm 0.362649207548237
+Obj Function Norm:  0.2275398088465511
+New Vals:  0.9987124185801416 0.2150728119586296
+Step:  108
+Gradient Norm 0.3634764952214436
+Obj Function Norm:  0.22740754251370857
+New Vals:  0.9987127029138222 0.21470933557461983
+Step:  109
+Gradient Norm 0.3643088252087412
+Obj Function Norm:  0.22727466915050754
+New Vals:  0.998712988590808 0.21434502686141957
+Step:  110
+Gradient Norm 0.3651462475886968
+Obj Function Norm:  0.22714118363685798
+New Vals:  0.9987132756228255 0.21397988072664512
+Step:  111
+Gradient Norm 0.3659888131297967
+Obj Function Norm:  0.227007080789668
+New Vals:  0.9987135640217508 0.21361389202714443
+Step:  112
+Gradient Norm 0.36683657330261465
+Obj Function Norm:  0.22687235536182565
+New Vals:  0.9987138537996123 0.21324705556829499
+Step:  113
+Gradient Norm 0.3676895802922351
+Obj Function Norm:  0.22673700204115668
+New Vals:  0.9987141449685929 0.2128793661032894
+Step:  114
+Gradient Norm 0.3685478870109545
+Obj Function Norm:  0.22660101544936426
+New Vals:  0.9987144375410331 0.21251081833240804
+Step:  115
+Gradient Norm 0.36941154711124613
+Obj Function Norm:  0.22646439014094513
+New Vals:  0.9987147315294331 0.21214140690227903
+Step:  116
+Gradient Norm 0.37028061499902004
+Obj Function Norm:  0.22632712060208499
+New Vals:  0.9987150269464563 0.21177112640512474
+Step:  117
+Gradient Norm 0.37115514584715886
+Obj Function Norm:  0.22618920124953054
+New Vals:  0.9987153238049313 0.21139997137799474
+Step:  118
+Gradient Norm 0.37203519560936393
+Obj Function Norm:  0.2260506264294395
+New Vals:  0.9987156221178553 0.2110279363019851
+Step:  119
+Gradient Norm 0.3729208210342925
+Obj Function Norm:  0.22591139041620517
+New Vals:  0.9987159218983966 0.2106550156014434
+Step:  120
+Gradient Norm 0.3738120796800204
+Obj Function Norm:  0.22577148741125852
+New Vals:  0.998716223159898 0.21028120364315928
+Step:  121
+Gradient Norm 0.374709029928817
+Obj Function Norm:  0.22563091154184486
+New Vals:  0.9987165259158797 0.2099064947355403
+Step:  122
+Gradient Norm 0.3756117310022489
+Obj Function Norm:  0.22548965685977426
+New Vals:  0.9987168301800419 0.2095308831277726
+Step:  123
+Gradient Norm 0.3765202429766271
+Obj Function Norm:  0.22534771734014758
+New Vals:  0.9987171359662688 0.20915436300896623
+Step:  124
+Gradient Norm 0.3774346267987949
+Obj Function Norm:  0.22520508688005342
+New Vals:  0.9987174432886312 0.20877692850728452
+Step:  125
+Gradient Norm 0.37835494430227773
+Obj Function Norm:  0.22506175929723965
+New Vals:  0.9987177521613902 0.2083985736890575
+Step:  126
+Gradient Norm 0.37928125822378905
+Obj Function Norm:  0.22491772832875634
+New Vals:  0.9987180625990005 0.20801929255787865
+Step:  127
+Gradient Norm 0.38021363222012355
+Obj Function Norm:  0.2247729876295691
+New Vals:  0.9987183746161135 0.20763907905368484
+Step:  128
+Gradient Norm 0.38115213088542355
+Obj Function Norm:  0.2246275307711436
+New Vals:  0.9987186882275813 0.20725792705181897
+Step:  129
+Gradient Norm 0.3820968197688448
+Obj Function Norm:  0.22448135124000007
+New Vals:  0.99871900344846 0.20687583036207505
+Step:  130
+Gradient Norm 0.3830477653926367
+Obj Function Norm:  0.22433444243623554
+New Vals:  0.9987193202940138 0.20649278272772498
+Step:  131
+Gradient Norm 0.3840050352706241
+Obj Function Norm:  0.22418679767201521
+New Vals:  0.9987196387797183 0.20610877782452705
+Step:  132
+Gradient Norm 0.3849686979271324
+Obj Function Norm:  0.22403841017003093
+New Vals:  0.9987199589212645 0.20572380925971545
+Step:  133
+Gradient Norm 0.3859388229163432
+Obj Function Norm:  0.22388927306192608
+New Vals:  0.9987202807345631 0.2053378705709704
+Step:  134
+Gradient Norm 0.3869154808421052
+Obj Function Norm:  0.2237393793866856
+New Vals:  0.9987206042357479 0.20495095522536846
+Step:  135
+Gradient Norm 0.38789874337821145
+Obj Function Norm:  0.22358872208899191
+New Vals:  0.9987209294411806 0.20456305661831267
+Step:  136
+Gradient Norm 0.3888886832891535
+Obj Function Norm:  0.22343729401754261
+New Vals:  0.9987212563674546 0.20417416807244176
+Step:  137
+Gradient Norm 0.3898853744513654
+Obj Function Norm:  0.223285087923333
+New Vals:  0.9987215850313993 0.2037842828365183
+Step:  138
+Gradient Norm 0.3908888918749742
+Obj Function Norm:  0.22313209645789953
+New Vals:  0.9987219154500848 0.20339339408429494
+Step:  139
+Gradient Norm 0.39189931172606446
+Obj Function Norm:  0.22297831217152336
+New Vals:  0.9987222476408264 0.2030014949133585
+Step:  140
+Gradient Norm 0.39291671134948497
+Obj Function Norm:  0.2228237275113956
+New Vals:  0.9987225816211889 0.20260857834395118
+Step:  141
+Gradient Norm 0.3939411692921976
+Obj Function Norm:  0.2226683348197385
+New Vals:  0.9987229174089916 0.2022146373177685
+Step:  142
+Gradient Norm 0.39497276532718817
+Obj Function Norm:  0.2225121263318871
+New Vals:  0.9987232550223131 0.20181966469673326
+Step:  143
+Gradient Norm 0.39601158047796853
+Obj Function Norm:  0.22235509417432536
+New Vals:  0.9987235944794964 0.201423653261745
+Step:  144
+Gradient Norm 0.3970576970436591
+Obj Function Norm:  0.2221972303626783
+New Vals:  0.998723935799154 0.20102659571140435
+Step:  145
+Gradient Norm 0.39811119862470107
+Obj Function Norm:  0.22203852679965733
+New Vals:  0.9987242790001725 0.2006284846607119
+Step:  146
+Gradient Norm 0.3991721701491944
+Obj Function Norm:  0.2218789752729596
+New Vals:  0.9987246241017188 0.2002293126397403
+Step:  147
+Gradient Norm 0.4002406978998811
+Obj Function Norm:  0.22171856745311827
+New Vals:  0.9987249711232451 0.19982907209227985
+Step:  148
+Gradient Norm 0.40131686954180446
+Obj Function Norm:  0.22155729489130294
+New Vals:  0.9987253200844944 0.19942775537445603
+Step:  149
+Gradient Norm 0.40240077415065184
+Obj Function Norm:  0.22139514901706736
+New Vals:  0.9987256710055067 0.19902535475331898
+Step:  150
+Gradient Norm 0.4034925022418159
+Obj Function Norm:  0.2212321211360478
+New Vals:  0.9987260239066241 0.19862186240540372
+Step:  151
+Gradient Norm 0.40459214580017094
+Obj Function Norm:  0.22106820242760408
+New Vals:  0.9987263788084977 0.19821727041526074
+Step:  152
+Gradient Norm 0.40569979831061104
+Obj Function Norm:  0.22090338394240586
+New Vals:  0.998726735732093 0.19781157077395597
+Step:  153
+Gradient Norm 0.40681555478936493
+Obj Function Norm:  0.22073765659996245
+New Vals:  0.9987270946986968 0.19740475537753943
+Step:  154
+Gradient Norm 0.4079395118160963
+Obj Function Norm:  0.22057101118609343
+New Vals:  0.9987274557299232 0.1969968160254818
+Step:  155
+Gradient Norm 0.40907176756683333
+Obj Function Norm:  0.22040343835033752
+New Vals:  0.9987278188477204 0.1965877444190781
+Step:  156
+Gradient Norm 0.41021242184774503
+Obj Function Norm:  0.22023492860330132
+New Vals:  0.9987281840743779 0.19617753215981748
+Step:  157
+Gradient Norm 0.41136157612978425
+Obj Function Norm:  0.22006547231394136
+New Vals:  0.9987285514325327 0.19576617074771863
+Step:  158
+Gradient Norm 0.4125193335842328
+Obj Function Norm:  0.21989505970678333
+New Vals:  0.9987289209451771 0.1953536515796292
+Step:  159
+Gradient Norm 0.413685799119167
+Obj Function Norm:  0.21972368085906963
+New Vals:  0.9987292926356656 0.19493996594748922
+Step:  160
+Gradient Norm 0.4148610794168868
+Obj Function Norm:  0.2195513256978413
+New Vals:  0.9987296665277228 0.1945251050365568
+Step:  161
+Gradient Norm 0.4160452829723168
+Obj Function Norm:  0.21937798399694453
+New Vals:  0.9987300426454506 0.1941090599235955
+Step:  162
+Gradient Norm 0.41723852013242935
+Obj Function Norm:  0.21920364537396528
+New Vals:  0.9987304210133369 0.19369182157502238
+Step:  163
+Gradient Norm 0.41844090313671134
+Obj Function Norm:  0.21902829928708686
+New Vals:  0.9987308016562627 0.19327338084501533
+Step:  164
+Gradient Norm 0.4196525461587092
+Obj Function Norm:  0.21885193503186967
+New Vals:  0.9987311845995113 0.1928537284735792
+Step:  165
+Gradient Norm 0.4208735653486849
+Obj Function Norm:  0.21867454173794953
+New Vals:  0.9987315698687762 0.19243285508456903
+Step:  166
+Gradient Norm 0.42210407887742024
+Obj Function Norm:  0.2184961083656525
+New Vals:  0.9987319574901705 0.1920107511836695
+Step:  167
+Gradient Norm 0.42334420698121145
+Obj Function Norm:  0.21831662370252614
+New Vals:  0.9987323474902354 0.19158740715632944
+Step:  168
+Gradient Norm 0.4245940720080712
+Obj Function Norm:  0.21813607635977905
+New Vals:  0.9987327398959497 0.19116281326565018
+Step:  169
+Gradient Norm 0.42585379846520904
+Obj Function Norm:  0.2179544547686328
+New Vals:  0.9987331347347389 0.19073695965022633
+Step:  170
+Gradient Norm 0.42712351306779855
+Obj Function Norm:  0.2177717471765778
+New Vals:  0.9987335320344856 0.19030983632193776
+Step:  171
+Gradient Norm 0.4284033447890985
+Obj Function Norm:  0.21758794164353384
+New Vals:  0.9987339318235389 0.18988143316369172
+Step:  172
+Gradient Norm 0.42969342491195606
+Obj Function Norm:  0.21740302603790954
+New Vals:  0.998734334130725 0.189451739927113
+Step:  173
+Gradient Norm 0.4309938870817472
+Obj Function Norm:  0.21721698803256118
+New Vals:  0.9987347389853577 0.18902074623018164
+Step:  174
+Gradient Norm 0.43230486736079216
+Obj Function Norm:  0.2170298151006433
+New Vals:  0.9987351464172493 0.18858844155481588
+Step:  175
+Gradient Norm 0.4336265042843045
+Obj Function Norm:  0.21684149451135284
+New Vals:  0.9987355564567214 0.18815481524439934
+Step:  176
+Gradient Norm 0.43495893891791604
+Obj Function Norm:  0.21665201332555672
+New Vals:  0.9987359691346169 0.18771985650125056
+Step:  177
+Gradient Norm 0.4363023149168385
+Obj Function Norm:  0.21646135839130795
+New Vals:  0.9987363844823114 0.1872835543840335
+Step:  178
+Gradient Norm 0.43765677858670615
+Obj Function Norm:  0.21626951633923683
+New Vals:  0.9987368025317254 0.18684589780510708
+Step:  179
+Gradient Norm 0.4390224789461725
+Obj Function Norm:  0.21607647357782298
+New Vals:  0.9987372233153368 0.18640687552781218
+Step:  180
+Gradient Norm 0.44039956779129447
+Obj Function Norm:  0.21588221628853582
+New Vals:  0.9987376468661937 0.1859664761636943
+Step:  181
+Gradient Norm 0.4417881997617981
+Obj Function Norm:  0.2156867304208461
+New Vals:  0.9987380732179274 0.18552468816965986
+Step:  182
+Gradient Norm 0.4431885324092581
+Obj Function Norm:  0.21549000168709848
+New Vals:  0.9987385024047661 0.18508149984506442
+Step:  183
+Gradient Norm 0.44460072626728503
+Obj Function Norm:  0.21529201555724736
+New Vals:  0.9987389344615489 0.18463689932873056
+Step:  184
+Gradient Norm 0.44602494492375677
+Obj Function Norm:  0.21509275725344262
+New Vals:  0.9987393694237399 0.18419087459589378
+Step:  185
+Gradient Norm 0.4474613550952089
+Obj Function Norm:  0.21489221174446954
+New Vals:  0.998739807327443 0.18374341345507372
+Step:  186
+Gradient Norm 0.44891012670341585
+Obj Function Norm:  0.2146903637400316
+New Vals:  0.9987402482094174 0.18329450354486906
+Step:  187
+Gradient Norm 0.4503714329542653
+Obj Function Norm:  0.21448719768487406
+New Vals:  0.9987406921070927 0.18284413233067334
+Step:  188
+Gradient Norm 0.4518454504190032
+Obj Function Norm:  0.21428269775274092
+New Vals:  0.9987411390585854 0.18239228710130967
+Step:  189
+Gradient Norm 0.4533323591179236
+Obj Function Norm:  0.2140768478401623
+New Vals:  0.9987415891027154 0.18193895496558168
+Step:  190
+Gradient Norm 0.45483234260660804
+Obj Function Norm:  0.21386963156006383
+New Vals:  0.9987420422790229 0.18148412284873827
+Step:  191
+Gradient Norm 0.4563455880647783
+Obj Function Norm:  0.2136610322351939
+New Vals:  0.9987424986277861 0.18102777748884952
+Step:  192
+Gradient Norm 0.45787228638789323
+Obj Function Norm:  0.21345103289136105
+New Vals:  0.9987429581900392 0.1805699054330909
+Step:  193
+Gradient Norm 0.45941263228155377
+Obj Function Norm:  0.21323961625047633
+New Vals:  0.9987434210075912 0.18011049303393326
+Step:  194
+Gradient Norm 0.46096682435884356
+Obj Function Norm:  0.21302676472339316
+New Vals:  0.9987438871230451 0.17964952644523527
+Step:  195
+Gradient Norm 0.46253506524069676
+Obj Function Norm:  0.212812460402537
+New Vals:  0.9987443565798175 0.17918699161823567
+Step:  196
+Gradient Norm 0.46411756165941515
+Obj Function Norm:  0.21259668505432008
+New Vals:  0.9987448294221595 0.17872287429744188
+Step:  197
+Gradient Norm 0.46571452456544443
+Obj Function Norm:  0.21237942011132888
+New Vals:  0.9987453056951772 0.17825716001641195
+Step:  198
+Gradient Norm 0.467326169237537
+Obj Function Norm:  0.21216064666428197
+New Vals:  0.9987457854448537 0.17778983409342622
+Step:  199
+Gradient Norm 0.46895271539641725
+Obj Function Norm:  0.21194034545374665
+New Vals:  0.9987462687180718 0.17732088162704537
+Step:  200
+Gradient Norm 0.47059438732209197
+Obj Function Norm:  0.21171849686160413
+New Vals:  0.9987467555626365 0.1768502874915513
+Step:  201
+Gradient Norm 0.4722514139749495
+Obj Function Norm:  0.21149508090226007
+New Vals:  0.9987472460272994 0.1763780363322666
+Step:  202
+Gradient Norm 0.47392402912076176
+Obj Function Norm:  0.2112700772135846
+New Vals:  0.9987477401617828 0.1759041125607493
+Step:  203
+Gradient Norm 0.4756124714597821
+Obj Function Norm:  0.21104346504757746
+New Vals:  0.9987482380168058 0.1754285003498585
+Step:  204
+Gradient Norm 0.4773169847600518
+Obj Function Norm:  0.2108152232607437
+New Vals:  0.9987487396441098 0.1749511836286864
+Step:  205
+Gradient Norm 0.47903781799512307
+Obj Function Norm:  0.21058533030417226
+New Vals:  0.9987492450964861 0.17447214607735306
+Step:  206
+Gradient Norm 0.4807752254863282
+Obj Function Norm:  0.21035376421330665
+New Vals:  0.9987497544278037 0.17399137112165858
+Step:  207
+Gradient Norm 0.4825294670498016
+Obj Function Norm:  0.21012050259739248
+New Vals:  0.9987502676930381 0.17350884192758825
+Step:  208
+Gradient Norm 0.48430080814843246
+Obj Function Norm:  0.2098855226285959
+New Vals:  0.9987507849483014 0.17302454139566595
+Step:  209
+Gradient Norm 0.4860895200489401
+Obj Function Norm:  0.2096488010307727
+New Vals:  0.998751306250873 0.17253845215515035
+Step:  210
+Gradient Norm 0.48789587998428635
+Obj Function Norm:  0.20941031406788457
+New Vals:  0.9987518316592315 0.17205055655806867
+Step:  211
+Gradient Norm 0.48972017132162055
+Obj Function Norm:  0.20917003753203756
+New Vals:  0.9987523612330877 0.17156083667308256
+Step:  212
+Gradient Norm 0.49156268373600687
+Obj Function Norm:  0.2089279467311398
+New Vals:  0.9987528950334188 0.17106927427918026
+Step:  213
+Gradient Norm 0.4934237133901434
+Obj Function Norm:  0.208684016476155
+New Vals:  0.9987534331225034 0.170575850859189
+Step:  214
+Gradient Norm 0.49530356312032875
+Obj Function Norm:  0.20843822106794035
+New Vals:  0.9987539755639583 0.17008054759310148
+Step:  215
+Gradient Norm 0.4972025426289359
+Obj Function Norm:  0.20819053428365203
+New Vals:  0.998754522422776 0.1695833453512098
+Step:  216
+Gradient Norm 0.49912096868365713
+Obj Function Norm:  0.20794092936269964
+New Vals:  0.9987550737653639 0.16908422468704024
+Step:  217
+Gradient Norm 0.5010591653237995
+Obj Function Norm:  0.20768937899223405
+New Vals:  0.9987556296595848 0.1685831658300817
+Step:  218
+Gradient Norm 0.5030174640739369
+Obj Function Norm:  0.20743585529214853
+New Vals:  0.9987561901747986 0.1680801486783005
+Step:  219
+Gradient Norm 0.5049962041652052
+Obj Function Norm:  0.20718032979957424
+New Vals:  0.9987567553819057 0.1675751527904339
+Step:  220
+Gradient Norm 0.5069957327645964
+Obj Function Norm:  0.20692277345284923
+New Vals:  0.998757325353392 0.16706815737805425
+Step:  221
+Gradient Norm 0.5090164052125654
+Obj Function Norm:  0.20666315657493986
+New Vals:  0.9987579001633756 0.16655914129739569
+Step:  222
+Gradient Norm 0.5110585852693174
+Obj Function Norm:  0.2064014488562931
+New Vals:  0.9987584798876545 0.1660480830409344
+Step:  223
+Gradient Norm 0.5131226453701496
+Obj Function Norm:  0.20613761933709374
+New Vals:  0.9987590646037572 0.16553496072871368
+Step:  224
+Gradient Norm 0.515208966890245
+Obj Function Norm:  0.20587163638890613
+New Vals:  0.998759654390994 0.16501975209940403
+Step:  225
+Gradient Norm 0.5173179404193168
+Obj Function Norm:  0.20560346769566926
+New Vals:  0.9987602493305112 0.16450243450108878
+Step:  226
+Gradient Norm 0.5194499660465576
+Obj Function Norm:  0.20533308023402447
+New Vals:  0.9987608495053466 0.1639829848817647
+Step:  227
+Gradient Norm 0.5216054536563284
+Obj Function Norm:  0.2050604402529416
+New Vals:  0.9987614550004874 0.16346137977954686
+Step:  228
+Gradient Norm 0.5237848232350845
+Obj Function Norm:  0.20478551325261746
+New Vals:  0.9987620659029305 0.16293759531256677
+Step:  229
+Gradient Norm 0.5259885051900322
+Obj Function Norm:  0.20450826396261432
+New Vals:  0.9987626823017443 0.16241160716855157
+Step:  230
+Gradient Norm 0.5282169406800457
+Obj Function Norm:  0.20422865631920675
+New Vals:  0.9987633042881338 0.16188339059407258
+Step:  231
+Gradient Norm 0.5304705819594105
+Obj Function Norm:  0.20394665344189883
+New Vals:  0.9987639319555078 0.16135292038344995
+Step:  232
+Gradient Norm 0.5327498927349673
+Obj Function Norm:  0.20366221760908254
+New Vals:  0.9987645653995488 0.16082017086730022
+Step:  233
+Gradient Norm 0.5350553485372869
+Obj Function Norm:  0.2033753102327907
+New Vals:  0.9987652047182856 0.16028511590071276
+Step:  234
+Gradient Norm 0.5373874371065223
+Obj Function Norm:  0.2030858918325121
+New Vals:  0.9987658500121681 0.15974772885104024
+Step:  235
+Gradient Norm 0.5397466587936155
+Obj Function Norm:  0.20279392200802213
+New Vals:  0.9987665013841468 0.15920798258528807
+Step:  236
+Gradient Norm 0.542133526977602
+Obj Function Norm:  0.20249935941118796
+New Vals:  0.9987671589397538 0.15866584945708634
+Step:  237
+Gradient Norm 0.5445485684997432
+Obj Function Norm:  0.20220216171669833
+New Vals:  0.9987678227871875 0.1581213012932278
+Step:  238
+Gradient Norm 0.5469923241153348
+Obj Function Norm:  0.20190228559167242
+New Vals:  0.9987684930374013 0.15757430937975397
+Step:  239
+Gradient Norm 0.5494653489639896
+Obj Function Norm:  0.20159968666409556
+New Vals:  0.9987691698041958 0.157024844447571
+Step:  240
+Gradient Norm 0.5519682130593258
+Obj Function Norm:  0.20129431949002452
+New Vals:  0.9987698532043138 0.1564728766575758
+Step:  241
+Gradient Norm 0.5545015017989978
+Obj Function Norm:  0.20098613751951006
+New Vals:  0.9987705433575405 0.1559183755852722
+Step:  242
+Gradient Norm 0.5570658164960535
+Obj Function Norm:  0.20067509306117273
+New Vals:  0.9987712403868074 0.15536131020485566
+Step:  243
+Gradient Norm 0.5596617749326911
+Obj Function Norm:  0.2003611372453705
+New Vals:  0.9987719444183008 0.15480164887274447
+Step:  244
+Gradient Norm 0.5622900119375176
+Obj Function Norm:  0.20004421998588945
+New Vals:  0.9987726555815738 0.15423935931053342
+Step:  245
+Gradient Norm 0.5649511799874989
+Obj Function Norm:  0.19972428994008845
+New Vals:  0.9987733740096654 0.15367440858734568
+Step:  246
+Gradient Norm 0.5676459498358387
+Obj Function Norm:  0.19940129446742202
+New Vals:  0.9987740998392223 0.1531067631015568
+Step:  247
+Gradient Norm 0.5703750111671143
+Obj Function Norm:  0.1990751795862632
+New Vals:  0.9987748332106274 0.15253638856186355
+Step:  248
+Gradient Norm 0.5731390732810598
+Obj Function Norm:  0.1987458899289418
+New Vals:  0.9987755742681339 0.15196324996766905
+Step:  249
+Gradient Norm 0.5759388658064865
+Obj Function Norm:  0.198413368694911
+New Vals:  0.9987763231600045 0.15138731158875388
+Step:  250
+Gradient Norm 0.5787751394469078
+Obj Function Norm:  0.19807755760194956
+New Vals:  0.9987770800386578 0.1508085369442017
+Step:  251
+Gradient Norm 0.5816486667595138
+Obj Function Norm:  0.19773839683529848
+New Vals:  0.9987778450608208 0.15022688878054588
+Step:  252
+Gradient Norm 0.5845602429692982
+Obj Function Norm:  0.19739582499463054
+New Vals:  0.998778618387688 0.14964232904910188
+Step:  253
+Gradient Norm 0.587510686820169
+Obj Function Norm:  0.19704977903874077
+New Vals:  0.9987794001850888 0.1490548188824488
+Step:  254
+Gradient Norm 0.590500841465056
+Obj Function Norm:  0.19670019422784016
+New Vals:  0.9987801906236614 0.1484643185700206
+Step:  255
+Gradient Norm 0.5935315753971128
+Obj Function Norm:  0.19634700406332942
+New Vals:  0.9987809898790355 0.14787078753276625
+Step:  256
+Gradient Norm 0.5966037834242722
+Obj Function Norm:  0.19599014022492064
+New Vals:  0.9987817981320235 0.1472741842968353
+Step:  257
+Gradient Norm 0.599718387689515
+Obj Function Norm:  0.1956295325049676
+New Vals:  0.9987826155688208 0.1466744664662433
+Step:  258
+Gradient Norm 0.6028763387394044
+Obj Function Norm:  0.19526510873985448
+New Vals:  0.9987834423812149 0.14607159069446846
+Step:  259
+Gradient Norm 0.6060786166435871
+Obj Function Norm:  0.1948967947382893
+New Vals:  0.9987842787668061 0.1454655126549292
+Step:  260
+Gradient Norm 0.6093262321681111
+Obj Function Norm:  0.19452451420632969
+New Vals:  0.9987851249292373 0.14485618701028807
+Step:  261
+Gradient Norm 0.6126202280056511
+Obj Function Norm:  0.19414818866896816
+New Vals:  0.998785981078436 0.14424356738052566
+Step:  262
+Gradient Norm 0.6159616800658674
+Obj Function Norm:  0.193767737388084
+New Vals:  0.9987868474308679 0.14362760630972407
+Step:  263
+Gradient Norm 0.6193516988293991
+Obj Function Norm:  0.19338307727656237
+New Vals:  0.9987877242098033 0.14300825523149657
+Step:  264
+Gradient Norm 0.6227914307691861
+Obj Function Norm:  0.1929941228083653
+New Vals:  0.998788611645597 0.1423854644329958
+Step:  265
+Gradient Norm 0.6262820598430826
+Obj Function Norm:  0.19260078592432697
+New Vals:  0.9987895099759818 0.14175918301742943
+Step:  266
+Gradient Norm 0.6298248090619786
+Obj Function Norm:  0.19220297593343014
+New Vals:  0.9987904194463781 0.14112935886500785
+Step:  267
+Gradient Norm 0.6334209421379592
+Obj Function Norm:  0.1918005994093036
+New Vals:  0.9987913403102184 0.1404959385922436
+Step:  268
+Gradient Norm 0.6370717652173054
+Obj Function Norm:  0.19139356008166356
+New Vals:  0.9987922728292894 0.13985886750951793
+Step:  269
+Gradient Norm 0.6407786287035212
+Obj Function Norm:  0.19098175872240497
+New Vals:  0.998793217274092 0.13921808957682424
+Step:  270
+Gradient Norm 0.6445429291759006
+Obj Function Norm:  0.19056509302602664
+New Vals:  0.9987941739242202 0.13857354735759328
+Step:  271
+Gradient Norm 0.6483661114095449
+Obj Function Norm:  0.19014345748405068
+New Vals:  0.9987951430687609 0.13792518197049802
+Step:  272
+Gradient Norm 0.6522496705031864
+Obj Function Norm:  0.18971674325307863
+New Vals:  0.9987961250067148 0.13727293303913105
+Step:  273
+Gradient Norm 0.6561951541215999
+Obj Function Norm:  0.18928483801609622
+New Vals:  0.9987971200474401 0.13661673863943943
+Step:  274
+Gradient Norm 0.6602041648598996
+Obj Function Norm:  0.18884762583661543
+New Vals:  0.9987981285111224 0.1359565352447955
+Step:  275
+Gradient Norm 0.6642783627375493
+Obj Function Norm:  0.18840498700520722
+New Vals:  0.998799150729268 0.13529225766857353
+Step:  276
+Gradient Norm 0.6684194678304964
+Obj Function Norm:  0.18795679787795386
+New Vals:  0.9988001870452278 0.13462383900409441
+Step:  277
+Gradient Norm 0.6726292630504621
+Obj Function Norm:  0.18750293070631152
+New Vals:  0.9988012378147498 0.1339512105617912
+Step:  278
+Gradient Norm 0.6769095970810978
+Obj Function Norm:  0.18704325345783174
+New Vals:  0.9988023034065631 0.13327430180343852
+Step:  279
+Gradient Norm 0.6812623874815052
+Obj Function Norm:  0.18657762962716193
+New Vals:  0.998803384202996 0.13259304027327842
+Step:  280
+Gradient Norm 0.6856896239683293
+Obj Function Norm:  0.1861059180366847
+New Vals:  0.9988044806006315 0.13190735152586452
+Step:  281
+Gradient Norm 0.6901933718886225
+Obj Function Norm:  0.185627972626126
+New Vals:  0.9988055930110004 0.1312171590504331
+Step:  282
+Gradient Norm 0.6947757758965393
+Obj Function Norm:  0.18514364223039342
+New Vals:  0.9988067218613161 0.1305223841915978
+Step:  283
+Gradient Norm 0.6994390638479973
+Obj Function Norm:  0.1846527703448615
+New Vals:  0.9988078675952552 0.12982294606614975
+Step:  284
+Gradient Norm 0.7041855509285931
+Obj Function Norm:  0.18415519487725318
+New Vals:  0.9988090306737842 0.1291187614757298
+Step:  285
+Gradient Norm 0.7090176440312269
+Obj Function Norm:  0.1836507478852015
+New Vals:  0.9988102115760391 0.12840974481512338
+Step:  286
+Gradient Norm 0.7139378464013245
+Obj Function Norm:  0.18313925529850456
+New Vals:  0.9988114108002587 0.1276958079759104
+Step:  287
+Gradient Norm 0.7189487625689324
+Obj Function Norm:  0.18262053662500086
+New Vals:  0.9988126288647783 0.1269768602451829
+Step:  288
+Gradient Norm 0.7240531035886335
+Obj Function Norm:  0.18209440463891424
+New Vals:  0.9988138663090862 0.1262528081990233
+Step:  289
+Gradient Norm 0.7292536926099535
+Obj Function Norm:  0.18156066505041288
+New Vals:  0.9988151236949491 0.12552355559041223
+Step:  290
+Gradient Norm 0.7345534708028842
+Obj Function Norm:  0.18101911615503322
+New Vals:  0.998816401607611 0.1247890032312112
+Step:  291
+Gradient Norm 0.7399555036652218
+Obj Function Norm:  0.18046954846149368
+New Vals:  0.9988177006570721 0.12404904886783806
+Step:  292
+Gradient Norm 0.7454629877408033
+Obj Function Norm:  0.17991174429630916
+New Vals:  0.9988190214794533 0.12330358705022453
+Step:  293
+Gradient Norm 0.7510792577801958
+Obj Function Norm:  0.17934547738347392
+New Vals:  0.9988203647384531 0.1225525089936133
+Step:  294
+Gradient Norm 0.7568077943782657
+Obj Function Norm:  0.17877051239733252
+New Vals:  0.9988217311269052 0.12179570243271791
+Step:  295
+Gradient Norm 0.7626522321260817
+Obj Function Norm:  0.17818660448658966
+New Vals:  0.998823121368444 0.12103305146773106
+Step:  296
+Gradient Norm 0.7686163683180379
+Obj Function Norm:  0.17759349876723315
+New Vals:  0.9988245362192878 0.12026443640162612
+Step:  297
+Gradient Norm 0.7747041722588023
+Obj Function Norm:  0.17699092978193848
+New Vals:  0.998825976470149 0.11948973356815212
+Step:  298
+Gradient Norm 0.780919795218849
+Obj Function Norm:  0.17637862092330364
+New Vals:  0.9988274429482826 0.11870881514987366
+Step:  299
+Gradient Norm 0.7872675810918702
+Obj Function Norm:  0.1757562838180215
+New Vals:  0.9988289365196836 0.11792154898555393
+Step:  300
+Gradient Norm 0.7937520778124335
+Obj Function Norm:  0.17512361766882004
+New Vals:  0.9988304580914488 0.11712779836612053
+Step:  301
+Gradient Norm 0.800378049597827
+Obj Function Norm:  0.17448030855070892
+New Vals:  0.9988320086143141 0.1163274218183901
+Step:  302
+Gradient Norm 0.807150490084239
+Obj Function Norm:  0.17382602865773608
+New Vals:  0.9988335890853864 0.11552027287565747
+Step:  303
+Gradient Norm 0.8140746364342484
+Obj Function Norm:  0.173160435496088
+New Vals:  0.9988352005510854 0.11470619983417786
+Step:  304
+Gradient Norm 0.8211559845003125
+Obj Function Norm:  0.1724831710189676
+New Vals:  0.9988368441103147 0.11388504549448664
+Step:  305
+Gradient Norm 0.8284003051373043
+Obj Function Norm:  0.17179386069821662
+New Vals:  0.9988385209178852 0.1130566468864072
+Step:  306
+Gradient Norm 0.8358136617667198
+Obj Function Norm:  0.17109211252715897
+New Vals:  0.9988402321882126 0.11222083497649578
+Step:  307
+Gradient Norm 0.8434024293055934
+Obj Function Norm:  0.1703775159485643
+New Vals:  0.9988419791993167 0.11137743435655839
+Step:  308
+Gradient Norm 0.8511733145849574
+Obj Function Norm:  0.16964964070101302
+New Vals:  0.9988437632971503 0.11052626291175044
+Step:  309
+Gradient Norm 0.8591333783957619
+Obj Function Norm:  0.1689080355762305
+New Vals:  0.9988455859002916 0.10966713146663187
+Step:  310
+Gradient Norm 0.8672900593148514
+Obj Function Norm:  0.16815222707918312
+New Vals:  0.9988474485050355 0.10879984340739784
+Step:  311
+Gradient Norm 0.8756511994799714
+Obj Function Norm:  0.16738171798183132
+New Vals:  0.998849352690924 0.10792419427833597
+Step:  312
+Gradient Norm 0.8842250725012275
+Obj Function Norm:  0.1665959857604598
+New Vals:  0.9988513001267614 0.1070399713503741
+Step:  313
+Gradient Norm 0.893020413716968
+Obj Function Norm:  0.16579448090537732
+New Vals:  0.9988532925771646 0.10614695315937427
+Step:  314
+Gradient Norm 0.9020464530253799
+Obj Function Norm:  0.16497662509053565
+New Vals:  0.9988553319097048 0.10524490901159742
+Step:  315
+Gradient Norm 0.9113129505490337
+Obj Function Norm:  0.1641418091891937
+New Vals:  0.9988574201027045 0.10433359845350627
+Step:  316
+Gradient Norm 0.9208302354190875
+Obj Function Norm:  0.16328939112016203
+New Vals:  0.9988595592537621 0.103412770702787
+Step:  317
+Gradient Norm 0.9306092479989265
+Obj Function Norm:  0.1624186935073523
+New Vals:  0.9988617515890827 0.10248216403715056
+Step:  318
+Gradient Norm 0.9406615859044472
+Obj Function Norm:  0.16152900113331178
+New Vals:  0.9988639994737083 0.10154150513711772
+Step:  319
+Gradient Norm 0.9509995542203602
+Obj Function Norm:  0.1606195581650944
+New Vals:  0.998866305422749 0.10059050837859204
+Step:  320
+Gradient Norm 0.9616362203598114
+Obj Function Norm:  0.15968956512818483
+New Vals:  0.9988686721137331 0.09962887507057817
+Step:  321
+Gradient Norm 0.9725854740685923
+Obj Function Norm:  0.15873817560117726
+New Vals:  0.9988711024002064 0.09865629263290161
+Step:  322
+Gradient Norm 0.98386209313675
+Obj Function Norm:  0.15776449260048256
+New Vals:  0.9988735993267345 0.0976724337082232
+Step:  323
+Gradient Norm 0.9954818154499108
+Obj Function Norm:  0.15676756462041858
+New Vals:  0.998876166145477 0.09667695520200974
+Step:  324
+Gradient Norm 1.0074614180917871
+Obj Function Norm:  0.15574638128953933
+New Vals:  0.9988788063345323 0.09566949724341034
+Step:  325
+Gradient Norm 1.01981880429926
+Obj Function Norm:  0.15469986859892226
+New Vals:  0.998881523618276 0.09464968205918751
+Step:  326
+Gradient Norm 1.032573099173646
+Obj Function Norm:  0.15362688365221033
+New Vals:  0.9988843219899527 0.09361711275194803
+Step:  327
+Gradient Norm 1.0457447551680907
+Obj Function Norm:  0.15252620888039828
+New Vals:  0.998887205736817 0.09257137197289923
+Step:  328
+Gradient Norm 1.059355668503524
+Obj Function Norm:  0.15139654565650276
+New Vals:  0.9988901794681663 0.0915120204782043
+Step:  329
+Gradient Norm 1.0734293078162833
+Obj Function Norm:  0.1502365072361907
+New Vals:  0.9988932481466626 0.09043859555670711
+Step:  330
+Gradient Norm 1.0879908565119671
+Obj Function Norm:  0.14904461093993313
+New Vals:  0.9988964171234007 0.08935060931532347
+Step:  331
+Gradient Norm 1.1030673704951894
+Obj Function Norm:  0.14781926948009963
+New Vals:  0.9988996921772579 0.08824754680672597
+Step:  332
+Gradient Norm 1.1186879531660678
+Obj Function Norm:  0.14655878132226463
+New Vals:  0.9989030795591464 0.08712886398205992
+Step:  333
+Gradient Norm 1.134883949825344
+Obj Function Norm:  0.14526131995356645
+New Vals:  0.9989065860418959 0.08599398544928652
+Step:  334
+Gradient Norm 1.1516891639132674
+Obj Function Norm:  0.1439249219118007
+New Vals:  0.9989102189766196 0.08484230201532537
+Step:  335
+Gradient Norm 1.169140097826421
+Obj Function Norm:  0.14254747340658963
+New Vals:  0.9989139863565656 0.08367316798742527
+Step:  336
+Gradient Norm 1.1872762214132466
+Obj Function Norm:  0.1411266953378577
+New Vals:  0.9989178968896382 0.08248589820609316
+Step:  337
+Gradient Norm 1.206140271644875
+Obj Function Norm:  0.1396601264863036
+New Vals:  0.998921960080988 0.08127976477841625
+Step:  338
+Gradient Norm 1.2257785873919222
+Obj Function Norm:  0.13814510461483104
+New Vals:  0.998926186327338 0.08005399347668402
+Step:  339
+Gradient Norm 1.2462414837060851
+Obj Function Norm:  0.1365787451780402
+New Vals:  0.9989305870250257 0.0788077597628206
+Step:  340
+Gradient Norm 1.2675836704981096
+Obj Function Norm:  0.1349579172879021
+New Vals:  0.9989351746941386 0.07754018439425052
+Step:  341
+Gradient Norm 1.2898647210024234
+Obj Function Norm:  0.1332792165264246
+New Vals:  0.9989399631215905 0.07625032856143461
+Step:  342
+Gradient Norm 1.313149595891406
+Obj Function Norm:  0.1315389341291953
+New Vals:  0.9989449675265782 0.07493718850145606
+Step:  343
+Gradient Norm 1.3375092292952182
+Obj Function Norm:  0.12973302198579795
+New Vals:  0.9989502047525798 0.07359968952578778
+Step:  344
+Gradient Norm 1.3630211832096129
+Obj Function Norm:  0.12785705281283527
+New Vals:  0.9989556934909528 0.07223667939389984
+Step:  345
+Gradient Norm 1.3897703766965448
+Obj Function Norm:  0.12590617475151508
+New Vals:  0.9989614545423129 0.07084692095797276
+Step:  346
+Gradient Norm 1.4178498956835854
+Obj Function Norm:  0.1238750595237518
+New Vals:  0.9989675111232673 0.06942908399819316
+Step:  347
+Gradient Norm 1.4473618877093957
+Obj Function Norm:  0.1217578431488344
+New Vals:  0.9989738892278426 0.06798173616378163
+Step:  348
+Gradient Norm 1.4784185431150894
+Obj Function Norm:  0.11954805807922808
+New Vals:  0.9989806180551632 0.0665033329334316
+Step:  349
+Gradient Norm 1.5111431591210722
+Obj Function Norm:  0.11723855546481442
+New Vals:  0.9989877305177585 0.06499220651243491
+Step:  350
+Gradient Norm 1.5456712746685433
+Obj Function Norm:  0.11482141611184217
+New Vals:  0.998995263848468 0.06344655359594173
+Step:  351
+Gradient Norm 1.5821518498254044
+Obj Function Norm:  0.11228784858864084
+New Vals:  0.9990032603285182 0.06186442195406967
+Step:  352
+Gradient Norm 1.6207484407770887
+Obj Function Norm:  0.10962807288545984
+New Vals:  0.999011768165256 0.06024369584365021
+Step:  353
+Gradient Norm 1.6616402848982712
+Obj Function Norm:  0.10683118813195587
+New Vals:  0.9990208425556707 0.058582080337031606
+Step:  354
+Gradient Norm 1.7050231520710157
+Obj Function Norm:  0.1038850232362676
+New Vals:  0.9990305469817158 0.05687708480237079
+Step:  355
+Gradient Norm 1.751109725288045
+Obj Function Norm:  0.10077597014601208
+New Vals:  0.9990409547962908 0.055126006007057984
+Step:  356
+Gradient Norm 1.8001291245270297
+Obj Function Norm:  0.0974888011064687
+New Vals:  0.9990521511754035 0.05332591170228803
+Step:  357
+Gradient Norm 1.8523249481805717
+Obj Function Norm:  0.0940064744257473
+New Vals:  0.99906423553364 0.05147362617301934
+Step:  358
+Gradient Norm 1.9079508183025415
+Obj Function Norm:  0.09030993891838074
+New Vals:  0.9990773245279134 0.049565720252044664
+Step:  359
+Gradient Norm 1.967261782704483
+Obj Function Norm:  0.0863779572302783
+New Vals:  0.9990915558098946 0.04759850994495932
+Step:  360
+Gradient Norm 2.0304988839318043
+Obj Function Norm:  0.08218698584710347
+New Vals:  0.9991070927315887 0.04556807050441632
+Step:  361
+Gradient Norm 2.097862469758406
+Obj Function Norm:  0.07771118033011509
+New Vals:  0.999124130260851 0.04347027721988673
+Step:  362
+Gradient Norm 2.1694669021353046
+Obj Function Norm:  0.0729226479571177
+New Vals:  0.9991429024201248 0.04130089153598984
+Step:  363
+Gradient Norm 2.2452643665020404
+Obj Function Norm:  0.06779216349480667
+New Vals:  0.9991636916090114 0.03905572341642524
+Step:  364
+Gradient Norm 2.324916997120253
+Obj Function Norm:  0.0622907267253876
+New Vals:  0.9991868401748093 0.0367309216641461
+Step:  365
+Gradient Norm 2.4075819314639606
+Obj Function Norm:  0.056392622106976806
+New Vals:  0.9992127644722795 0.03432347931021269
+Step:  366
+Gradient Norm 2.4915488555342806
+Obj Function Norm:  0.05008111948290677
+New Vals:  0.9992419712157724 0.031832101646017893
+Step:  367
+Gradient Norm 2.573627440672507
+Obj Function Norm:  0.04335873273570808
+New Vals:  0.9992750747526937 0.029258687112907106
+Step:  368
+Gradient Norm 2.648114945467929
+Obj Function Norm:  0.03626508995667117
+New Vals:  0.9993128110606041 0.026610841057057955
+Step:  369
+Gradient Norm 2.705082893012314
+Obj Function Norm:  0.028906664234911915
+New Vals:  0.9993560378611969 0.023906103564845748
+Step:  370
+Gradient Norm 2.727659269075621
+Obj Function Norm:  0.021502100714312716
+New Vals:  0.9994056964603644 0.021178896364851058
+Step:  371
+Gradient Norm 2.688214464585177
+Obj Function Norm:  0.014438320458315876
+New Vals:  0.9994626834930757 0.01849128599768328
+Step:  372
+Gradient Norm 2.5448415597234066
+Obj Function Norm:  0.008299917857118744
+New Vals:  0.9995275345082087 0.015947270881782497
+Step:  373
+Gradient Norm 2.244790417030242
+Obj Function Norm:  0.0037611628645012893
+New Vals:  0.999599776313712 0.013703643208141339
+Step:  374
+Gradient Norm 1.7530638348039596
+Obj Function Norm:  0.0011992514833926568
+New Vals:  0.9996768909040858 0.011952276270903733
+Step:  375
+Gradient Norm 1.1243177125638537
+Obj Function Norm:  0.00024322781335412612
+New Vals:  0.9997534068732412 0.010830565245171602
+Step:  376
+Gradient Norm 0.5497545185451854
+Obj Function Norm:  3.363003488580792e-05
+New Vals:  0.999821787129118 0.010285079982981065
+Step:  377
+Gradient Norm 0.20666204293583101
+Obj Function Norm:  5.052629592232714e-06
+New Vals:  0.9998762412515666 0.01008572113933786
+Step:  378
+Gradient Norm 0.07225425248160709
+Obj Function Norm:  1.3741722032820696e-06
+New Vals:  0.9999158926504798 0.010025318791983612
+Step:  379
+Gradient Norm 0.03243003981783055
+Obj Function Norm:  5.485026187418667e-07
+New Vals:  0.9999433834895939 0.010008115267711363
+Step:  380
+Gradient Norm 0.0193216184754155
+Obj Function Norm:  2.406874634446027e-07
+New Vals:  0.9999620367000905 0.0100030771451763
+Step:  381
+Gradient Norm 0.012653578122115303
+Obj Function Norm:  1.0734345290897857e-07
+New Vals:  0.9999745836033408 0.01000143755433646
+Step:  382
+Gradient Norm 0.008434808679573198
+Obj Function Norm:  4.799582289915969e-08
+New Vals:  0.9999829941400764 0.010000798125466248
+Step:  383
+Gradient Norm 0.005638542264684795
+Obj Function Norm:  2.1468366023257346e-08
+New Vals:  0.9999886243029896 0.010000490839864644
+Step:  384
+Gradient Norm 0.0037709183239207048
+Obj Function Norm:  9.603241475609034e-09
+New Vals:  0.9999923912114181 0.010000316983899546
+Step:  385
+Gradient Norm 0.002522056524187703
+Obj Function Norm:  4.295745656081756e-09
+New Vals:  0.9999949109565397 0.010000209031903148
+Step:  386
+Gradient Norm 0.0016868075880153777
+Obj Function Norm:  1.9215796292925076e-09
+New Vals:  0.9999965963106234 0.010000139021535822
+Step:  387
+Gradient Norm 0.0011281736390612242
+Obj Function Norm:  8.595621707475411e-10
+New Vals:  0.9999977235359313 0.01000009277366823
+Step:  388
+Gradient Norm 0.0007545460763293542
+Obj Function Norm:  3.844992851761931e-10
+New Vals:  0.9999984774539644 0.010000061994117692
+Step:  389
+Gradient Norm 0.0005046556445432305
+Obj Function Norm:  1.7199401200677208e-10
+New Vals:  0.9999989816911989 0.010000041448293808
+Step:  390
+Gradient Norm 0.00033752364121199415
+Obj Function Norm:  7.693621440258143e-11
+New Vals:  0.9999993189354333 0.010000027717497733
+Step:  391
+Gradient Norm 0.00022574235562874162
+Obj Function Norm:  3.44150256021089e-11
+New Vals:  0.999999544491032 0.01000001853692196
+Step:  392
+Gradient Norm 0.000150980816373989
+Obj Function Norm:  1.53944877863675e-11
+New Vals:  0.9999996953469732 0.010000012397546304
+Step:  393
+Gradient Norm 0.00010097884354166148
+Obj Function Norm:  6.886242299577057e-12
+New Vals:  0.9999997962423064 0.010000008291626698
+Step:  394
+Gradient Norm 6.753656286119369e-05
+Obj Function Norm:  3.080344529149527e-12
+New Vals:  0.9999998637230184 0.010000005545569892
+Step:  395
+Gradient Norm 4.516972784283108e-05
+Obj Function Norm:  1.3778953976849127e-12
+New Vals:  0.9999999088553929 0.010000003708972919
+Step:  396
+Gradient Norm 3.0210364595153124e-05
+Obj Function Norm:  6.163581963858224e-13
+New Vals:  0.9999999390407751 0.01000000248062785
+Step:  397
+Gradient Norm 2.0205259831934045e-05
+Obj Function Norm:  2.757084558688907e-13
+New Vals:  0.9999999592293263 0.010000001659089375
+Step:  398
+Gradient Norm 1.3513657309589498e-05
+Obj Function Norm:  1.2332950417046744e-13
+New Vals:  0.9999999727318085 0.01000000110962968
+Step:  399
+Gradient Norm 9.038187689795963e-06
+Obj Function Norm:  5.516757226953597e-14
+New Vals:  0.9999999817625221 0.010000000742140984
+Step:  400
+Gradient Norm 6.0449094866455545e-06
+Obj Function Norm:  2.467747722128168e-14
+New Vals:  0.9999999878024328 0.010000000496357736
+Step:  401
+Gradient Norm 4.042948859982443e-06
+Obj Function Norm:  1.1038692388579134e-14
+New Vals:  0.9999999918420384 0.010000000331973338
+Step:  402
+Gradient Norm 2.703999985716372e-06
+Obj Function Norm:  4.937811877693295e-15
+New Vals:  0.9999999945438023 0.010000000222029959
+Step:  403
+Gradient Norm 1.8084859549470167e-06
+Obj Function Norm:  2.208774601295858e-15
+New Vals:  0.9999999963507927 0.010000000148497836
+Step:  404
+Gradient Norm 1.209549289630307e-06
+Obj Function Norm:  9.880257298171282e-16
+New Vals:  0.9999999975593418 0.010000000099318137
+Step:  405
+Gradient Norm 8.089692215200073e-07
+Obj Function Norm:  4.4196225356035555e-16
+New Vals:  0.999999998367642 0.010000000066425815
+Step:  406
+Gradient Norm 5.410538120345422e-07
+Obj Function Norm:  1.976978722079479e-16
+New Vals:  0.9999999989082484 0.010000000044426841
+Step:  407
+Gradient Norm 3.618669077594278e-07
+Obj Function Norm:  8.843390774136585e-17
+New Vals:  0.9999999992698161 0.0100000000297135
+Step:  408
+Gradient Norm 2.4202335665421007e-07
+Obj Function Norm:  3.955814369508477e-17
+New Vals:  0.9999999995116393 0.010000000019872933
+Step:  409
+Gradient Norm 1.6186979763929757e-07
+Obj Function Norm:  1.7695089768782585e-17
+New Vals:  0.9999999996733753 0.010000000013291427
+Step:  410
+Gradient Norm 1.0826155409118297e-07
+Obj Function Norm:  7.915332674858327e-18
+New Vals:  0.9999999997815473 0.010000000008889575
+Step:  411
+Gradient Norm 7.240731750273876e-08
+Obj Function Norm:  3.540679115253703e-18
+New Vals:  0.9999999998538948 0.010000000005945496
+Step:  412
+Gradient Norm 4.842740041104088e-08
+Obj Function Norm:  1.5838060983446407e-18
+New Vals:  0.9999999999022822 0.010000000003976488
+Step:  413
+Gradient Norm 3.238909978386944e-08
+Obj Function Norm:  7.084666984354511e-19
+New Vals:  0.9999999999346445 0.01000000000265953
+Step:  414
+Gradient Norm 2.1662450960113444e-08
+Obj Function Norm:  3.169100263396814e-19
+New Vals:  0.9999999999562891 0.01000000000177876
+Step:  415
+Gradient Norm 1.4488247682610875e-08
+Obj Function Norm:  1.4175958071922995e-19
+New Vals:  0.9999999999707654 0.01000000000118968
+exact kb: 1.0
+exact beta: 0.01
+found kb: 0.9999999999707654
+found beta: 0.01000000000118968
+Est Field max err: 9.204560308395671e-10
+Est Field mean err: 2.9342923312530835e-10
+Est phase max err: 9.516725185676478e-10
+Est phase mean err: 4.602070746033817e-10
+Making derivative grids
+time to make derivatives: 0.9483051300048828
+theta_x max err: 0.006834904214718884
+theta_x mean err: 0.002265337409973003
+theta_y max err: 0.0011673129557098275
+theta_y mean err: 0.0001908359043933787
+wave num max err: 0.006864302357471264
+wave num mean err: 0.002268477898806222
+Div(k) max err: 0.0029159888070019757
+Div(k) mean err: 0.00039699774592933724
+Curl(k) max err: 4.336808689942018e-18
+Curl(k) mean err: 2.5530416508719493e-19
+J(k) max err: 1.6564647228059992e-06
+J(k) mean err: 2.170497861666787e-07
+Total Time: 113.36281299591064

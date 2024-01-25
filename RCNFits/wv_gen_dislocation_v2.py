@@ -4,8 +4,6 @@ import os
 import matplotlib.pyplot as plt
 import sys
 import time
-from utils import t6hat
-import math
 import scipy.io as sio
 from scipy import special
 
@@ -23,8 +21,8 @@ from scipy import special
 
 
 
-# logfile = open(os.getcwd()+"/logs/dislocation/wv_gen_dislocation_v1.out", 'w')
-# sys.stdout = logfile
+logfile = open(os.getcwd()+"/logs/dislocation/wv_gen_dislocation_v2.out", 'w')
+sys.stdout = logfile
 
 start = time.time()
 
@@ -34,20 +32,18 @@ print_grad = True
 # set up geometry and parameters for pattern
 Lx = 20*np.pi
 Ly = Lx
-Nx = 1024
-Ny = 1024
+Nx = 512
+Ny = 512
 dx = Lx/(Nx-1)
 dy = Ly/(Ny-1)
 xx = np.arange(-Lx/2,Lx/2+dx/2,dx)
 yy = np.arange(-Ly/2,Ly/2+dy/2,dy)
 X,Y = np.meshgrid(xx,yy)
-ss_factor = 8
-len_scale = .75
-dirac_factor = 1e-6
+ss_factor = 2
+dirac_factor = 1e-12
 
 print("Grid Dims:", "Nx = ",Nx, "Ny = ",Ny)
 print("Dom Size:", "Lx = ",Lx, "Ly = ", Ly)
-print("Approximation length scale:", len_scale)
 print("Approximation subsampling:", ss_factor)
 
 
@@ -214,7 +210,7 @@ plt.colorbar(im0,ax=axs[0])
 plt.colorbar(im1,ax=axs[1])
 plt.suptitle("Tst phase, pattern")
 plt.tight_layout()
-plt.savefig(os.getcwd()+"/figs/dislocation/TstPhasePatt_v1.png")
+plt.savefig(os.getcwd()+"/figs/dislocation/TstPhasePatt_v2.png")
 
 fig, axs = plt.subplots(nrows=1,ncols=3,figsize=(20,6))
 im0 = axs[0].imshow(tst_theta_x,cmap='bwr')
@@ -225,7 +221,7 @@ plt.colorbar(im1,ax=axs[1])
 plt.colorbar(im2,ax=axs[2])
 plt.suptitle("Tst phase gradient, wave number")
 plt.tight_layout()
-plt.savefig(os.getcwd()+"/figs/dislocation/TstGradWN_v1.png")
+plt.savefig(os.getcwd()+"/figs/dislocation/TstGradWN_v2.png")
 
 fig, axs = plt.subplots(nrows=1,ncols=3,figsize=(20,6))
 im0 = axs[0].imshow(tst_divk,cmap='bwr')
@@ -236,7 +232,7 @@ plt.colorbar(im1,ax=axs[1])
 plt.colorbar(im2,ax=axs[2])
 plt.suptitle("Tst divk, curlk, Jk")
 plt.tight_layout()
-plt.savefig(os.getcwd()+"/figs/dislocation/TstDivCurlJ_v1.png")
+plt.savefig(os.getcwd()+"/figs/dislocation/TstDivCurlJ_v2.png")
 
 print("Max tst_divk:", np.max(tst_divk))
 print("Min tst_divk:", np.min(tst_divk))
@@ -297,19 +293,6 @@ def grad_obj(kb, beta):
     )
     return np.array([do_dkb, do_dbeta])
 
-def column_samples(scale,subsampling_factor,xlength):
-    """
-    Returns column indices of middle, subsampled rectangle of a meshgrid where X changes along columns and is centered at 0
-    """
-    return np.where((X[0, :] > -round(scale * xlength / 2))
-                    & (X[0, :] < round(scale * xlength / 2)))[0][::subsampling_factor]
-
-def row_samples(scale, subsampling_factor,ylength):
-    """
-    Returns row indices of middle, subsampled rectangle of a meshgrid where Y changes along rows and is centered at 0
-    """
-    return np.where((Y[:,0]>-round(scale*ylength/2)) &
-                    (Y[:,0]<round(scale*ylength/2)))[0][::subsampling_factor]
 
 def freq_grids(xlen,xnum,ylen,ynum):
     """
@@ -318,12 +301,6 @@ def freq_grids(xlen,xnum,ylen,ynum):
     kxx = (2. * np.pi / xlen) * fftfreq(xnum, 1. / xnum)
     kyy = (2. * np.pi / ylen) * fftfreq(Ny, 1. / ynum)
     return np.meshgrid(kxx, kyy)
-
-def sigma(rmax_x,rmin_x,rmax_y,rmin_y,xshift,yshift):
-    """
-    makes a smooth indicator function
-    """
-    return t6hat(rmax_x, rmin_x, X - xshift) * t6hat(rmax_y, rmin_y, Y - yshift)
 
 
 
@@ -438,7 +415,7 @@ plt.colorbar(im1,ax=axs[1])
 plt.colorbar(im2,ax=axs[2])
 plt.suptitle("Pattern, Approx Pattern, and Error")
 plt.tight_layout()
-plt.savefig(os.getcwd()+"/figs/dislocation/FieldEst_v1.png")
+plt.savefig(os.getcwd()+"/figs/dislocation/FieldEst_v2.png")
 print("Est Field max err:", np.max(np.abs(W-final_pattern)))
 print("Est Field mean err:", np.mean(np.abs(W-final_pattern)))
 
@@ -452,70 +429,93 @@ plt.colorbar(im1,ax=axs[1])
 plt.colorbar(im2,ax=axs[2])
 plt.suptitle("Phase, Approx Phase, and Error")
 plt.tight_layout()
-plt.savefig(os.getcwd()+"/figs/dislocation/PhaseEst_v1.png")
+plt.savefig(os.getcwd()+"/figs/dislocation/PhaseEst_v2.png")
 print("Est phase max err:", np.max(np.abs(theta_exact-final_theta)))
 print("Est phase mean err:", np.mean(np.abs(theta_exact-final_theta)))
 
+# compute derivatives on each half independently
+gap = .05*Lx
+x1 = -Lx/2+gap/2
+x2 = -gap/2
+x3 = gap/2
+x4 = Lx/2-gap/2
+y1 = -Ly/2+gap/2
+y2 = Ly/2-gap/2
+
+
+left_half = (np.tanh(4*(X-x1))-np.tanh(4*(X-x2)))*(np.tanh(4*(Y-y1))-np.tanh(4*(Y-y2)))/4
+right_half = (np.tanh(4*(X-x3))-np.tanh(4*(X-x4)))*(np.tanh(4*(Y-y1))-np.tanh(4*(Y-y2)))/4
+
+dfdx = np.real(ifft2(1j*xi*fft2(left_half*final_theta))) + \
+       np.real(ifft2(1j*xi*fft2(right_half*final_theta)))
+dfdy = np.real(ifft2(1j*eta*fft2(left_half*final_theta))) + \
+       np.real(ifft2(1j*eta*fft2(right_half*final_theta)))
+dfdxx = np.real(ifft2((1j*xi)**2*fft2(left_half*final_theta))) + \
+        np.real(ifft2((1j*xi)**2*fft2(right_half*final_theta)))
+dfdyy = np.real(ifft2((1j*eta)**2*fft2(left_half*final_theta))) + \
+        np.real(ifft2((1j*eta)**2*fft2(right_half*final_theta)))
+dfdxy = np.real(ifft2((1j*eta)*(1j * xi) * fft2(left_half*final_theta))) + \
+        np.real(ifft2((1j*eta)*(1j * xi) * fft2(right_half*final_theta)))
+dfdyx = np.real(ifft2((1j*xi)*(1j * eta) * fft2(left_half*final_theta))) + \
+        np.real(ifft2((1j*xi)*(1j * eta) * fft2(right_half*final_theta)))
+
+delta_x = .05*Lx
+delta_y = .05*Ly
+
 
 # use sliding gaussian /smooth indicator window and ffts to get partial derivatives of phase
-cols = column_samples(len_scale,ss_factor,Lx)
-rows = row_samples(len_scale,ss_factor,Ly)
-theta_x_approx = np.zeros((len(rows),len(cols)))
-theta_y_approx = np.zeros((len(rows),len(cols)))
-theta_xx_approx = np.zeros((len(rows),len(cols)))
-theta_yy_approx = np.zeros((len(rows),len(cols)))
-theta_xy_approx = np.zeros((len(rows),len(cols)))
-theta_yx_approx = np.zeros((len(rows),len(cols)))
-print("Shape of subsampled interior grid:",np.shape(theta_x_approx))
-r_shift = rows[0]
-c_shift = cols[0]
-dx = xx[1]-xx[0]
-dy = yy[1]-yy[0]
-rmax_x = .6*(math.floor((1-len_scale)*Lx/2)-dx)
-rmax_y = .6*(math.floor((1-len_scale)*Ly/2)-dy)
-print("rmax_x:",rmax_x,"rmax_y:",rmax_y)
+deriv_cols = np.where(((X[::ss_factor,::ss_factor][0, :] > x1+delta_x) & (X[::ss_factor,::ss_factor][0,:] < x2-delta_x)) |
+                ((X[::ss_factor,::ss_factor][0,:]>x3+delta_x) & (X[::ss_factor,::ss_factor][0,:]<x4-delta_x)))[0]
+deriv_rows = np.where((Y[::ss_factor,::ss_factor][:,0]>y1+delta_y) & (Y[::ss_factor,::ss_factor][:,0]<y2-delta_y))[0]
+
+rows_full, cols_full = np.indices(np.shape(X))
+rows_ss = rows_full[:,0][::ss_factor]
+cols_ss = cols_full[0,:][::ss_factor]
+
+
+theta_x_approx = np.zeros((len(rows_ss),len(cols_ss)))
+theta_y_approx = np.zeros((len(rows_ss),len(cols_ss)))
+theta_xx_approx = np.zeros((len(rows_ss),len(cols_ss)))
+theta_yy_approx = np.zeros((len(rows_ss),len(cols_ss)))
+theta_xy_approx = np.zeros((len(rows_ss),len(cols_ss)))
+theta_yx_approx = np.zeros((len(rows_ss),len(cols_ss)))
+
 print("Making derivative grids")
 start2 = time.time()
-for r in rows:
-    for c in cols:
-        print("r",r,"c",c)
-        if np.abs(X[r,c])<(1.5*rmax_x):
-            theta_x_approx[round((r - r_shift) / ss_factor), round((c - c_shift) / ss_factor)] += np.nan
-            theta_y_approx[round((r - r_shift) / ss_factor), round((c - c_shift) / ss_factor)] += np.nan
-            theta_xx_approx[round((r - r_shift) / ss_factor), round((c - c_shift) / ss_factor)] += np.nan
-            theta_yy_approx[round((r - r_shift) / ss_factor), round((c - c_shift) / ss_factor)] += np.nan
-            theta_xy_approx[round((r - r_shift) / ss_factor), round((c - c_shift) / ss_factor)] += np.nan
-            theta_yx_approx[round((r - r_shift) / ss_factor), round((c - c_shift) / ss_factor)] += np.nan
+for r in rows_ss:
+    for c in cols_ss:
+        if (r in ss_factor*deriv_rows) and (c in ss_factor*deriv_cols):
+            theta_x_approx[int(r/ss_factor),int(c/ss_factor)] += dfdx[r, c]
+            theta_y_approx[int(r/ss_factor),int(c/ss_factor)] += dfdy[r, c]
+            theta_xx_approx[int(r/ss_factor),int(c/ss_factor)] += dfdxx[r, c]
+            theta_yy_approx[int(r/ss_factor),int(c/ss_factor)] += dfdyy[r, c]
+            theta_xy_approx[int(r/ss_factor),int(c/ss_factor)] += dfdxy[r, c]
+            theta_yx_approx[int(r/ss_factor),int(c/ss_factor)] += dfdyx[r, c]
         else:
-            s = sigma(rmax_x, .1*rmax_x, rmax_y, .1*rmax_y, X[r, c], Y[r, c])
-            f = s*final_theta
-            dfdx = np.real(ifft2(1j*xi*fft2(f)))
-            theta_x_approx[round((r - r_shift)/ss_factor), round((c - c_shift)/ss_factor)] += dfdx[r,c]
-            dfdy = np.real(ifft2(1j*eta*fft2(f)))
-            theta_y_approx[round((r - r_shift)/ss_factor), round((c - c_shift)/ss_factor)] += dfdy[r, c]
-            dfdxx = np.real(ifft2((1j*xi)**2*fft2(f)))
-            theta_xx_approx[round((r - r_shift) / ss_factor), round((c - c_shift) / ss_factor)] += dfdxx[r, c]
-            dfdyy = np.real(ifft2((1j * eta) ** 2 * fft2(f)))
-            theta_yy_approx[round((r - r_shift) / ss_factor), round((c - c_shift) / ss_factor)] += dfdyy[r, c]
-            dfdxy = np.real(ifft2((1j*eta)*(1j * xi) * fft2(f)))
-            theta_xy_approx[round((r - r_shift) / ss_factor), round((c - c_shift) / ss_factor)] += dfdxy[r, c]
-            dfdyx = np.real(ifft2((1j * xi) *(1j * eta) * fft2(f)))
-            theta_yx_approx[round((r - r_shift) / ss_factor), round((c - c_shift) / ss_factor)] += dfdyx[r, c]
+            theta_x_approx[int(r/ss_factor),int(c/ss_factor)] += np.nan
+            theta_x_approx[int(r/ss_factor),int(c/ss_factor)] += np.nan
+            theta_y_approx[int(r/ss_factor),int(c/ss_factor)] += np.nan
+            theta_xx_approx[int(r/ss_factor),int(c/ss_factor)] += np.nan
+            theta_yy_approx[int(r/ss_factor),int(c/ss_factor)] += np.nan
+            theta_xy_approx[int(r/ss_factor),int(c/ss_factor)] += np.nan
+            theta_yx_approx[int(r/ss_factor),int(c/ss_factor)] += np.nan
 end2 = time.time()
 print("time to make derivatives:",end2-start2)
 
 
-theta_x_exact_ss = theta_x_exact[rows[0]:rows[-1]+ss_factor,cols[0]:cols[-1]+ss_factor][::ss_factor,::ss_factor]
-theta_y_exact_ss = theta_y_exact[rows[0]:rows[-1]+ss_factor,cols[0]:cols[-1]+ss_factor][::ss_factor,::ss_factor]
+theta_x_exact_ss = theta_x_exact[::ss_factor,::ss_factor]
+theta_y_exact_ss = theta_y_exact[::ss_factor,::ss_factor]
 divk_exact = divk(kb_exact,beta_exact)
-divk_exact_ss = divk_exact[rows[0]:rows[-1]+ss_factor,cols[0]:cols[-1]+ss_factor][::ss_factor,::ss_factor]
+divk_exact_ss = divk_exact[::ss_factor,::ss_factor]
 curlk_exact = curlk(kb_exact,beta_exact)
-curlk_exact_ss = curlk_exact[rows[0]:rows[-1]+ss_factor,cols[0]:cols[-1]+ss_factor][::ss_factor,::ss_factor]
+curlk_exact_ss = curlk_exact[::ss_factor,::ss_factor]
 Jk_exact = Jk(kb_exact,beta_exact)
-Jk_exact_ss = Jk_exact[rows[0]:rows[-1]+ss_factor,cols[0]:cols[-1]+ss_factor][::ss_factor,::ss_factor]
+Jk_exact_ss = Jk_exact[::ss_factor,::ss_factor]
+
 divk_approx = theta_xx_approx+theta_yy_approx
 curlk_approx = theta_yx_approx-theta_xy_approx
 Jk_approx = theta_xx_approx*theta_yy_approx - theta_xy_approx*theta_yx_approx
+
 exact_ss_wavenums = np.sqrt(theta_x_exact_ss**2+theta_y_exact_ss**2)
 wavenums_approx = np.sqrt(theta_x_approx**2+theta_y_approx**2)
 
@@ -525,16 +525,6 @@ exact_ss_wavenums[np.where(wavenums_approx==np.nan)] = np.nan
 divk_exact_ss[np.where(divk_approx==np.nan)] = np.nan
 curlk_exact_ss[np.where(curlk_approx==np.nan)] = np.nan
 Jk_exact_ss[np.where(Jk_approx==np.nan)] = np.nan
-
-
-
-# get coordinates cooresponding to derivative arrays
-Xinterior = X[rows[0]:rows[-1]+ss_factor,cols[0]:cols[-1]+ss_factor][::ss_factor,::ss_factor]
-Yinterior = Y[rows[0]:rows[-1]+ss_factor,cols[0]:cols[-1]+ss_factor][::ss_factor,::ss_factor]
-lenXint = Xinterior[0,:][-1]-Xinterior[0,:][0]
-lenYint = Yinterior[:,0][-1]-Yinterior[:,0][0]
-print("Intended Lengths of interior grid:", "xlength=",len_scale*Lx, "ylength=",len_scale*Ly)
-print("Actual Lengths of interior grid:", "xlength=",lenXint,"ylength=",lenYint)
 
 
 #compare recovered phase gradient to exact phase gradient
@@ -551,7 +541,7 @@ plt.colorbar(im2,ax=axs[1,0])
 plt.colorbar(im3,ax=axs[1,1])
 plt.suptitle("Exact vs Approx Phase Gradient")
 plt.tight_layout()
-plt.savefig(os.getcwd()+"/figs/dislocation/PhaseGradients_v1.png")
+plt.savefig(os.getcwd()+"/figs/dislocation/PhaseGradients_v2.png")
 print("theta_x max err:", np.nanmax(np.abs(theta_x_exact_ss-theta_x_approx)))
 print("theta_x mean err:", np.nanmean(np.abs(theta_x_exact_ss-theta_x_approx)))
 print("theta_y max err:", np.nanmax(np.abs(theta_y_exact_ss-theta_y_approx)))
@@ -567,7 +557,7 @@ plt.colorbar(im1,ax=axs[1])
 plt.colorbar(im2,ax=axs[2])
 plt.suptitle("Exact vs Approx Wave Nums")
 plt.tight_layout()
-plt.savefig(os.getcwd()+"/figs/dislocation/WaveNums_v1.png")
+plt.savefig(os.getcwd()+"/figs/dislocation/WaveNums_v2.png")
 print("wave num max err:", np.nanmax(np.abs(exact_ss_wavenums-wavenums_approx)))
 print("wave num mean err:", np.nanmean(np.abs(exact_ss_wavenums-wavenums_approx)))
 
@@ -581,7 +571,7 @@ plt.colorbar(im1,ax=axs[1])
 plt.colorbar(im2,ax=axs[2])
 plt.suptitle("Exact vs Approx Div(k)")
 plt.tight_layout()
-plt.savefig(os.getcwd()+"/figs/dislocation/DivK_v1.png")
+plt.savefig(os.getcwd()+"/figs/dislocation/DivK_v2.png")
 print("Div(k) max err:", np.nanmax(np.abs(divk_exact_ss-divk_approx)))
 print("Div(k) mean err:", np.nanmean(np.abs(divk_exact_ss-divk_approx)))
 
@@ -595,7 +585,7 @@ plt.colorbar(im1,ax=axs[1])
 plt.colorbar(im2,ax=axs[2])
 plt.suptitle("Exact vs Approx Curl(k)")
 plt.tight_layout()
-plt.savefig(os.getcwd()+"/figs/dislocation/CurlK_v1.png")
+plt.savefig(os.getcwd()+"/figs/dislocation/CurlK_v2.png")
 print("Curl(k) max err:", np.nanmax(np.abs(curlk_exact_ss-curlk_approx)))
 print("Curl(k) mean err:", np.nanmean(np.abs(curlk_exact_ss-curlk_approx)))
 
@@ -609,7 +599,7 @@ plt.colorbar(im1,ax=axs[1])
 plt.colorbar(im2,ax=axs[2])
 plt.suptitle("Exact vs Approx J(k)")
 plt.tight_layout()
-plt.savefig(os.getcwd()+"/figs/dislocation/Jk_v1.png")
+plt.savefig(os.getcwd()+"/figs/dislocation/Jk_v2.png")
 print("J(k) max err:", np.nanmax(np.abs(Jk_exact_ss-Jk_approx)))
 print("J(k) mean err:", np.nanmean(np.abs(Jk_exact_ss-Jk_approx)))
 
@@ -623,8 +613,8 @@ mdict = {'theta_x_approx':theta_x_approx,'theta_y_approx': theta_y_approx,
          'theta_xx_approx': theta_xx_approx, 'theta_yy_approx': theta_yy_approx,
          'theta_xy_approx':theta_xy_approx,'theta_yx_approx':theta_yx_approx,
          'divk_approx': divk_approx,'curlk_approx': curlk_approx,'Jk_approx':Jk_approx,
-         'wavenums_approx':wavenums_approx,'Xinterior':Xinterior,'Yinterior':Yinterior}
+         'wavenums_approx':wavenums_approx}
 
-sio.savemat(os.getcwd()+"/data/dislocation/v1.mat",mdict)
-# logfile.close()
+sio.savemat(os.getcwd()+"/data/dislocation/v2.mat",mdict)
+logfile.close()
 
