@@ -8,6 +8,7 @@ u_t = (-0.005438 +0.000000i)|k|^2
     + (0.002711 +0.000000i)|k|^4
     + (0.002726 +0.000000i)1
    
+Error 1: 0.5927639913131443
 Second Fit LHS = div(k)^2 -1 + 2|k|^2 - |k|^4
 RHS should be 0
 coefficient vector solution = [[ 0.        +0.j]
@@ -15,6 +16,7 @@ coefficient vector solution = [[ 0.        +0.j]
  [-0.00199342-0.j]]
 u_t = (-0.001993 -0.000000i)|k|^3
    
+Error 2: 0.5927639913131444
 Third Fit LHS = 2|k|^2 - |k|^4
 RHS Should be: 1 - (div(k)^2
 coefficient vector solution = [[-2.28437016e+02+0.j]
@@ -26,3 +28,4 @@ u_t = (-228.437016 +0.000000i)div(k)^2
     + (1.011729 +0.000000i)1
     + (7.020629 +0.000000i)Jk
    
+Error 3: 0.5927639913131443

@@ -32,6 +32,7 @@ lhs1 = divk**2
 c1 = TrainSTRidge(lib1,lhs1,1e-5,1e-5,maxit=25, STR_iters=10)
 print("coefficient vector solution =",c1)
 print_pde(c1, description1)
+print("Error 1:", np.linalg.norm(lhs1 - (1-2*wavenum**2+wavenum**4)))
 
 print("Second Fit LHS = div(k)^2 -1 + 2|k|^2 - |k|^4")
 print("RHS should be 0")
@@ -43,6 +44,7 @@ lhs2 = divk**2 - 1 + 2*wavenum**2 - wavenum**4
 c2 = TrainSTRidge(lib2,lhs2,1e-5,1e-1,maxit=25, STR_iters=10)
 print("coefficient vector solution =",c2)
 print_pde(c2, description2)
+print("Error 2:", np.linalg.norm(lhs2 -0))
 
 
 print("Third Fit LHS = 2|k|^2 - |k|^4")
@@ -56,6 +58,7 @@ lhs3 = 2*wavenum**2 - wavenum**4
 c3 = TrainSTRidge(lib3,lhs3,1e-1,1e-16,maxit=25, STR_iters=10)
 print("coefficient vector solution =",c3)
 print_pde(c3, description3)
+print("Error 3:", np.linalg.norm(lhs3 - (1-divk**2)))
 
 
 
