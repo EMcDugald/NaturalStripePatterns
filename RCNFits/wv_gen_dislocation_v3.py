@@ -1,11 +1,12 @@
 import numpy as np
-from scipy.fft import fft2, fftfreq, fftshift, ifft2
+from scipy.fft import fft2, fftfreq, fftshift
 import os
 import matplotlib.pyplot as plt
 import sys
 import time
 import scipy.io as sio
 from scipy import special
+from derivatives import FiniteDiffDerivs4
 
 #########################################################################################################################
     ### This script compute wave vector fields from stationary dislocation using the RCN ansatz ###
@@ -21,8 +22,8 @@ from scipy import special
 
 
 
-# logfile = open(os.getcwd()+"/logs/dislocation/wv_gen_dislocation_v2.out", 'w')
-# sys.stdout = logfile
+logfile = open(os.getcwd()+"/logs/dislocation/wv_gen_dislocation_v3.out", 'w')
+sys.stdout = logfile
 
 start = time.time()
 
@@ -40,7 +41,7 @@ xx = np.arange(-Lx/2,Lx/2+dx/2,dx)
 yy = np.arange(-Ly/2,Ly/2+dy/2,dy)
 X,Y = np.meshgrid(xx,yy)
 ss_factor = 2
-dirac_factor = 1e-12
+dirac_factor = 1e-15
 
 print("Grid Dims:", "Nx = ",Nx, "Ny = ",Ny)
 print("Dom Size:", "Lx = ",Lx, "Ly = ", Ly)
@@ -188,7 +189,7 @@ def Jk(kb,beta):
 
 
 kb_tst = 1.0
-beta_tst = .01
+beta_tst = .10
 
 tst_theta = theta(kb_tst,beta_tst)
 tst_pattern = np.cos(tst_theta)
@@ -210,7 +211,7 @@ plt.colorbar(im0,ax=axs[0])
 plt.colorbar(im1,ax=axs[1])
 plt.suptitle("Tst phase, pattern")
 plt.tight_layout()
-plt.savefig(os.getcwd()+"/figs/dislocation/TstPhasePatt_v2.png")
+plt.savefig(os.getcwd()+"/figs/dislocation/TstPhasePatt_v3.png")
 
 fig, axs = plt.subplots(nrows=1,ncols=3,figsize=(20,6))
 im0 = axs[0].imshow(tst_theta_x,cmap='bwr')
@@ -221,7 +222,7 @@ plt.colorbar(im1,ax=axs[1])
 plt.colorbar(im2,ax=axs[2])
 plt.suptitle("Tst phase gradient, wave number")
 plt.tight_layout()
-plt.savefig(os.getcwd()+"/figs/dislocation/TstGradWN_v2.png")
+plt.savefig(os.getcwd()+"/figs/dislocation/TstGradWN_v3.png")
 
 fig, axs = plt.subplots(nrows=1,ncols=3,figsize=(20,6))
 im0 = axs[0].imshow(tst_divk,cmap='bwr')
@@ -232,7 +233,7 @@ plt.colorbar(im1,ax=axs[1])
 plt.colorbar(im2,ax=axs[2])
 plt.suptitle("Tst divk, curlk, Jk")
 plt.tight_layout()
-plt.savefig(os.getcwd()+"/figs/dislocation/TstDivCurlJ_v2.png")
+plt.savefig(os.getcwd()+"/figs/dislocation/TstDivCurlJ_v3.png")
 
 print("Max tst_divk:", np.max(tst_divk))
 print("Min tst_divk:", np.min(tst_divk))
@@ -415,7 +416,7 @@ plt.colorbar(im1,ax=axs[1])
 plt.colorbar(im2,ax=axs[2])
 plt.suptitle("Pattern, Approx Pattern, and Error")
 plt.tight_layout()
-plt.savefig(os.getcwd()+"/figs/dislocation/FieldEst_v2.png")
+plt.savefig(os.getcwd()+"/figs/dislocation/FieldEst_v3.png")
 print("Est Field max err:", np.max(np.abs(W-final_pattern)))
 print("Est Field mean err:", np.mean(np.abs(W-final_pattern)))
 
@@ -429,44 +430,40 @@ plt.colorbar(im1,ax=axs[1])
 plt.colorbar(im2,ax=axs[2])
 plt.suptitle("Phase, Approx Phase, and Error")
 plt.tight_layout()
-plt.savefig(os.getcwd()+"/figs/dislocation/PhaseEst_v2.png")
+plt.savefig(os.getcwd()+"/figs/dislocation/PhaseEst_v3.png")
 print("Est phase max err:", np.max(np.abs(theta_exact-final_theta)))
 print("Est phase mean err:", np.mean(np.abs(theta_exact-final_theta)))
 
 # compute derivatives on each half independently
-gap = .05*Lx
+gap = .2*Lx
 x1 = -Lx/2+gap/2
 x2 = -gap/2
 x3 = gap/2
 x4 = Lx/2-gap/2
 y1 = -Ly/2+gap/2
 y2 = Ly/2-gap/2
+dx = xx[1]-xx[0]
+dy = yy[1]-yy[0]
 
+dfdx = np.zeros(shape=np.shape(theta_exact))
+dfdy = np.zeros(shape=np.shape(theta_exact))
+dfdxx = np.zeros(shape=np.shape(theta_exact))
+dfdyy = np.zeros(shape=np.shape(theta_exact))
+dfdxy = np.zeros(shape=np.shape(theta_exact))
+dfdyx = np.zeros(shape=np.shape(theta_exact))
 
-left_half = (np.tanh(2*(X-x1))-np.tanh(2*(X-x2)))*(np.tanh(2*(Y-y1))-np.tanh(2*(Y-y2)))/4
-right_half = (np.tanh(2*(X-x3))-np.tanh(2*(X-x4)))*(np.tanh(2*(Y-y1))-np.tanh(2*(Y-y2)))/4
-
-dfdx = np.real(ifft2(1j*xi*fft2(left_half*final_theta))) + \
-       np.real(ifft2(1j*xi*fft2(right_half*final_theta)))
-dfdy = np.real(ifft2(1j*eta*fft2(left_half*final_theta))) + \
-       np.real(ifft2(1j*eta*fft2(right_half*final_theta)))
-dfdxx = np.real(ifft2((1j*xi)**2*fft2(left_half*final_theta))) + \
-        np.real(ifft2((1j*xi)**2*fft2(right_half*final_theta)))
-dfdyy = np.real(ifft2((1j*eta)**2*fft2(left_half*final_theta))) + \
-        np.real(ifft2((1j*eta)**2*fft2(right_half*final_theta)))
-dfdxy = np.real(ifft2((1j*eta)*(1j * xi) * fft2(left_half*final_theta))) + \
-        np.real(ifft2((1j*eta)*(1j * xi) * fft2(right_half*final_theta)))
-dfdyx = np.real(ifft2((1j*xi)*(1j * eta) * fft2(left_half*final_theta))) + \
-        np.real(ifft2((1j*xi)*(1j * eta) * fft2(right_half*final_theta)))
-
-delta_x = .2*Lx
-delta_y = .2*Ly
-
+m,n = np.shape(theta_exact)
+dfdx[2:-2,2:-2] = FiniteDiffDerivs4(final_theta,dx,dy,type='x')
+dfdy[2:-2,2:-2] = FiniteDiffDerivs4(final_theta,dx,dy,type='y')
+dfdxx[2:-2,2:-2] = FiniteDiffDerivs4(final_theta,dx,dy,type='xx')
+dfdyy[2:-2,2:-2] = FiniteDiffDerivs4(final_theta,dx,dy,type='yy')
+dfdxy[4:-4,4:-4] = FiniteDiffDerivs4(final_theta,dx,dy,type='xy')
+dfdyx[4:-4,4:-4] = FiniteDiffDerivs4(final_theta,dx,dy,type='yx')
 
 # use sliding gaussian /smooth indicator window and ffts to get partial derivatives of phase
-deriv_cols = np.where(((X[::ss_factor,::ss_factor][0, :] > x1+delta_x) & (X[::ss_factor,::ss_factor][0,:] < x2-delta_x)) |
-                ((X[::ss_factor,::ss_factor][0,:]>x3+delta_x) & (X[::ss_factor,::ss_factor][0,:]<x4-delta_x)))[0]
-deriv_rows = np.where((Y[::ss_factor,::ss_factor][:,0]>y1+delta_y) & (Y[::ss_factor,::ss_factor][:,0]<y2-delta_y))[0]
+deriv_cols = np.where(((X[::ss_factor,::ss_factor][0, :] > x1) & (X[::ss_factor,::ss_factor][0,:] < x2)) |
+                ((X[::ss_factor,::ss_factor][0,:]>x3) & (X[::ss_factor,::ss_factor][0,:]<x4)))[0]
+deriv_rows = np.where((Y[::ss_factor,::ss_factor][:,0]>y1) & (Y[::ss_factor,::ss_factor][:,0]<y2))[0]
 
 rows_full, cols_full = np.indices(np.shape(X))
 rows_ss = rows_full[:,0][::ss_factor]
@@ -541,7 +538,7 @@ plt.colorbar(im2,ax=axs[1,0])
 plt.colorbar(im3,ax=axs[1,1])
 plt.suptitle("Exact vs Approx Phase Gradient")
 plt.tight_layout()
-plt.savefig(os.getcwd()+"/figs/dislocation/PhaseGradients_v2.png")
+plt.savefig(os.getcwd()+"/figs/dislocation/PhaseGradients_v3.png")
 print("theta_x max err:", np.nanmax(np.abs(theta_x_exact_ss-theta_x_approx)))
 print("theta_x mean err:", np.nanmean(np.abs(theta_x_exact_ss-theta_x_approx)))
 print("theta_y max err:", np.nanmax(np.abs(theta_y_exact_ss-theta_y_approx)))
@@ -557,7 +554,7 @@ plt.colorbar(im1,ax=axs[1])
 plt.colorbar(im2,ax=axs[2])
 plt.suptitle("Exact vs Approx Wave Nums")
 plt.tight_layout()
-plt.savefig(os.getcwd()+"/figs/dislocation/WaveNums_v2.png")
+plt.savefig(os.getcwd()+"/figs/dislocation/WaveNums_v3.png")
 print("wave num max err:", np.nanmax(np.abs(exact_ss_wavenums-wavenums_approx)))
 print("wave num mean err:", np.nanmean(np.abs(exact_ss_wavenums-wavenums_approx)))
 
@@ -571,7 +568,7 @@ plt.colorbar(im1,ax=axs[1])
 plt.colorbar(im2,ax=axs[2])
 plt.suptitle("Exact vs Approx Div(k)")
 plt.tight_layout()
-plt.savefig(os.getcwd()+"/figs/dislocation/DivK_v2.png")
+plt.savefig(os.getcwd()+"/figs/dislocation/DivK_v3.png")
 print("Div(k) max err:", np.nanmax(np.abs(divk_exact_ss-divk_approx)))
 print("Div(k) mean err:", np.nanmean(np.abs(divk_exact_ss-divk_approx)))
 
@@ -585,7 +582,7 @@ plt.colorbar(im1,ax=axs[1])
 plt.colorbar(im2,ax=axs[2])
 plt.suptitle("Exact vs Approx Curl(k)")
 plt.tight_layout()
-plt.savefig(os.getcwd()+"/figs/dislocation/CurlK_v2.png")
+plt.savefig(os.getcwd()+"/figs/dislocation/CurlK_v3.png")
 print("Curl(k) max err:", np.nanmax(np.abs(curlk_exact_ss-curlk_approx)))
 print("Curl(k) mean err:", np.nanmean(np.abs(curlk_exact_ss-curlk_approx)))
 
@@ -599,9 +596,10 @@ plt.colorbar(im1,ax=axs[1])
 plt.colorbar(im2,ax=axs[2])
 plt.suptitle("Exact vs Approx J(k)")
 plt.tight_layout()
-plt.savefig(os.getcwd()+"/figs/dislocation/Jk_v2.png")
+plt.savefig(os.getcwd()+"/figs/dislocation/Jk_v3.png")
 print("J(k) max err:", np.nanmax(np.abs(Jk_exact_ss-Jk_approx)))
 print("J(k) mean err:", np.nanmean(np.abs(Jk_exact_ss-Jk_approx)))
+print("Gap:",gap)
 
 
 end = time.time()
@@ -615,6 +613,7 @@ mdict = {'theta_x_approx':theta_x_approx,'theta_y_approx': theta_y_approx,
          'divk_approx': divk_approx,'curlk_approx': curlk_approx,'Jk_approx':Jk_approx,
          'wavenums_approx':wavenums_approx}
 
-sio.savemat(os.getcwd()+"/data/dislocation/v2.mat",mdict)
-# logfile.close()
+sio.savemat(os.getcwd()+"/data/dislocation/v3.mat",mdict)
+
+logfile.close()
 

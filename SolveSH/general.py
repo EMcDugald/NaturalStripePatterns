@@ -20,6 +20,7 @@ def solveSH(Lx,Ly,Nx,Ny,h,tmax,nsave,filename,Rscale=.5,beta=.45,amplitude=.1,in
     sin function on rectangle, 3 is eikonal solution on ellipse
     :return: void: saves data
     '''
+    print("starting method")
     xx = (Lx/Nx)*np.linspace(-Nx/2+1,Nx/2,Nx)
     yy = (Ly/Ny)*np.linspace(-Ny/2+1,Ny/2,Ny)
     X, Y = np.meshgrid(xx, yy)
@@ -95,6 +96,7 @@ def solveSH(Lx,Ly,Nx,Ny,h,tmax,nsave,filename,Rscale=.5,beta=.45,amplitude=.1,in
     #begin time stepping
     for n in range(1, int(nmax) + 1):
         t = n * h
+        print("step:",n)
         Nv = fft2(R * u0 - u0 ** 3)
         a = E2 * vv + Q * Nv
         ua = np.real(ifft2(a))

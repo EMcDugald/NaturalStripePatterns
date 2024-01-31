@@ -37,6 +37,10 @@ def FiniteDiffDerivs(func,dx,dy,type='x'):
         # shape will be nx-4,ny-4
         fx = FiniteDiffDerivs(func,dx,dy,type='x')
         d_arr = FiniteDiffDerivs(fx,dx,dy,type='y')
+    elif type == 'yx':
+        # shape will be nx-4,ny-4
+        fx = FiniteDiffDerivs(func,dx,dy,type='y')
+        d_arr = FiniteDiffDerivs(fx,dx,dy,type='x')
     elif type == 'laplacian':
         # shape will be nx-2,ny-2
         fxx = FiniteDiffDerivs(func,dx,dy,type='xx')
@@ -74,6 +78,56 @@ def FiniteDiffDerivs(func,dx,dy,type='x'):
         # shape will be nx-4,ny-4
         fyy = FiniteDiffDerivs(func,dx,dy,type='yy')
         d_arr = FiniteDiffDerivs(fyy,dx,dy,type='x')
+    else:
+        raise Exception("Incompatible type selection")
+    return d_arr
+
+
+def FiniteDiffDerivs4(func,dx,dy,type='x'):
+    if type == 'x':
+        d_arr = (-func[2:-2,4:]+8*func[2:-2,3:-1]-8*func[2:-2,1:-3]+func[2:-2,:-4])/(12*dx)
+    elif type == 'xx':
+        d_arr = (-func[2:-2,4:] + 16*func[2:-2, 3:-1] - 30*func[2:-2, 2:-2] +
+                 16*func[2:-2, 1:-3] - func[2:-2,:-4])/(12 * (dx)**2)
+    elif type == 'y':
+        d_arr = (-func[4:,2:-2] + 8 * func[3:-1,2:-2] - 8 * func[1:-3,2:-2] + func[:-4,2:-2]) / (12 * dx)
+    elif type == 'yy':
+        d_arr = (-func[4:,2:-2] + 16 * func[3:-1,2:-2] - 30 * func[2:-2,2:-2] +
+                 16 * func[1:-3,2:-2] - func[:-4,2:-2]) / (12 * (dx) ** 2)
+    elif type == 'xy':
+        fx = FiniteDiffDerivs4(func,dx,dy,type='x')
+        d_arr = FiniteDiffDerivs4(fx,dx,dy,type='y')
+    elif type == 'yx':
+        fx = FiniteDiffDerivs4(func,dx,dy,type='y')
+        d_arr = FiniteDiffDerivs4(fx,dx,dy,type='x')
+    elif type == 'laplacian':
+        fxx = FiniteDiffDerivs4(func,dx,dy,type='xx')
+        fyy = FiniteDiffDerivs4(func,dx,dy,type='yy')
+        d_arr = fxx+fyy
+    elif type == 'biharmonic':
+        lap = FiniteDiffDerivs4(func,dx,dy,type='laplacian')
+        d_arr = FiniteDiffDerivs4(lap,dx,dy,type='laplacian')
+    elif type == 'xxxx':
+        fxx = FiniteDiffDerivs4(func,dx,dy,type='xx')
+        d_arr = FiniteDiffDerivs4(fxx,dx,dy,type='xx')
+    elif type == 'xxyy':
+        fxx = FiniteDiffDerivs4(func,dx,dy,type='xx')
+        d_arr = FiniteDiffDerivs4(fxx,dx,dy,type='yy')
+    elif type == 'yyyy':
+        fyy = FiniteDiffDerivs4(func,dx,dy,type='yy')
+        d_arr = FiniteDiffDerivs4(fyy,dx,dy,type='yy')
+    elif type == 'xxx':
+        fxx = FiniteDiffDerivs4(func,dx,dy,type='xx')
+        d_arr = FiniteDiffDerivs4(fxx,dx,dy,type='x')
+    elif type == 'yyy':
+        fyy = FiniteDiffDerivs4(func,dx,dy,type='yy')
+        d_arr = FiniteDiffDerivs4(fyy,dx,dy,type='y')
+    elif type == 'xxy':
+        fxx = FiniteDiffDerivs4(func,dx,dy,type='xx')
+        d_arr = FiniteDiffDerivs4(fxx,dx,dy,type='y')
+    elif type == 'xyy':
+        fyy = FiniteDiffDerivs4(func,dx,dy,type='yy')
+        d_arr = FiniteDiffDerivs4(fyy,dx,dy,type='x')
     else:
         raise Exception("Incompatible type selection")
     return d_arr
