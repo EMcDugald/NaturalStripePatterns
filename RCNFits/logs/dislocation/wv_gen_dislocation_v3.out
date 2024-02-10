@@ -1701,18 +1701,18 @@ Est Field mean err: 2.9342923312530835e-10
 Est phase max err: 9.516725185676478e-10
 Est phase mean err: 4.602070746033817e-10
 Making derivative grids
-time to make derivatives: 0.9003720283508301
-theta_x max err: 8.535621542904437e-09
-theta_x mean err: 4.267987357261858e-10
-theta_y max err: 1.2948891958686204e-11
-theta_y mean err: 1.3096654059461668e-12
-wave num max err: 8.51694303971584e-09
-wave num mean err: 4.261959744034797e-10
-Div(k) max err: 2.279332677462831e-09
-Div(k) mean err: 9.109081587301459e-11
+time to make derivatives: 0.9224388599395752
+theta_x max err: 2.384239123909282e-07
+theta_x mean err: 4.226173597131454e-09
+theta_y max err: 8.012211727415064e-11
+theta_y mean err: 3.3527771325826424e-12
+wave num max err: 2.3764944612203465e-07
+wave num mean err: 4.217465736760917e-09
+Div(k) max err: 1.2318430264030011e-07
+Div(k) mean err: 1.7103645702126143e-09
 Curl(k) max err: 2.1267156872367687e-13
-Curl(k) mean err: 3.536223804516516e-14
-J(k) max err: 1.740578137892669e-11
-J(k) mean err: 3.121968303274063e-13
-Gap: 12.566370614359172
-Total Time: 119.40241408348083
+Curl(k) mean err: 3.431831715857887e-14
+J(k) max err: 1.8255756731343827e-09
+J(k) mean err: 1.0967509046085108e-11
+Gap: 6.283185307179586
+Total Time: 113.140958070755

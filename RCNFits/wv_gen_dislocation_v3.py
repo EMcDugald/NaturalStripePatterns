@@ -435,7 +435,7 @@ print("Est phase max err:", np.max(np.abs(theta_exact-final_theta)))
 print("Est phase mean err:", np.mean(np.abs(theta_exact-final_theta)))
 
 # compute derivatives on each half independently
-gap = .2*Lx
+gap = .1*Lx
 x1 = -Lx/2+gap/2
 x2 = -gap/2
 x3 = gap/2
