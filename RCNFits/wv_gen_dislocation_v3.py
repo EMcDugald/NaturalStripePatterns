@@ -606,6 +606,30 @@ end = time.time()
 print("Total Time:",end-start)
 
 
+### ADDING CALCULATION FOR "F" ###
+s = -np.sign(X[::ss_factor,::ss_factor])
+# F_exact = np.exp(beta_tst*s*(theta_exact[::ss_factor,::ss_factor]-(1/(beta_tst*s)*beta_tst*kb_tst*X[::ss_factor,::ss_factor])))
+# F_approx = np.exp(beta0*s*(final_theta[::ss_factor,::ss_factor]-(1/(beta0*s)*beta0*kb0*X[::ss_factor,::ss_factor])))
+F_exact = np.exp(beta_exact*s*theta_exact[::ss_factor,::ss_factor] - beta_exact*kb_exact*X[::ss_factor,::ss_factor])
+F_approx = np.exp(beta0*s*final_theta[::ss_factor,::ss_factor] - beta0*kb0*X[::ss_factor,::ss_factor])
+F_exact[np.where(np.isnan(divk_approx))] = np.nan
+F_approx[np.where(np.isnan(divk_approx))] = np.nan
+fig, axs = plt.subplots(nrows=1,ncols=3,figsize=(20,6))
+im0 = axs[0].imshow(F_exact)
+im1 = axs[1].imshow(F_approx)
+im2 = axs[2].imshow(np.abs(F_exact-F_approx))
+plt.colorbar(im0,ax=axs[0])
+plt.colorbar(im1,ax=axs[1])
+plt.colorbar(im2,ax=axs[2])
+plt.suptitle("Exact vs Approx F")
+plt.tight_layout()
+plt.savefig(os.getcwd()+"/figs/dislocation/F_v3.png")
+print("F max err:", np.nanmax(np.abs(F_exact-F_approx)))
+print("F mean err:", np.nanmean(np.abs(F_exact-F_approx)))
+
+print("Shape F:",np.shape(F_approx))
+print("Shape Wavenums:",np.shape(wavenums_approx))
+
 # save data
 mdict = {'theta_x_approx':theta_x_approx,'theta_y_approx': theta_y_approx,
          'theta_xx_approx': theta_xx_approx, 'theta_yy_approx': theta_yy_approx,

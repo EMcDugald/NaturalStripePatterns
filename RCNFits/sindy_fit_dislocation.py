@@ -22,6 +22,9 @@ wavenum = data['wavenums_approx'].flatten()[~np.isnan(data['wavenums_approx'].fl
 one = np.ones_like(wavenum).reshape(len(wavenum),1)
 
 print("Self Dual Equation: (div(k))^2-1+2|k|^2-|k|^4 = 0")
+print("Actual SD Balance (L2):",np.linalg.norm(divk**2-one+2*wavenum**2-wavenum**4))
+print("Actual SD Balance (Mean AE):",np.mean(np.abs(divk**2-one+2*wavenum**2-wavenum**4)))
+print("Actual SD Balance (Max AE):",np.max(np.abs(divk**2-one+2*wavenum**2-wavenum**4)))
 
 print("First Fit LHS = div(k)^2")
 print("RHS should be 1 - 2|k|^2 + |k|^4")
@@ -29,7 +32,7 @@ lib1 = np.hstack([wavenum**2,wavenum**4,one])
 description1 = ['|k|^2', '|k|^4', '1']
 lhs1 = divk**2
 #c1 = TrainSTRidge(lib1,lhs1,1e-1,1e-12,maxit=25, STR_iters=10,l0_penalty=.1)
-c1 = TrainSTRidge(lib1,lhs1,1e-5,1e-5,maxit=25, STR_iters=10)
+c1 = TrainSTRidge(lib1,lhs1,1e-1,1e-12,maxit=25, STR_iters=10)
 print("coefficient vector solution =",c1)
 print_pde(c1, description1)
 print("Error 1:", np.linalg.norm(lhs1 - (1-2*wavenum**2+wavenum**4)))

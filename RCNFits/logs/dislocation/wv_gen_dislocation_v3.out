@@ -1701,7 +1701,7 @@ Est Field mean err: 2.9342923312530835e-10
 Est phase max err: 9.516725185676478e-10
 Est phase mean err: 4.602070746033817e-10
 Making derivative grids
-time to make derivatives: 0.9224388599395752
+time to make derivatives: 0.9606997966766357
 theta_x max err: 2.384239123909282e-07
 theta_x mean err: 4.226173597131454e-09
 theta_y max err: 8.012211727415064e-11
@@ -1715,4 +1715,8 @@ Curl(k) mean err: 3.431831715857887e-14
 J(k) max err: 1.8255756731343827e-09
 J(k) mean err: 1.0967509046085108e-11
 Gap: 6.283185307179586
-Total Time: 113.140958070755
+Total Time: 131.45594096183777
+F max err: 2.9850677485399046e-11
+F mean err: 1.1138423230543634e-11
+Shape F: (256, 256)
+Shape Wavenums: (256, 256)
