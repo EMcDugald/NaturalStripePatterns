@@ -3,8 +3,8 @@ import matplotlib.pyplot as plt
 from scipy.fft import fft2, ifft2, fftfreq
 
 La = 4*np.pi
-nr = 512
-na = 512
+nr = 256
+na = 256
 dr = 10*np.pi/(nr-3)
 Lr = 10*np.pi + 3*dr
 r = np.linspace(0,Lr-Lr/nr,nr)
@@ -261,14 +261,14 @@ RHS_aprx = -(4/R**4)*d2theta0_dalpha2_approx - (2/R**2)*d2theta0_dalpha2_approx 
            (2/R**3)*d3theta0_da2dr1_approx -2*d2theta0_dr2_approx + (1/R**2)*d2theta0_dr2_approx + \
            (2/R**2)*(dtheta0_dalpha_approx**2)*d2theta0_dr2_approx + 6*(dtheta0_dr_approx**2)*d2theta0_dr2_approx - \
            (2/R**2)*d4theta0_da2dr2_approx - (2/R)*d3theta0_dr3_approx - d4theta0_dr4_approx
-# print("RHS L2 Err:",np.linalg.norm(RHS_aprx[:,1:-3]-RHS[:,1:-3]))
-# print("RHS Mean Abs Err:",np.mean(np.abs(RHS_aprx[:,1:-3]-RHS[:,1:-3])))
-# print("RHS Max Abs Err:",np.max(np.abs(RHS_aprx[:,1:-3]-RHS[:,1:-3])))
-# print("RHS L2 Rel Err:",np.linalg.norm(RHS_aprx[:,1:-3]-RHS[:,1:-3])/np.linalg.norm(RHS[:,1:-3]))
-print("RHS L2 Err:",np.linalg.norm(RHS_aprx[:,3:-3]-RHS[:,3:-3]))
-print("RHS Mean Abs Err:",np.mean(np.abs(RHS_aprx[:,3:-3]-RHS[:,3:-3])))
-print("RHS Max Abs Err:",np.max(np.abs(RHS_aprx[:,3:-3]-RHS[:,3:-3])))
-print("RHS L2 Rel Err:",np.linalg.norm(RHS_aprx[:,3:-3]-RHS[:,3:-3])/np.linalg.norm(RHS[:,3:-3]))
+print("RHS L2 Err:",np.linalg.norm(RHS_aprx[:,1:-3]-RHS[:,1:-3]))
+print("RHS Mean Abs Err:",np.mean(np.abs(RHS_aprx[:,1:-3]-RHS[:,1:-3])))
+print("RHS Max Abs Err:",np.max(np.abs(RHS_aprx[:,1:-3]-RHS[:,1:-3])))
+print("RHS L2 Rel Err:",np.linalg.norm(RHS_aprx[:,1:-3]-RHS[:,1:-3])/np.linalg.norm(RHS[:,1:-3]))
+# print("RHS L2 Err:",np.linalg.norm(RHS_aprx[:,3:-3]-RHS[:,3:-3]))
+# print("RHS Mean Abs Err:",np.mean(np.abs(RHS_aprx[:,3:-3]-RHS[:,3:-3])))
+# print("RHS Max Abs Err:",np.max(np.abs(RHS_aprx[:,3:-3]-RHS[:,3:-3])))
+# print("RHS L2 Rel Err:",np.linalg.norm(RHS_aprx[:,3:-3]-RHS[:,3:-3])/np.linalg.norm(RHS[:,3:-3]))
 fig, ax = plt.subplots(nrows=1,ncols=3)
 im0 = ax[0].imshow(RHS[:,1:-3])
 plt.colorbar(im0,ax=ax[0])
@@ -280,7 +280,12 @@ plt.suptitle("RHS")
 plt.tight_layout()
 plt.show()
 
-
+RHS_aprx[:,[-3]] = theta0[:,[-3]]
+RHS_aprx[:,[-2]] = 2*dr*dtheta0_dr_approx[:,[-3]]+RHS_aprx[:,[-4]]
+RHS_aprx[:,[-1]] = 4*dr*dtheta0_dr_approx[:,[-3]]+RHS_aprx[:,[-5]]
+print("debug")
+RHS_aprx[0:int(na/2),[0]] = np.mean(RHS_aprx[0:int(na/2),[1]])
+RHS_aprx[int(na/2):,[0]] = np.mean(RHS_aprx[int(na/2):,[1]])
 
 
 
