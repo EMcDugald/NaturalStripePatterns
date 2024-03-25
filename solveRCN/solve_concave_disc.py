@@ -115,12 +115,15 @@ RHS_exact = 2*np.sqrt(R)*np.sin(3*A/2)
 RHS_aprx = RHS(theta0)
 print("RHS L2 Err:",np.linalg.norm(RHS_aprx[:,0:-3]-RHS_exact[:,0:-3]))
 print("RHS Mean Abs Err:",np.mean(np.abs(RHS_aprx[:,0:-3]-RHS_exact[:,0:-3])))
-print("RHS Max Abs Err:",np.max(np.abs(RHS_aprx[:,0:-3]-RHS_exact[:,0:-3])))
+print("RHS Max Abs Err:",np.max(np.abs(RHS_aprx[:,0:-3]-RHS_exact[:,0:-3])), np.unravel_index(np.argmax(RHS_aprx-RHS_exact),RHS_aprx.shape))
 print("RHS L2 Rel Err:",np.linalg.norm(RHS_aprx[:,0:-3]-RHS_exact[:,0:-3])/np.linalg.norm(RHS_exact[:,0:-3]))
 print("RHS L2 Err (no origin):",np.linalg.norm(RHS_aprx[:,3:-3]-RHS_exact[:,3:-3]))
 print("RHS Mean Abs Err (no origin):",np.mean(np.abs(RHS_aprx[:,3:-3]-RHS_exact[:,3:-3])))
 print("RHS Max Abs Err (no origin):",np.max(np.abs(RHS_aprx[:,3:-3]-RHS_exact[:,3:-3])))
 print("RHS L2 Rel Err (no origin):",np.linalg.norm(RHS_aprx[:,3:-3]-RHS_exact[:,3:-3])/np.linalg.norm(RHS_exact[:,3:-3]))
+
+
+print("RHS Max Abs Err Section:",np.abs(RHS_aprx[190:194,250:256]-RHS_exact[190:194,250:256]))
 fig, ax = plt.subplots(nrows=1,ncols=3)
 im0 = ax[0].imshow(RHS_exact[:,1:-3])
 plt.colorbar(im0,ax=ax[0])
@@ -152,24 +155,26 @@ plt.tight_layout()
 plt.show()
 
 
-def fwd_euler(f,y,start,stop,n):
-    h = (stop-start)/n
-    i = 0
-    while i <= n:
-        k1 = h*f(y)
-        y += k1
-    return y
 
-
-sol = fwd_euler(RHS,theta0,0,100,5000)
-fig, ax = plt.subplots(nrows=1,ncols=2)
-im0 = ax[0].scatter(X[0:int(na/2),1:-3],Y[0:int(na/2),1:-3],c=sol[0:int(na/2),1:-3])
-plt.colorbar(im0,ax=ax[0])
-im1 = ax[1].scatter(X[int(na/2):na,1:-3],Y[int(na/2):na,1:-3],c=sol[int(na/2):na,1:-3])
-plt.colorbar(im3,ax=ax[1])
-plt.suptitle("Stationaru Cartesian")
-plt.tight_layout()
-plt.show()
+# def fwd_euler(f,y,start,stop,n):
+#     h = (stop-start)/n
+#     i = 0
+#     while i <= n:
+#         k1 = h*f(y)
+#         y += k1
+#         print("in fwd euler:",i,np.max(y))
+#     return y
+#
+#
+# sol = fwd_euler(RHS,theta0,0,100,int(5000))
+# fig, ax = plt.subplots(nrows=1,ncols=2)
+# im0 = ax[0].scatter(X[0:int(na/2),1:-3],Y[0:int(na/2),1:-3],c=sol[0:int(na/2),1:-3])
+# plt.colorbar(im0,ax=ax[0])
+# im1 = ax[1].scatter(X[int(na/2):na,1:-3],Y[int(na/2):na,1:-3],c=sol[int(na/2):na,1:-3])
+# plt.colorbar(im3,ax=ax[1])
+# plt.suptitle("Stationaru Cartesian")
+# plt.tight_layout()
+# plt.show()
 
 
 

@@ -174,7 +174,7 @@ def Jk(kb,beta,Xhalf,Yhalf):
 
 
 kb = 1.0
-beta = .5
+beta = .25
 
 theta_half = theta(kb,beta,Xhalf,Yhalf)
 theta_full = np.zeros(shape=(Ny,Nx))
@@ -338,7 +338,7 @@ def freq_grids(xlen,xnum,ylen,ynum):
 # # compute exact phase, exact pattern, and exact phase gradient
 kb_exact = 1.0
 #beta_exact = .01 #originally was .01
-beta_exact = .5
+beta_exact = .25
 
 theta_exact_half = theta(kb_exact,beta_exact,Xhalf,Yhalf)
 theta_x_exact_half = theta_x(kb_exact,beta_exact, Xhalf, Yhalf)
@@ -371,7 +371,7 @@ max_spec_idx = np.argsort(-np.abs(spec).flatten())[0]
 kx0 = np.abs(fftshift(xi).flatten()[max_spec_idx])
 ky0 = np.abs(fftshift(eta).flatten()[max_spec_idx])
 kb0 = np.sqrt(kx0**2+ky0**2)
-beta0 = .6*kb0
+beta0 = .3*kb0
 
 
 # optionally, use sympy to get derivatives of the objective function
