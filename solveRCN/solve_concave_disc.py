@@ -122,8 +122,6 @@ print("RHS Mean Abs Err (no origin):",np.mean(np.abs(RHS_aprx[:,3:-3]-RHS_exact[
 print("RHS Max Abs Err (no origin):",np.max(np.abs(RHS_aprx[:,3:-3]-RHS_exact[:,3:-3])))
 print("RHS L2 Rel Err (no origin):",np.linalg.norm(RHS_aprx[:,3:-3]-RHS_exact[:,3:-3])/np.linalg.norm(RHS_exact[:,3:-3]))
 
-
-print("RHS Max Abs Err Section:",np.abs(RHS_aprx[190:194,250:256]-RHS_exact[190:194,250:256]))
 fig, ax = plt.subplots(nrows=1,ncols=3)
 im0 = ax[0].imshow(RHS_exact[:,1:-3])
 plt.colorbar(im0,ax=ax[0])
@@ -154,6 +152,31 @@ plt.suptitle("RHS Cartesian")
 plt.tight_layout()
 plt.show()
 
+
+fig, ax = plt.subplots()
+im = ax.imshow(np.abs(RHS_aprx-RHS_exact))
+plt.colorbar(im,ax=ax)
+plt.show()
+
+
+fig,ax = plt.subplots()
+ax.plot(np.abs(RHS_aprx[:,252]-RHS_exact[:,252]))
+plt.show()
+
+
+fig,ax = plt.subplots()
+ax.plot(np.abs(RHS_aprx[:,253]-RHS_exact[:,253]))
+plt.show()
+
+
+fig,ax = plt.subplots()
+ax.plot(np.abs(RHS_aprx[:,254]-RHS_exact[:,254]))
+plt.show()
+
+
+fig,ax = plt.subplots()
+ax.plot(np.abs(RHS_aprx[:,255]-RHS_exact[:,255]))
+plt.show()
 
 
 # def fwd_euler(f,y,start,stop,n):

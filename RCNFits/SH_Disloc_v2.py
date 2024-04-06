@@ -3,8 +3,9 @@ import scipy.io as sio
 from scipy.fft import fft2, ifft2, fftfreq
 import time
 import os
+import matplotlib.pyplot as plt
 
-def solveSH(Lx,Ly,Nx,Ny,nwls,h,tmax,nsave,filename,Rscale=.5,beta=.45,amplitude=.1,energy=True):
+def solveSH(Lx,Ly,Nx,Ny,nwls,h,tmax,nsave,filename,Rscale=.5,amplitude=.1,energy=True, sig_scale=1.0):
     '''
     :param Lx: container length in x direction
     :param Ly: container length in y direction
@@ -26,16 +27,7 @@ def solveSH(Lx,Ly,Nx,Ny,nwls,h,tmax,nsave,filename,Rscale=.5,beta=.45,amplitude=
     X, Y = np.meshgrid(xx, yy)
 
     # set R function, if init_flag=3, we are on an ellipse
-    R = make_ramp(X,Y,Lx,Ly,Nx,Ny,Rscale,nwls)
-
-    # set initial condition, init_flag=3 means we are on the ellipse
-    if init_flag == 1:
-        u0 = np.random.randn(Ny, Nx)
-        u0 = amplitude * u0 / np.linalg.norm(u0, np.inf)
-    elif init_flag == 2:
-        u0 = amplitude * np.sin(Y)
-    else:
-        u0 = ellipse_init(X, Y, beta * Lx, beta * Ly, amplitude)
+    R, u0 = make_ramp_init(Lx,Ly,Nx,Ny,Rscale,nwls,amplitude,sig_scale)
 
     # -- precompute ETDRK4 scalar quantities --#
     kx = (2. * np.pi / Lx) * fftfreq(Nx, 1. / Nx)  # wave numbers
@@ -129,20 +121,6 @@ def solveSH(Lx,Ly,Nx,Ny,nwls,h,tmax,nsave,filename,Rscale=.5,beta=.45,amplitude=
 
 
 # method to be called for setting initial condition for solution on ellipse
-def ellipse_init(X,Y,a,b,amp):
-    nmx = 256
-    q = 2*np.pi*np.arange(1,nmx+1,1)/nmx
-    imx, jmx = np.shape(X)
-    bdry = np.vstack((a*np.cos(q), b*np.sin(q)))
-    rho = np.zeros((imx,jmx))
-    for ii in range(imx):
-        for jj in range(jmx):
-            rho[ii,jj] = np.min((X[ii,jj]-bdry[0,:])**2+(Y[ii,jj]-bdry[1,:])**2)
-    kx = (np.pi/a)*fftfreq(jmx,1./jmx)
-    ky = (np.pi/b)*fftfreq(imx,1./imx)
-    xi, eta = np.meshgrid(kx, ky)
-    rho = ifft2(np.exp(-(xi**2+eta**2))*fft2(rho))
-    return np.real(amp*np.sin(np.sqrt(rho)))
 
 def edensity(xi,eta,u0,ind,R):
     eloc = (1-xi**2-eta**2)*fft2(u0)
@@ -158,13 +136,72 @@ def edensity(xi,eta,u0,ind,R):
     u04th = np.real(ifft2(u04th))
     return .5*(eloc-R*u0sq+.5*u04th)
 
-def make_ramp(X,Y,Lx,Ly,Nx,Ny,Rscale,nwls):
-    print("debug")
-    return None
+def sigmoid(x, sigscale):
+    return 1 / (1 + np.exp(-sigscale*x))
+
+def make_ramp_init(Lx,Ly,Nx,Ny,Rscale,nwls,amp,sigscale):
+    xx = (Lx / Nx) * np.linspace(-Nx / 2 + 1, Nx / 2, Nx)
+    yy = (Ly / Ny) * np.linspace(-Ny / 2 + 1, Ny / 2, Ny)
+    X, Y = np.meshgrid(xx, yy)
+
+    top = 2 * np.pi * sigmoid(X,sigscale) + 2 * np.pi * nwls
+    bottom = -2 * np.pi * sigmoid(X,sigscale) - 2 * np.pi * nwls
+    domain = np.where(((Y < top) & (Y > bottom))
+                      &
+                      ((X < 25 * np.pi) & (X > -25 * np.pi)),
+                      1, 0)
+
+    # smoothing the domain
+    outer_indctr = np.where(domain == 0, 1, 0)
+    inner_indctr = np.where(domain == 1, 1, 0)
+
+    X_inner = X[np.where(inner_indctr == 1)]
+    Y_inner = Y[np.where(inner_indctr == 1)]
+
+    dist_from_domain = np.zeros((Ny, Nx))
+    for i in range(Ny):
+        for j in range(Nx):
+            if outer_indctr[i, j] == 1:
+                dist_from_domain[i, j] += np.min(np.sqrt((X[i, j] - X_inner) ** 2 + (Y[i, j] - Y_inner) ** 2))
+
+    recip = 1. / (1. + (3 * dist_from_domain) ** 2)
+    dom_with_decay = .5 * (domain + recip)
+
+    from scipy.ndimage import gaussian_filter
+    sigma = 2.0
+    smoothed_domain = gaussian_filter(dom_with_decay, sigma=sigma)
+    dom_bdry_x = X[np.where((.9999 <= smoothed_domain) & (smoothed_domain <= 1.0))]
+    dom_bdry_y = Y[np.where((.9999 <= smoothed_domain) & (smoothed_domain <= 1.0))]
+    R = 2*(np.tanh(10 * smoothed_domain) - .5)
+
+    init_phase = np.zeros((Ny, Nx))
+    for i in range(Ny):
+        for j in range(Nx):
+            if inner_indctr[i, j] == 1:
+                init_phase[i, j] += np.min(np.sqrt((X[i, j] - dom_bdry_x) ** 2 + (Y[i, j] - dom_bdry_y) ** 2))
 
 
-solveSH(20*np.pi,10*np.pi,256,128,8,.5,10,1,"SH_Disloc_v2",Rscale=.5,beta=.45,amplitude=.1,energy=True)
+    init = np.sin(init_phase)
+    return R*Rscale, amp*init
 
+
+#solveSH(30*np.pi,30*np.pi,1024,1024,5,.5,8000,2,"SH_Disloc_v2_3",Rscale=.5,amplitude=.5,energy=True,sig_scale=1.0)
+#solveSH(60*np.pi,30*np.pi,512,256,5,.5,8000,2,"SH_Disloc_v2_6",Rscale=.5,amplitude=.5,energy=True,sig_scale=.05)
+#solveSH(30*np.pi,30*np.pi,512,512,5,.5,8000,2,"SH_Disloc_v2_6",Rscale=.5,amplitude=.5,energy=True,sig_scale=.05)
+#solveSH(30*np.pi,30*np.pi,512,512,5,.5,8000,2,"SH_Disloc_v2_7",Rscale=.5,amplitude=.5,energy=True,sig_scale=.1)
+solveSH(30*np.pi,30*np.pi,256,256,5,.5,4000,2,"SH_Disloc_v2_9",Rscale=.5,amplitude=.5,energy=True,sig_scale=.01)
+#solveSH(30*np.pi,30*np.pi,512,512,5,.5,8000,2,"SH_Disloc_v2_8",Rscale=.9,amplitude=.5,energy=True,sig_scale=.2)
+data = sio.loadmat(os.getcwd()+"/data/sh_dislocation/"+"SH_Disloc_v2_9.mat")
+U = data['uu']
+E = data['ee']
+fig, ax = plt.subplots(nrows=2, ncols=1)
+plt.subplots_adjust(wspace=.2,hspace=.2)
+im0 = ax[0].imshow(U[:,:,-1],cmap='bwr')
+plt.colorbar(im0,ax=ax[0])
+im1 = ax[1].imshow(E[:,:,-1],cmap='bwr')
+plt.colorbar(im1,ax=ax[1])
+plt.tight_layout()
+plt.savefig(os.getcwd()+"/figs/sh_dislocation/"+"SH_Disloc_v2_9.png")
 
 
 
