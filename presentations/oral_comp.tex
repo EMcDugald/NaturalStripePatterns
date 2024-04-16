@@ -311,11 +311,10 @@ As we did for the complex field case, we can write the phase diffusion equation 
 G^2 &= -\frac{1}{\alpha}\int_{k_B^2}^{k^2}Bdk^2\\
 \alpha &= -\frac{1}{2}\frac{dB}{dk^2}\vert_{k^2=1}.
 \end{align}
-In this form, the first term measures the "bending" energy, whereas the second term measures the "stretching" energy.
-\par As a quick demonstration of the fact that the wavenumber is almost constant throughout the pattern, and that the solution evolves so as to minimize an energy, figure 2.4 shows a solution of Swift-Hohenberg on the square alongside its energy density. We see that the energy tends to condense around bends within the pattern. We use random initial conditions for this solution.\newline
+In this form, the first term measures the "bending" energy, whereas the second term measures the "stretching" energy. Figure 2.4 shows a solution of Swift-Hohenberg on the square alongside its energy density. We see that the energy tends to condense around bends within the pattern, and that the final state has an almost constant spatial wavenumber. We use random initial conditions for this solution.
 \begin{figure}
 \centering
-\includegraphics[scale=0.55]{sh_sq.png}
+\includegraphics[scale=0.95]{sh_eq_2.png}
 \caption{Swift-Hohenberg solution on the square, $R=.5$}
 \end{figure}
 
@@ -358,32 +357,60 @@ This gives rise to the simplest self-dual solutions, which are sums of exponenti
 \begin{equation}
     \psi = \sum_{1}^{N}\exp{\beta \vec{k}_j \cdot x}, |\vec{k}_j| = 1.
 \end{equation}
-The case of $N=2$ describes a prevalent defect known as a phase grain boundary. 
-The phase field is given by the formula
-\begin{equation}
-\theta_{\mu}(x,y) = \sqrt{1-\mu^2}x + \log{2\cosh{\mu y}}.
-\end{equation}
-While this solution arises from the self-dual reduction, it was recently shown that this solution is indeed the minimizer of the RCN energy within an appropriate function space and boundary conditions. This is valid for arbitrary $\mu \in (0,1)$. However, numerical solutions to Swift-Hohenberg do not exhibit phase grain boundaries past a certain critical angle. Instead, handles are formed, and the reasons for which are not rigorously justified. 
-\begin{figure}
-\centering
-\includegraphics[scale=0.45]{pgb1.png}
-\includegraphics[scale=0.45]{pgb2.png}
-\caption{Swift-Hohenberg phase grain boundary and nipple instability}
-\end{figure}
-\par The far fields of concave and convex disclinations can be realized through solutions of helmholtz equations. Can also deduce targets, spines, vortices, saddles, etc.
+The far fields of phase grain boundaries, concave and convex disclinations, targets, saddles, and spines can be realized through such solutions.
 
 \begin{figure}
 \centering
 \includegraphics[scale=0.7]{concaveconvex.png}
-\caption{concave convex}
+\caption{Concave/Convex disclinations}
 \end{figure}
+\FloatBarrier
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.7]{spine.png}
+\caption{Spine Defect}
+\end{figure}
+
+\FloatBarrier
+
+
 \par Another interesting defect realized from RCN is the stationary dislocation. Such defects are obtained by seeking solutions $\psi$ such that $\psi = \exp{\beta x}F(x,y)$, where $2\beta F_{x} + F_{yy} = 0$. We seek solutions such that $\theta(-x,y)=\theta(x,y)$ and that $\theta(x,y) = x$ for $y$ large and positive and to $x+\pi \text{sgn}(x)$ for $y$ large and negative. The solution is then
 \begin{equation}
     \theta(x,y) = x + \frac{1}{\beta}\ln\{\frac{1}{2}\left(1+\exp{(\beta \pi \text{sgn}(x))}\right) + \frac{1}{2}(1-\exp{(\beta \pi \text{sgn}(x))})\text{Erf}(\sqrt{\beta}\frac{y}{\sqrt{|x|}})\}.
 \end{equation}
 
-\par A particularly interesting open challenge is to use the RCN model to deduce the structure of defects on the ellipse. Using the eikonal solution as an initial condition, one observes the formation of multi-dislocations along the major axis of the ellipse, reminiscent of the cross-newell zippers observed in the sharp knee bend scenario. More generally, it is interesting to consider the challenge of predicting defect configurations for fields with multiple defect types. 
 
+\subsection{Open Challenges for the RCN Model}
+\subsubsection{SH Zippers and the Handle Formation}
+\par The case of $N=2$ describes a prevalent defect known as a phase grain boundary. 
+The phase field is given by the formula
+\begin{equation}
+\theta_{\mu}(x,y) = \sqrt{1-\mu^2}x + \log{2\cosh{\mu y}}.
+\end{equation}
+While this solution arises from the self-dual reduction, this solution is indeed the minimizer of the RCN energy within afunction space of single-valued phases. This is valid for arbitrary $\mu \in (0,1)$. However, numerical solutions to Swift-Hohenberg do not exhibit phase grain boundaries past a certain critical angle. Instead, dislocations are formed along the core of the defect.
+\par The difference between phase grain boundaries and dislocations are well understand by comparing properties of the phase and its gradient. For small $\mu$, the $y$ component of the wave vector $\theta_y$ vanishes at the defect core. As $\mu$ increases and a dislocation forms, a jump is developed across the defect core. In addition, along the $x$ direction the phase alternates between regions where it is constant, and regions where it is linear with $\theta_y$ constant. These suggest mixed boundary conditions for the phase at the defect core. 
+\par The most natural question to ask is whether the RCN equation predicts this transition of boundary conditions for the phase as $\mu$ is increased. It is known that regardless of $\mu$, phase grain boundaries are minimizers of the RCN energy when restricted to a function space of single valued phases. However, it is also known that if this requirement is relaxed, there exist lower energy states in the space of two valued phases. In fact, numerical analogues of the SH zippers have been obtained for the RCN equations.
+\par Add a note about Alan's heuristic based on the energy to explain the critical angle for the transition.
+\begin{figure}
+\centering
+\includegraphics[scale=0.4]{sh_zippers.png}
+\caption{Swift-Hohenberg Zippers}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{CN_Zip.png}
+\caption{Cross-Newell Zippers}
+\end{figure}
+
+
+
+
+
+
+\subsubsection{Convection in an Elliptical Container}
+\par While there is ample evidence that the RCN model captures the transition observed from a phase grain boundary to a zipper, the scenario of convection rolls in an elliptical container remains an open challenge. That is, there is no formal argument to explain the range of character of defects observed in this scenario, nor is there a numerical solution of RCN yielding a qualitatively similar field. 
+\par Using the eikonal solution as an initial condition, one observes the formation of dislocations along the major axis of the ellipse, reminiscent of the zippers observed in the sharp knee bend scenario. However, as one moves away from the center of the ellipse to its boundary in the $x$ direction, one sees the dislocations soften into phase grain boundaries. In addition, the phase contours appear eikonal-like at the outer most layer, and gradually develop a more jagged profile moving into the center of the ellipse. Due to the finite domain and more restrictive boundary conditions, performing a variational analysis on this scenario is more delicate than the case of the zippers. Similarly, numerical solutions are more delicate to obtain. 
 \begin{figure}
 \centering
 \includegraphics[scale=0.8]{SHEllipse2to1_0124.png}
@@ -521,47 +548,8 @@ Following the approach of Kutz, we use Sequential Threshold Ridge Regression wit
 \caption{SH Model Recovery}
 \end{figure}
 
-\subsection{Combining SINDy with an Autoencoder}
-\par Having "discovered" the form of the microscopic model from numerical simulations, a natural next step is to discover the macroscopic model. The use of autoencoder neural networks have been demonstrated to recover dynamics in terms of an alternative coordinate system. Consider for example, a video of a swinging pendulum. Kutz et al were able to combine an autoencoder with the SINDy framework to obtain the equation $\ddot{\theta} = \sin(\theta)$. However, we are not aware of examples where the recovered model is a PDE. The one example explored on PDE data was with a coupled reaction-diffusion system, from which the SINDy + Autoencoder method recovered a dynamical system. Thus, we are unaware of any examples of using an autoencoder with SINDy to recover a PDE.
-\par The method trains a neural network to generate its own input, with a latent space (typically of reduced dimension) in the middle. Thus, we can break the autoencoder into two components, the encoder and the decoder. If $x$ is our input data, $z$ the latent space representation of $x$, and $\hat{x}$ the output, the autoencoder can be represented as
-\begin{equation}
-\hat{x} = \psi(z) = \psi(\varphi(x)).
-\end{equation}
-In this case $\varphi$ is the encoder and $\psi$ is the decoder. The method consists of minimizing the autoencoder error, coupled with minimizing the SINDy error applied to the latent space representation. The loss function for a single example is then
-\begin{equation}
-L(x) = \|x - \psi(z)\|_2^2 + \lambda_1\|(\nabla_x z)\dot{x}-\Theta(z)\xi\|_2^2 + \lambda_2\|\xi\|_1.
-\end{equation}
-\par Despite a lack of working examples, we set out to explore this concept, in the hopes of recovering the RCN from Swift-Hohenberg data. While one could hypothetically generate phase surfaces, and apply the standard SINDy procedure to those surfaces, it is a more interesting challenge to discover the model without asserting knowledge of the expected coordinate transformation. The first step is to obtain a working autoencoder, which we achieve using both a standard feed forward network and a convolutional network. We use data of dimension $1001 \times 128 \times 128$, and select our latent space to be of dimension $32 \time 32$. Figure 6.1 displays code for the network of Dense layers, while figure 6.2 displays code for the convolutional neural network. Figures 6.3 and 6.4 display the corresponding model summaries.
-We run the autoencoders on 10 random samples from data that was not touched during training, and visualize the latent space, along with the input and its autoencoder approximation. Those comparisons are seen in figure 6.5 for the dense encoder, and 6.6 for the convolutional encoder.
-\begin{figure}
-\centering
-\includegraphics[scale=0.35]{ae5.png}
-\caption{Dense Autoencoder Latent Space}
-\end{figure}
-\begin{figure}
-\centering
-\includegraphics[scale=0.35]{ae6.png}
-\caption{Convolutional Autoencoder Latent Space}
-\end{figure}
-
-\par An attempt was made to regularize the autoencoder to encourage the latent variable to be the phase surface. With this approach, we apply the encoder to the input, and use the computational graph, in addition to precomputed numerical derivatives of the input, to estimate the relevant terms of the RCN. The RHS of the RCN applied to the latent variable is then added as a penalty to the loss function. While the resulting model was able to autoencode the input, the latent variable was clearly not the RCN phase. Analysis needs to be done to validate that the regularization is correctly implemented. 
-\begin{figure}
-\centering
-\includegraphics[scale=0.5]{ae7.png}
-\caption{Custom RCN loss function}
-\end{figure}
-
-\begin{figure}
-\centering
-\includegraphics[scale=0.5]{ae8.png}
-\caption{RCN Regularized Autoencoder Reconstructions}
-\end{figure}
-\FloatBarrier
-
-
-
 \subsection{Methods to estimate the wave vector}
-\par An alternative approach to "machine learning" the wave vector is to estimate it directly from SH fields. Methods we considered included local least squares fits to cosine waves, hilbert transforms, wavelets, and a heuristic approach.
+\par A natural extension of the previous section is to attempt to recover macroscopic equations from SH fields. While a major goal of the identification is to make the order parameter learnable as well as its dynamics, we considered first methods to extract the phase from SH fields. Methods we considered included local least squares fits to cosine waves, hilbert transforms, wavelets, and a heuristic approach.
 \par The heuristic method is based on the intuitive notion of what the wave vector is. The key properties are that the wave vector should point in the direction of greatest change of the microscopic field, and its norm should capture the wavelength of the pattern in that direction. It is this second property that introduces some ambiguity, as the phase function will not be perfectly linear, but rather slowly varying. Formally, the precise meaning of the wave vector is as the phase gradient. However, away from defects, it seems reasonable to estimate the field with a linear phase, and use the resulting fit to define $\vec{k}$. The heuristic algorithm is based on this principle. 
 The microscopic field is denoted by $w$. The general procedure to obtain the wave vector has two stages. 
 \par In stage one, the wave vector direction is found at a point $r_0$ by creating a small disk of radius $\epsilon$ about $r_0$, $B_{\epsilon}(r_0)$. We select an optimal point on this disk $r_{\text{opt}}$ via
@@ -592,13 +580,101 @@ By constrcution of the set $B_{\epsilon}(r_0)$, $r_{\text{opt}}$ is identified w
 \caption{Wavelet approach}
 \end{figure}
 
+\par Another interesting concept is the use of the Hilbert transform for phase extraction. In recent work, the Hilbert transform was used to extract phase estimates for knee bends and zippers. While it is not clear how well the resulting parameter captures the notion of phase, it seems to capture the qualitative properties of the phase.
+
+
+\subsection{Simulataneous discover of coordinates and dynamics}
+\par Ultimately, what one wishes to obtain is an algorithm that can deduce the approriate order parameter equations from the microscopic data, without any foreknowledge of the appropriate coordinates. As an example, would it be possible to extract phase and amplitude equations for the seed configurations of a sunflower head? The use of autoencoder neural networks have been demonstrated to recover dynamics in terms of an alternative coordinate system. Consider for example, a video of a swinging pendulum. Kutz et al were able to combine an autoencoder with the SINDy framework to obtain the equation $\ddot{\theta} = \sin(\theta)$. However, we are not aware of examples in the literature where this method recovered order parameter equations from PDEs. Nevertheless, we are interested in regularizing/specializing this method for the problem at hand. 
+\par The method trains a neural network to generate its own input, with a latent space (typically of reduced dimension) in the middle. Thus, we can break the autoencoder into two components, the encoder and the decoder. If $x$ is our input data, $z$ the latent space representation of $x$, and $\hat{x}$ the output, the autoencoder can be represented as
+\begin{equation}
+\hat{x} = \psi(z) = \psi(\varphi(x)).
+\end{equation}
+In this case $\varphi$ is the encoder and $\psi$ is the decoder. The method consists of minimizing the autoencoder error, coupled with minimizing the SINDy error applied to the latent space representation. The loss function for a single example is then
+\begin{equation}
+L(x) = \|x - \psi(z)\|_2^2 + \lambda_1\|(\nabla_x z)\dot{x}-\Theta(z)\xi\|_2^2 + \lambda_2\|\xi\|_1.
+\end{equation}
+\par Due to the flexibility of neural network, achieving an autoencoder of arbitrary latent dimension is easy, which we achieve using both a standard feed forward network and a convolutional network. We use data of dimension $1001 \times 128 \times 128$, and select our latent space to be of dimension $32 \time 32$. Figure 6.1 displays code for the network of Dense layers, while figure 6.2 displays code for the convolutional neural network. Figures 6.3 and 6.4 display the corresponding model summaries.
+We run the autoencoders on 10 random samples from data that was not touched during training, and visualize the latent space, along with the input and its autoencoder approximation. Those comparisons are seen in figure 6.5 for the dense encoder, and 6.6 for the convolutional encoder.
+\begin{figure}
+\centering
+\includegraphics[scale=0.35]{ae5.png}
+\caption{Dense Autoencoder Latent Space}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[scale=0.35]{ae6.png}
+\caption{Convolutional Autoencoder Latent Space}
+\end{figure}
+
+\par While implementing an autoencoder is a simple task, regularizing it to compute an order parameter as a latent space is very non trivial. As a preliminary experiment, we proposed using the RCN as a penalty term in the loss function, where the right hand side is balanced with the time derivatives of the latent variable. Let $w^{i}$ be the $i^{th}$ frame of an SH simulation. Then $z^{i} = \psi(w^{i})$ is the encoded state of $w^{i}$. One needs to compute $\Delta^2 z^{i}$, which involves $4^{th}$ order derivatives of the encoded variable with respect to the spatial coordinates. An interesting note, is that a priori there is no reason to believe that the encoded variable resides on a regular cartesian grid. It is the hope that this regularization allows us to make that interpretation. To compute such terms, we need to access the derivatives of the encoder with respect to the input $w^{i}$. ie,
+\begin{equation*}
+    \frac{\partial z}{\partial x} =  \frac{\partial \psi(w)}{\partial x} = \frac{\partial \psi}{\partial w}\frac{\partial w}{\partial x}.
+\end{equation*}
+Thus, the procedure must involve extracting derivatives of the encoder with respect to its input, as well as precomputing derivatives of the microscopic data with respect to its native coordinates. We attempted to perform such a regularization in tensorflow, but found the latent variable had no obvious relation to a phase surface. A technical code analysis should be completed to ensure that the partial derivatives of the encoder are actually being computed correctly.
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{ae7.png}
+\caption{Custom RCN loss function}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{ae8.png}
+\caption{RCN Regularized Autoencoder Reconstructions}
+\end{figure}
+\FloatBarrier
+
+\par Another potential issue with this approach is that the initial weights for the encoder are determined randomly, and high order derivatives of are being calculated from a somehwat random surface. Perhaps one could start the process by training a neural network that maps patches of SH-like fields to precomputed, coarsened phases, and use the weights of this network as the initial state of the encoder. 
+
+\par We propose the first step of the dissertation involve setting up such an encoder, using data consisting of cosine waves of slowly varying phase functions with nice gradients. Then we use the resulting weights as initial weights for an autoencoder, which we will regularize using the RCN RHS, and we will only apply this model to data that is sufficiently far from defects.
+
+
+
+%\subsection{Combining SINDy with an Autoencoder}
+%\par Having "discovered" the form of the microscopic model from numerical simulations, a natural next step is to discover the macroscopic model. The use of autoencoder neural networks have been demonstrated to recover dynamics in terms of an alternative coordinate system. Consider for example, a video of a swinging pendulum. Kutz et al were able to combine an autoencoder with the SINDy framework to obtain the equation $\ddot{\theta} = \sin(\theta)$. However, we are not aware of examples where the recovered model is a PDE. The one example explored on PDE data was with a coupled reaction-diffusion system, from which the SINDy + Autoencoder method recovered a dynamical system. Thus, we are unaware of any examples of using an autoencoder with SINDy to recover a PDE.
+%\par The method trains a neural network to generate its own input, with a latent space (typically of reduced dimension) in the middle. Thus, we can break the autoencoder into two components, the encoder and the decoder. If $x$ is our input data, $z$ the latent space representation of $x$, and $\hat{x}$ the output, the autoencoder can be represented as
+%\begin{equation}
+%\hat{x} = \psi(z) = \psi(\varphi(x)).
+%\end{equation}
+%In this case $\varphi$ is the encoder and $\psi$ is the decoder. The method consists of minimizing the autoencoder error, coupled with minimizing the SINDy error applied to the latent space representation. The loss function for a single example is then
+%\begin{equation}
+%L(x) = \|x - \psi(z)\|_2^2 + \lambda_1\|(\nabla_x z)\dot{x}-\Theta(z)\xi\|_2^2 + \lambda_2\|\xi\|_1.
+%\end{equation}
+%\par Despite a lack of working examples, we set out to explore this concept, in the hopes of recovering the RCN from Swift-Hohenberg data. While one could hypothetically generate phase surfaces, and apply the standard SINDy procedure to those surfaces, it is a more interesting challenge to discover the model without asserting knowledge of the expected coordinate transformation. The first step is to obtain a working autoencoder, which we achieve using both a standard feed forward network and a convolutional network. We use data of dimension $1001 \times 128 \times 128$, and select our latent space to be of dimension $32 \time 32$. Figure 6.1 displays code for the network of Dense layers, while figure 6.2 displays code for the convolutional neural network. Figures 6.3 and 6.4 display the corresponding model summaries.
+%We run the autoencoders on 10 random samples from data that was not touched during training, and visualize the latent space, along with the input and its autoencoder approximation. Those comparisons are seen in figure 6.5 for the dense encoder, and 6.6 for the convolutional encoder.
+%\begin{figure}
+%\centering
+%\includegraphics[scale=0.35]{ae5.png}
+%\caption{Dense Autoencoder Latent Space}
+%\end{figure}
+%\begin{figure}
+%\centering
+%\includegraphics[scale=0.35]{ae6.png}
+%\caption{Convolutional Autoencoder Latent Space}
+%\end{figure}
+
+%\par An attempt was made to regularize the autoencoder to encourage the latent variable to be the phase surface. With this approach, we apply the encoder to the input, and use the computational graph, in addition to precomputed numerical derivatives of the input, to estimate the relevant terms of the RCN. The RHS of the RCN applied to the latent variable is then added as a penalty to the loss function. While the resulting model was able to autoencode the input, the latent variable was clearly not the RCN phase. Analysis needs to be done to validate that the regularization is correctly implemented. 
+%\begin{figure}
+%\centering
+%\includegraphics[scale=0.5]{ae7.png}
+%\caption{Custom RCN loss function}
+%\end{figure}
+
+%\begin{figure}
+%\centering
+%\includegraphics[scale=0.5]{ae8.png}
+%\caption{RCN Regularized Autoencoder Reconstructions}
+%\end{figure}
+%\FloatBarrier
+
+
 \section{Next Steps}
 \par Explore use of neural net for phase unwrapping/phase gradients
 \par Debug regularization of SINDy + Autoencoder method. 
 \par Explore literature on weak sindy formulations and latent space dynamics identification
 \par Study the second order effects of the amplitudes.
 \par Conduct analysis on the Hilbert transform for slowly varying phases
-\par Variational analysis
+\par Variational analysis and numerical solutions for the situation on the ellipse. 
 
 \bibliographystyle{plain}
 \nocite{*}

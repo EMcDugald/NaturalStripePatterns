@@ -144,8 +144,12 @@ def make_ramp_init(Lx,Ly,Nx,Ny,Rscale,nwls,amp,sigscale):
     yy = (Ly / Ny) * np.linspace(-Ny / 2 + 1, Ny / 2, Ny)
     X, Y = np.meshgrid(xx, yy)
 
-    top = 2 * np.pi * sigmoid(X,sigscale) + 2 * np.pi * nwls
-    bottom = -2 * np.pi * sigmoid(X,sigscale) - 2 * np.pi * nwls
+    # top = 2 * np.pi * sigmoid(X,sigscale) + 2 * np.pi * nwls
+    # bottom = -2 * np.pi * sigmoid(X,sigscale) - 2 * np.pi * nwls
+
+    top = np.pi * sigmoid(X, sigscale) + 2 * np.pi * nwls
+    bottom = -np.pi * sigmoid(X, sigscale) - 2 * np.pi * nwls
+
     domain = np.where(((Y < top) & (Y > bottom))
                       &
                       ((X < 25 * np.pi) & (X > -25 * np.pi)),
@@ -189,9 +193,14 @@ def make_ramp_init(Lx,Ly,Nx,Ny,Rscale,nwls,amp,sigscale):
 #solveSH(60*np.pi,30*np.pi,512,256,5,.5,8000,2,"SH_Disloc_v2_6",Rscale=.5,amplitude=.5,energy=True,sig_scale=.05)
 #solveSH(30*np.pi,30*np.pi,512,512,5,.5,8000,2,"SH_Disloc_v2_6",Rscale=.5,amplitude=.5,energy=True,sig_scale=.05)
 #solveSH(30*np.pi,30*np.pi,512,512,5,.5,8000,2,"SH_Disloc_v2_7",Rscale=.5,amplitude=.5,energy=True,sig_scale=.1)
-solveSH(30*np.pi,30*np.pi,256,256,5,.5,4000,2,"SH_Disloc_v2_9",Rscale=.5,amplitude=.5,energy=True,sig_scale=.01)
+#solveSH(30*np.pi,30*np.pi,256,256,5,.5,4000,2,"SH_Disloc_v2_9",Rscale=.5,amplitude=.5,energy=True,sig_scale=.01)
+##solveSH(30*np.pi,30*np.pi,512,512,5,.5,4000,2,"SH_Disloc_v2_10",Rscale=.5,amplitude=.5,energy=True,sig_scale=1)
+#solveSH(45*np.pi,45*np.pi,1024,1024,7,.5,2000,2,"SH_Disloc_v2_11",Rscale=.5,amplitude=.5,energy=True,sig_scale=.25)
+#solveSH(45*np.pi,45*np.pi,1024,1024,7,1,5000,2,"SH_Disloc_v2_12",Rscale=.5,amplitude=.5,energy=True,sig_scale=.25)
 #solveSH(30*np.pi,30*np.pi,512,512,5,.5,8000,2,"SH_Disloc_v2_8",Rscale=.9,amplitude=.5,energy=True,sig_scale=.2)
-data = sio.loadmat(os.getcwd()+"/data/sh_dislocation/"+"SH_Disloc_v2_9.mat")
+#solveSH(45*np.pi,45*np.pi,1024,1024,7,.5,20000,2,"SH_Disloc_v2_13",Rscale=.5,amplitude=.5,energy=True,sig_scale=.25)
+solveSH(90*np.pi,90*np.pi,256,256,15,1,20000,2,"SH_Disloc_v2_14",Rscale=.5,amplitude=.5,energy=True,sig_scale=.25)
+data = sio.loadmat(os.getcwd()+"/data/sh_dislocation/"+"SH_Disloc_v2_14.mat")
 U = data['uu']
 E = data['ee']
 fig, ax = plt.subplots(nrows=2, ncols=1)
@@ -201,7 +210,7 @@ plt.colorbar(im0,ax=ax[0])
 im1 = ax[1].imshow(E[:,:,-1],cmap='bwr')
 plt.colorbar(im1,ax=ax[1])
 plt.tight_layout()
-plt.savefig(os.getcwd()+"/figs/sh_dislocation/"+"SH_Disloc_v2_9.png")
+plt.savefig(os.getcwd()+"/figs/sh_dislocation/"+"SH_Disloc_v2_14.png")
 
 
 

@@ -101,7 +101,7 @@ on step: 980
 energy: -174964.84892871272
 on step: 1000
 energy: -174964.85061499677
-time to generate solutions for mu=0.3:  1431.7644221782684
+time to generate solutions for mu=0.3:  1443.0183370113373
 Grid Dims: Nx =  512 Ny =  512
 Dom Size: Lx =  52.692543070642465 Ly =  61.402694304415746
 Approximation length scale: 0.7
@@ -16197,6 +16197,6 @@ Est Field mean err: 0.009323304426962104
 Shape of subsampled interior grid: (175, 175)
 rmax_x: 6.5520393034890185 rmax_y: 8.435846263034849
 Making derivative grids
-time to make derivatives: 1950.4184119701385
+time to make derivatives: 2037.475396156311
 Intended Lengths of interior grid: xlength= 36.884780149449725 ylength= 42.98188601309102
 Actual Lengths of interior grid: xlength= 35.8845498798113 ylength= 41.81631627776261

@@ -99,7 +99,7 @@ print_hess = False
 amp_pos = True
 
 
-data = sio.loadmat(os.getcwd()+"/data/sh_dislocation/"+"SH_Disloc_v2_8.mat")
+data = sio.loadmat(os.getcwd()+"/data/sh_dislocation/"+"SH_Disloc_v2_12.mat")
 Wfull = data['uu'][:,:,-1]
 xxfull = data['xx'].T[0]
 yyfull = data['yy'].T[0]
@@ -179,12 +179,12 @@ spec = fftshift(fft2(f))
 max_spec_idx = np.argsort(-np.abs(spec).flatten())[0]
 kx0 = np.abs(fftshift(xiinner).flatten()[max_spec_idx])
 ky0 = np.abs(fftshift(etainner).flatten()[max_spec_idx])
-kb0 = 1.07*np.sqrt(kx0**2+ky0**2)
-beta0 = .6*kb0
+kb0 = 1.00*np.sqrt(kx0**2+ky0**2)
+beta0 = .5*kb0
 phi0 = 0
 
 #do the opimization for x>0 with cutoff
-cutoff = 50
+cutoff = 75
 Xhalf = Xinner[:,int(nxinner/2)+cutoff:]
 Yhalf = Yinner[:,int(nxinner/2)+cutoff:]
 Whalf = Winner[:,int(nxinner/2)+cutoff:]
@@ -207,7 +207,7 @@ plt.colorbar(im1,ax=axs[1])
 plt.colorbar(im2,ax=axs[2])
 plt.suptitle("Pattern, Approx Pattern, and Error")
 plt.tight_layout()
-plt.savefig(os.getcwd()+"/figs/sh_dislocation/FieldEstInit_v1_2.png")
+plt.savefig(os.getcwd()+"/figs/sh_dislocation/FieldEstInit_v1.png")
 print("Init Field max err:", np.max(np.abs(Whalf-initial_pattern)))
 print("Init Field mean err:", np.mean(np.abs(Whalf-initial_pattern)))
 

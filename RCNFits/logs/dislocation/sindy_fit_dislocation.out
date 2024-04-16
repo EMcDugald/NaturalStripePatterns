@@ -1,31 +1,55 @@
 Self Dual Equation: (div(k))^2-1+2|k|^2-|k|^4 = 0
+Actual SD Balance (L2): 1.6756417898756333
+Actual SD Balance (Mean AE): 0.0036822519230414585
+Actual SD Balance (Max AE): 0.0631668777100578
 First Fit LHS = div(k)^2
 RHS should be 1 - 2|k|^2 + |k|^4
-coefficient vector solution = [[-0.03781286]
- [ 0.01871856]
- [ 0.01910891]]
-u_t = (-0.037813 +0.000000i)|k|^2
-    + (0.018719 +0.000000i)|k|^4
-    + (0.019109 +0.000000i)1
+coefficient vector solution = [[-0.02083922]
+ [ 0.01036161]
+ [ 0.01046175]]
+u_t = (-0.020839 +0.000000i)|k|^2
+    + (0.010362 +0.000000i)|k|^4
+    + (0.010462 +0.000000i)1
    
-Error 1: 0.2735603811534884
+Error 1: 1.6756417898756333
 Second Fit LHS = div(k)^2 -1 + 2|k|^2 - |k|^4
 RHS should be 0
 coefficient vector solution = [[ 0.        +0.j]
- [ 0.        +0.j]
- [-0.00138763-0.j]]
-u_t = (-0.001388 -0.000000i)|k|^3
+ [ 0.01725557+0.j]
+ [-0.0208099 +0.j]]
+u_t = (0.017256 +0.000000i)|k|
+    + (-0.020810 +0.000000i)|k|^3
    
-Error 2: 0.27356038115348846
+Error 2: 1.6756417898756333
 Third Fit LHS = 2|k|^2 - |k|^4
 RHS Should be: 1 - (div(k)^2
-coefficient vector solution = [[-30.5721498 ]
- [ -0.03618404]
- [  1.03643646]
- [ 25.90590116]]
-u_t = (-30.572150 +0.000000i)div(k)^2
-    + (-0.036184 +0.000000i)|k|
-    + (1.036436 +0.000000i)1
-    + (25.905901 +0.000000i)Jk
+coefficient vector solution = [[-3.51377217e+01]
+ [-2.42412426e-02]
+ [ 1.02220825e+00]
+ [ 8.09849159e+01]]
+u_t = (-35.137722 +0.000000i)div(k)^2
+    + (-0.024241 +0.000000i)|k|
+    + (1.022208 +0.000000i)1
+    + (80.984916 +0.000000i)Jk
    
-Error 3: 0.27356038115348835
+Error 3: 1.6756417898756333
+F Equation: 2 beta kb F_x + F_yy = 0
+Actual F Balance (L2): 0.0871664604596436
+Actual F Balance (Mean AE): 0.00028835104100998117
+Actual F Balance (Max AE): 0.0007249265193246329
+F Equation Fits
+F Fit LHS = 2*kbeta*kb*Fx+Fyy beta =  0.01000000000118968 kb =  0.9999999999707654
+RHS should be 0
+coefficient vector solution = [[-0.00026468-0.j]
+ [ 0.        +0.j]
+ [ 0.        +0.j]]
+u_t = (-0.000265 -0.000000i)F
+   
+F Fit LHS = 2*kbeta*kb*Fx beta =  0.01000000000118968 kb =  0.9999999999707654
+RHS should be -Fyy
+coefficient vector solution = [[ 0.        +0.j]
+ [-0.00021567-0.j]
+ [ 0.        +0.j]
+ [ 0.        +0.j]]
+u_t = (-0.000216 -0.000000i)F^2
+   
