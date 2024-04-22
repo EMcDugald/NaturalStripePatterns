@@ -112,7 +112,7 @@ Using the Ansatz for complex fields (1.2), one can write
 \begin{equation}
 \delta E = \frac{\delta E}{\delta w}\delta w + \frac{\delta E}{\delta w^*}\delta w^* = -2A_t\delta A - 2A^2\Theta_t \delta \theta.
 \end{equation}
-\par We want now to find expressions for $\frac{\delta E}{\delta A}$ and $\frac{\delta E}{\delta \Theta}$
+\par We want now to find expressions for $\frac{\delta E}{\delta A}$ and $\frac{\delta E}{\delta \Theta}$.
 Using the fact that $\nabla_{\bm{x}} = \epsilon\nabla_{\bm{X}}$, and writing $w=Ae^{i\theta}=A(\bm{x})e^{i\theta(\bm{x})}$, one obtains
 \begin{align}
 \nabla_{\bm{x}}w &= e^{i\theta}(i\bm{k}+\epsilon\nabla_{\bm{X}})A\\
@@ -388,9 +388,9 @@ The phase field is given by the formula
 \begin{equation}
 \theta_{\mu}(x,y) = \sqrt{1-\mu^2}x + \log{2\cosh{\mu y}}.
 \end{equation}
-While this solution arises from the self-dual reduction, this solution is indeed the minimizer of the RCN energy within afunction space of single-valued phases. This is valid for arbitrary $\mu \in (0,1)$. However, numerical solutions to Swift-Hohenberg do not exhibit phase grain boundaries past a certain critical angle. Instead, dislocations are formed along the core of the defect.
+While this solution arises from the self-dual reduction, this solution is indeed the minimizer of the RCN energy within a function space of single-valued phases. This is valid for arbitrary $\mu \in (0,1)$. However, numerical solutions to Swift-Hohenberg do not exhibit phase grain boundaries past a certain critical angle. Instead, dislocations are formed along the core of the defect, as depicted in figure 2.7.
 \par The difference between phase grain boundaries and dislocations are well understand by comparing properties of the phase and its gradient. For small $\mu$, the $y$ component of the wave vector $\theta_y$ vanishes at the defect core. As $\mu$ increases and a dislocation forms, a jump is developed across the defect core. In addition, along the $x$ direction the phase alternates between regions where it is constant, and regions where it is linear with $\theta_y$ constant. These suggest mixed boundary conditions for the phase at the defect core.
-\par The most natural question to ask is whether the RCN equation predicts this transition of boundary conditions for the phase as $\mu$ is increased. It is known that regardless of $\mu$, phase grain boundaries are minimizers of the RCN energy when restricted to a function space of single valued phases. However, it is also known that if this requirement is relaxed, there exist lower energy states in the space of two valued phases. In fact, numerical analogues of the SH zippers have been obtained for the RCN equations \cite{VENK2008}.
+\par The most natural question to ask is whether the RCN equation predicts this transition of boundary conditions for the phase as $\mu$ is increased. It is known that regardless of $\mu$, phase grain boundaries are minimizers of the RCN energy when restricted to a function space of single valued phases. However, it is also known that if this requirement is relaxed, there exist lower energy states in the space of two valued phases. In fact, numerical analogues of the SH zippers have been obtained for the RCN equations \cite{VENK2008}, as seen in figure 2.8.
 \begin{figure}
 \centering
 \includegraphics[scale=0.4]{sh_zippers.png}
@@ -409,7 +409,7 @@ While this solution arises from the self-dual reduction, this solution is indeed
 
 \subsubsection{Convection in an Elliptical Container}
 \par While there is ample evidence that the RCN model captures the transition observed from a phase grain boundary to a zipper, the scenario of convection rolls in an elliptical container remains an open challenge. That is, there is no formal argument to explain the range of character of defects observed in this scenario, nor is there a numerical solution of RCN yielding a qualitatively similar field.
-\par Using the eikonal solution as an initial condition, one observes the formation of dislocations along the major axis of the ellipse, reminiscent of the zippers observed in the sharp knee bend scenario. However, as one moves away from the center of the ellipse to its boundary in the $x$ direction, one sees the dislocations soften into phase grain boundaries. In addition, the phase contours appear eikonal-like at the outer most layer, and gradually develop a more jagged profile moving into the center of the ellipse. Due to the finite domain and more restrictive boundary conditions, performing a variational analysis on this scenario is more delicate than the case of the zippers. Similarly, numerical solutions are more delicate to obtain.
+\par Figure 2.9 shows a nearly stationary SH solution and its corresponding energy density on the ellopse. Using the eikonal solution as an initial condition, one observes the formation of dislocations along the major axis of the ellipse, reminiscent of the zippers observed in the sharp knee bend scenario. However, as one moves away from the center of the ellipse to its boundary in the $x$ direction, one sees the dislocations soften into phase grain boundaries. In addition, the phase contours appear eikonal-like at the outer most layer, and gradually develop a more jagged profile moving into the center of the ellipse. Due to the finite domain and more restrictive boundary conditions, performing a variational analysis on this scenario is more delicate than the case of the zippers. Similarly, numerical solutions are more delicate to obtain.
 \begin{figure}
 \centering
 \includegraphics[scale=0.8]{SHEllipse2to1_0124.png}
@@ -423,10 +423,10 @@ While this solution arises from the self-dual reduction, this solution is indeed
 
 \section{Computational Verification}
 \par By construction, the RCN model is valid under the assumption of a slowly varying wave vector. Thus, near defects, one doesn't expect agreement between RCN solutions and Swift-Hohenberg solutions. Remarkably, however, the RCN solutions valid away from defects preserve the topological characteristics of defects. In this section, we explore the accuracy of the RCN model in the case of the phase grain boundary and the stationary dislocation. We compare the result of numerical swift-hohenberg fields to patterns obtained using RCN phase formula, and the amplitude relations
-\begin{align*}
+\begin{align}
     A_1 &= \frac{4}{3}(R - (k^2-1)^2)\\
     A_3 &= \frac{A_1^3}{4(R-(9k^2-1)^2)}.
-\end{align*}
+\end{align}
 
 \par The general procedure is as follows. We simulate swift-hohenberg numerically with desired defect type. From this simulation, we use an optimization procedure to fit parameters of the RCN phase function to the Swift-Hohenberg data, and compute the error. With potential systems identification applications in mind, we make it possible to estimate initial values for the RCN parameters from the SH data. The data is simulated using a fourth order solver for stiff PDEs introduced by Trefethen \cite{TREF2005}. Depending on the desired defect, boundary conditions can be modified by ramping the stress parameter $R$ over an appropriate domain. 
 \subsection{Phase Grain Boundary}
@@ -435,7 +435,7 @@ In the case of a PGB, one can write the phase as
     \theta = \log(\exp(k_1 x + k_2 y)+\exp(k_1 x - k_2 y)).
 \end{equation}
 Thus, the parameters we are optimizing are $k_1, k_2$. We also allow for a phase shift parameter, $\phi$.
-The amplitude equations are given above.
+The amplitude equations are given by (3.1) and (3.2).
 Letting $w$ denote our numerically obtained swift-hohenberg field, we seek parameters $k_1,k_2,\phi$ by minimizing the objective function
 \begin{align}
     \text{obj}(k_1,k_2,\phi) = \left( A_1\cos(\theta(k_1,k_2)-\phi) + A_3\cos(3(\theta(k_1,k_2)-\phi))- w\right)^2.
@@ -482,7 +482,7 @@ Est Field mean err: 0.03553398813306181
 \par A major aspiration of this research is to deduce order parameter equations from microscopic data. SH is an attractive model to use as a test case, as the wave vector dynamics are clearly a valid macroscopic description. While many succesful recoveries of microscopic models have been catalogued by the SINDy algorithm, successful identifications of models in terms of other coordinates have been far fewer. In this section, we discuss challenges related to identifying RCN like models from SH data.
 \subsection{Plain SINDy for SH and PGB}
 \par As a preliminary first step, we combined ideas from Kutz \cite{KUTZ2016} and Schaefer \cite{SCHA2017} to discover the Swift Hohenberg PDE from data consisting of solutions on the square.
-\par Using a square grid of dimension $256 \times 256$ on the interval $[-25\pi,25\pi]^2$, we integrate Swift-Hohenberg from $t=0$ to $t=100$ using time step $h = .5$. Thus, we obtain a dataset of dimension $256 \times 256 \times 201$. We used backward finite differences to compute $200$ time derivatives $u_t(x_i,y_j,t_k)$. We then form various features out of the data $u(x_i,y_j,t_k)$. These features can be any term we suspect might be in the PDE, and primarily consists of polynomial functions, trigonometric functions, and spatial derivatives of $u$. We then form the matrix equation $u_t = \Theta(u)\xi$, where $\Theta$ is a matrix whose columns are the features constructed from $u$. The task then is to solve $u_t = \Theta(u)\xi$ where $\xi$ is a sparse vector of coefficients. Figure 5.1 shows an example of the matrix equation one might form where $u$ depends on only one spatial variable.
+\par Using a square grid of dimension $256 \times 256$ on the interval $[-25\pi,25\pi]^2$, we integrate Swift-Hohenberg from $t=0$ to $t=100$ using time step $h = .5$. Thus, we obtain a dataset of dimension $256 \times 256 \times 201$. We used backward finite differences to compute $200$ time derivatives $u_t(x_i,y_j,t_k)$. We then form various features out of the data $u(x_i,y_j,t_k)$. These features can be any term we suspect might be in the PDE, and primarily consists of polynomial functions, trigonometric functions, and spatial derivatives of $u$. We then form the matrix equation $u_t = \Theta(u)\xi$, where $\Theta$ is a matrix whose columns are the features constructed from $u$. The task then is to solve $u_t = \Theta(u)\xi$ where $\xi$ is a sparse vector of coefficients. Figure 4.1 shows an example of the matrix equation one might form where $u$ depends on only one spatial variable.
 \begin{figure}
 \centering
 \includegraphics[scale=0.5]{pde_sindy_lib.png}
@@ -507,7 +507,7 @@ Following the approach of Kutz, we use Sequential Threshold Ridge Regression wit
 \includegraphics[scale=0.5]{TrainSTRidge.png}
 \caption{Algorithm 2: TrainSTRidge}
 \end{figure}
-\par Following the approach of Schaefer, we use coarsened grids to reduce the data being passed to the optimization procedure, and use spectral methods to form the spatial derivatives being passed to our library. Note that all polynomials, spatial derivatives and time derivatives are reshaped into column vectors and stacked vertically. For this preliminary proof of concept, our library is constructed with the terms $1,u,u^2,u^3,u^4,u_x, u_y, u_x^2, u_y^2, u_x u_y, u_{xy}, u_{xx}, u_{yy},\nabla^2u$, and $\nabla^4 u$. The recovered model is shown below.
+\par Following the approach of Schaefer, we use coarsened grids to reduce the data being passed to the optimization procedure, and use spectral methods to form the spatial derivatives being passed to our library. Note that all polynomials, spatial derivatives and time derivatives are reshaped into column vectors and stacked vertically. For this preliminary proof of concept, our library is constructed with the terms $1,u,u^2,u^3,u^4,u_x, u_y, u_x^2, u_y^2, u_x u_y, u_{xy}, u_{xx}, u_{yy},\nabla^2u$, and $\nabla^4 u$. The recovered model is shown in figure 4.4, which agrees with Swift-Hohenberg.
 \begin{figure}
 \centering
 \includegraphics[scale=0.8]{PDEFindCode2.png}
@@ -558,12 +558,11 @@ L(x) = \|x - \psi(z)\|_2^2 + \lambda_1\|(\nabla_x z)\dot{x}-\Theta(z)\xi\|_2^2 +
 \end{equation}
 \par While there are some documented successes with this approach in the literature, making this work in the case of SH fields has proven to be quite challenging. Indeed, even the task of extracting the phase surface from SH data is an open problem. We have opted to break this task into incremental steps, which we document in this section. 
 \subsubsection{Autoencoding SH Fields}
-\par Due to the flexibility of neural network, achieving an autoencoder of arbitrary latent dimension is easy, which we achieve using both a standard feed forward network and a convolutional network. We use data of dimension $1001 \times 128 \times 128$, and select our latent space to be of dimension $32 \time 32$. Figure 6.1 displays code for the network of Dense layers, while figure 6.2 displays code for the convolutional neural network. Figures 6.3 and 6.4 display the corresponding model summaries.
-We run the autoencoders on 10 random samples from data that was not touched during training, and visualize the latent space, along with the input and its autoencoder approximation. Those comparisons are seen in figure 6.5 for the dense encoder, and 6.6 for the convolutional encoder.
+\par Due to the flexibility of neural networks, achieving an autoencoder of arbitrary latent dimension is easy, which we achieve using both a standard feed forward network and a convolutional network. We use data of dimension $1001 \times 128 \times 128$, and select our latent space to be of dimension $32 \times 32$. We run the autoencoders on 10 random samples from data that was not touched during training, and visualize the latent space, along with the input and its autoencoder approximation. Those comparisons are seen in figure 4.5 for the feedforward autoencoder, and 4.6 for the convolutional autoencoder.
 \begin{figure}
 \centering
 \includegraphics[scale=0.35]{ae5.png}
-\caption{Dense Autoencoder Latent Space}
+\caption{Feedforward Autoencoder Latent Space}
 \end{figure}
 \begin{figure}
 \centering
@@ -581,7 +580,7 @@ The microscopic field is denoted by $w$. The general procedure to obtain the wav
 \]
 By constrcution of the set $B_{\epsilon}(r_0)$, $r_{\text{opt}}$ is identified with an angle $\phi$, which we take to be the wave vector direction.
 \par In stage two, we use the obtained directions to form profiles of the $w$ field. In the simplest scenario, the wave length at $(x_0,y_0)$ is found by moving in the direction $(\cos{\phi},\sin{\phi}))$ until a critical point is found. This distance is saved and denoted by $d_{\text{forward}}$. Then this is repeated, but in the direction $(-\cos{\phi},-\sin{\phi})$. This direction is saved and denoted by $d_{\text{backward}}$. The wavelength is taken to be $2(d_{\text{forward}}+d_{\text{backward}})$. If the point $(x_0,y_0)$ happens to be a min/max, then the procedure is the same, except we do not multiply the sum by $2$.
-\par In practice, there are certain scenarios where the above procedure does not yield the correct wave length. Most notably, there are points in the knee bend where one should only traverse in one of the (forward or backward) directions. This occurs for points near the phase grain boundary. Of course, the RCN derivation is not intended to be valid near defects. However, even at the phase grain boundary, the phase is well defined, and its gradient exists. Thus, it is not unreasonable to recover the wave vector on the PGB. In fact, the wave vector is accurate for points on the PGB. It is the points just above and below the PGB where the algorithm breaks down. Below, we provide plots of the exact and recovered wave numbers, along with the absolute error.
+\par In practice, there are certain scenarios where the above procedure does not yield the correct wave length. Most notably, there are points in the knee bend where one should only traverse in one of the (forward or backward) directions. This occurs for points near the phase grain boundary. Of course, the RCN derivation is not intended to be valid near defects. However, even at the phase grain boundary, the phase is well defined, and its gradient exists. Thus, it is not unreasonable to recover the wave vector on the PGB. In fact, the wave vector is accurate for points on the PGB. It is the points just above and below the PGB where the algorithm breaks down. Figure 4.7 provides plots of the exact and recovered wave numbers, along with the absolute error.
 
 \begin{figure}
 \centering
@@ -594,16 +593,16 @@ By constrcution of the set $B_{\epsilon}(r_0)$, $r_{\text{opt}}$ is identified w
 \caption{Top Row: Approximate wavenumbers for shallow (left) and sharp (right) knee bends. Middle Row: Exact wavenumbers. Bottom Row: Absolute error}
 \end{figure}
 
-\par Another approach to estimating the wave vector is to use a Gaussian bump to yield a localized patch of the field, and find the dominant component of the spectrum. This is in the same spirit as a wavelet algorithm explored by Bowman \cite{BOWMAN1998250}.
+\par Another approach to estimating the wave vector is to use a Gaussian bump to yield a localized patch of the field, and find the dominant component of the spectrum. This is in the same spirit as a wavelet algorithm explored by Bowman \cite{BOWMAN1998250}. The results of this approach are depicted in Figure 4.8
 \begin{figure}
 \centering
 \includegraphics[scale=0.4]{spec_wave_nums_mu_03.png}
 \includegraphics[scale=0.4]{spec_wave_nums_mu_07.png}
-\caption{Wavelet approach}
+\caption{Wavelet approach: Left column corresponds to shallow knee bend, right column is a sharp knee bend.}
 \end{figure}
 \FloatBarrier
 
-\par A particularly interesting method investigated by Lega \cite{LEGA2018} makes use of the Hilbert Transform. Given a continuous, periodic signal, the Hilbert Transform returns a sensible estimate of its phase. In the case of the PGB and zipper defects, with defect core along the x-axis, we computed the hilbert transform of the horizontal profiles for every $y$. We then unwrap the profile, and use unwrapping again in the vertical direction to get a smooth phase. The resulting surface, while not precisely the phase, yields patterns that share the same tological character as the original pattern. This technique was used recently to demonstrate that the zipper configuration indeed has large phase gradients coming from the $y$ component of the wave vector. 
+\par A particularly interesting method investigated by Lega \cite{LEGA2018} makes use of the Hilbert Transform. Given a continuous, periodic signal, the Hilbert Transform returns a sensible estimate of its phase. In the case of the PGB and zipper defects, with defect core along the x-axis, we computed the hilbert transform of the horizontal profiles for every $y$. We then unwrap the profile, and use unwrapping again in the vertical direction to get a smooth phase. The resulting surface, while not precisely the phase, yields patterns that share the same tological character as the original pattern. This technique was used recently to demonstrate that the zipper configuration indeed has large phase gradients coming from the $y$ component of the wave vector. The results of this method are depicted in figure 4.9. 
 \begin{figure}
 \centering
 \includegraphics[scale=0.7]{HilbertPhaseMu_03.png}\\[2ex]
@@ -616,7 +615,7 @@ By constrcution of the set $B_{\epsilon}(r_0)$, $r_{\text{opt}}$ is identified w
 
 
 \subsubsection{Phase Extraction via NN}
-\par Having explored first principles methods to estimate the phase, we turn now to explore the use of a neural network to extract phases from fields of the form $w = \cos(\theta)$, where $\theta$ has no singularities, and is mostly slowly varying. To generate a rich dataset, we use as a base the phase surface for a phase grain boundary, and allow for rotations in the spatial coordinates. To encourage irregularities/distortions in the dataset, we use a Taylor Series approximation to $\text{cosh}(x)$, and use a gaussian sample to perturb its coefficients. The end result is a set of patterns mostly similar to what one may see in an SH field, though there are some frames where the wavenumber distribution is not as confined. Using $128 \times 128$ pattern frames, and there corresponding $32 \times 32$ coarsened phases, we train a simple feedforward neural network to extract the phase from the pattern.
+\par Having explored first principles methods to estimate the phase, we turn now to explore the use of a neural network to extract phases from fields of the form $w = \cos(\theta)$, where $\theta$ has no singularities, and is mostly slowly varying. To generate a rich dataset, we use as a base the phase surface for a phase grain boundary, and allow for rotations in the spatial coordinates. To encourage irregularities/distortions in the dataset, we use a Taylor Series approximation to $\text{cosh}(x)$, and use a gaussian sample to perturb its coefficients. The end result is a set of patterns mostly similar to what one may see in an SH field, though there are some frames where the wavenumber distribution is not as confined. Using $128 \times 128$ pattern frames, and there corresponding $32 \times 32$ coarsened phases, we train a simple feedforward neural network to extract the phase from the pattern. The result of this experiment is depicted in figure 4.10.
 
 \begin{figure}[h]
 \centering
@@ -644,7 +643,13 @@ Thus, the procedure must involve extracting derivatives of the encoder with resp
 
 \par The first open objective is to realize an RCN phase from the latent space of an autoencoder. The key challenges here are to understand how to utilize the computational graph in either pytorch/tensorflow, and determine if further regularization or pre-training is required to encourage the latent variable to be phase-like. The issue of smoothness of the latent variable has been explored recently \cite{XIE2024}, and the proposed methods should be explored and utilized.
 \par Assuming a successful phase extraction in the form of a latent variable, we will be positioned to start working on the joint optimization procedure, where the order parameter and its dynamics are learned simultaneously. A review of the recently proposed standard \cite{FRIES2022} and weak \cite{TRAN2023} forms of simultaneous discovery should be useful here. As a side note, one of the main contributors to these methods is interested in collaborating with me on the challenge of identifying order parameter equations from SH fields.
-\par Outside of the systems identification goal, there are still many interesting tasks that could be undertaken. In particular, variational analysis and numerical methods are lacking for the scenario of convection on the ellipse. If analysis could be done to reasonable estimate the locations of the dislocations on the major axis of the ellipse, one would be able to prescribe a specific boundary condition and attempt to realize on RCN phase yielding the properties observed in the SH simulation. Analogously, one could attempt to setup a variational problem with appropriate boundary conditions to argue that RCN phases predict the defects in the ellipse. 
+\par Outside of the systems identification goal, there are still many interesting tasks that could be undertaken. In particular, variational analysis and numerical methods are lacking for the scenario of convection on the ellipse. If analysis could be done to determine the locations of the dislocations on the major axis of the ellipse, one would be able to prescribe a specific boundary condition and attempt to realize an RCN phase yielding the properties observed in the SH simulation. Analogously, one could attempt to setup a variational problem with appropriate boundary conditions to argue that RCN phases predict the defects in the ellipse.
+
+\section{Code}
+Code for all numerical simulations, machine learning experiments, and phase extraction algorithms are available in the following repositories: \newline
+\href{https://github.com/EMcDugald/NaturalStripePatterns}{https://github.com/EMcDugald/NaturalStripePatterns} \newline
+\href{https://github.com/EMcDugald/ConvectionPatterns}{https://github.com/EMcDugald/ConvectionPatterns}
+
 
 \bibliographystyle{plain}
 %\nocite{*}
