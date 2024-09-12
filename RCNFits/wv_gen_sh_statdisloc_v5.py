@@ -85,8 +85,8 @@ def d_DiracDelta(arr):
 # mu determines sharpness of knee bend
 
 
-#logfile = open(os.getcwd()+"/logs/sh_dislocation/wv_gen_sh_statdisloc_v1.out", 'w')
-#sys.stdout = logfile
+logfile = open(os.getcwd()+"/logs/sh_dislocation/wv_gen_sh_statdisloc_v5.out", 'w')
+sys.stdout = logfile
 
 
 start = time.time()
@@ -205,7 +205,7 @@ plt.colorbar(im1,ax=axs[1])
 plt.colorbar(im2,ax=axs[2])
 plt.suptitle("Pattern, Approx Pattern, and Error")
 plt.tight_layout()
-plt.savefig(os.getcwd()+"/figs/sh_dislocation/FieldEstInit_v1_0408_2.png")
+plt.savefig(os.getcwd()+"/figs/sh_dislocation/FieldEstInit_v1_0508.png")
 print("Init Field max err:", np.max(np.abs(Whalf-initial_pattern)))
 print("Init Field mean err:", np.mean(np.abs(Whalf-initial_pattern)))
 
@@ -255,11 +255,11 @@ plt.colorbar(im1,ax=axs[1])
 plt.colorbar(im2,ax=axs[2])
 plt.suptitle("Pattern, Approx Pattern, and Error")
 plt.tight_layout()
-plt.savefig(os.getcwd()+"/figs/sh_dislocation/FieldEst_v1_0408_2.png")
+plt.savefig(os.getcwd()+"/figs/sh_dislocation/FieldEst_v1_0508.png")
 print("Est Field max err:", np.max(np.abs(Whalf-final_pattern)))
 print("Est Field mean err:", np.mean(np.abs(Whalf-final_pattern)))
 
 
-#logfile.close()
+logfile.close()
 
 

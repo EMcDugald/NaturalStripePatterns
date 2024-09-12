@@ -10,18 +10,20 @@ def dxdt(y):
 
 #integrate this to get x'
 def dydt(x, y, eps):
-    return -eps*x**3 - x + eps**2*y*(1-x**2)
+    #return -eps*x**3 - x + eps**2*y*(1-x**2)
+    return -x + eps ** 2 * y * (1 - x ** 2)
 
 #CASE 1 (theta0 = 0)
-eps = 1/5
+eps = 1/10
 r0 = 1/2
 x0 = 2*r0 + eps*r0**3/4
+print("x0: ",x0, "x0^2:",x0**2, "x0^-1:",1/x0)
 y0 = 0
 ###
 
 
 tend = 4*np.pi/eps**2
-t = np.linspace(0,tend,100000)
+t = np.linspace(0,tend,1000000)
 dt = t[1]-t[0]
 print("tend = ",tend)
 print("dt = ",dt)
@@ -50,22 +52,25 @@ fig.suptitle("ODE Trajectories")
 plt.tight_layout()
 plt.show()
 
-rsq = xvals**2 + yvals**2
+rsq = (xvals**2 + yvals**2)
 
 ## averaging process ##
-# avg_len = eps
-# conv_window = math.ceil(tend/avg_len)
 avg_len = np.pi/eps
-# avg_len = np.pi/eps**2
 conv_window = math.ceil(avg_len/dt)
+#conv_window = 100000
 print("num average points =",conv_window)
 if conv_window%2 != 0:
     conv_window += 1
 gap = int(conv_window/2)
 rsq_avg = np.zeros(len(t)-conv_window)
 for i in range(len(rsq_avg)):
-    rsq_avg[i] += np.mean(rsq[i:i+conv_window])
+    rsq_avg[i] += np.mean(rsq[i:i+conv_window])/4
 
+rsq_avg = rsq[gap:-gap]/4
+
+
+print("macro rsq est start:",rsq_avg[0])
+print("macro rsq est final:",rsq_avg[-1])
 inner_t = t[gap:-gap]
 inner_rsq = rsq[gap:-gap]
 fig, ax = plt.subplots(nrows=2,ncols=1)
@@ -81,7 +86,7 @@ fig.suptitle('microscopic vs macroscopic rsq')
 plt.tight_layout()
 plt.show()
 
-rsq_avg_theory = r0**2*np.exp(eps**2*t)/(1-r0**2+r0**2*np.exp(eps**2*t))
+rsq_avg_theory = r0**2*np.exp((eps**2)*t)/(1-r0**2+r0**2*np.exp((eps**2)*t))
 fig, ax = plt.subplots(nrows=2,ncols=1)
 ax[0].plot(inner_t,rsq_avg)
 ax[0].set_xlim([inner_t[0],inner_t[-1]])
@@ -107,56 +112,92 @@ fig.suptitle('macro rsq derivative estimate vs theoretical')
 plt.tight_layout()
 plt.show()
 
-### average the average ###
-avg_len = np.pi/eps
-# avg_len = np.pi/eps**2
-conv_window = math.ceil(avg_len/dt)
-print("num average points =",conv_window)
-if conv_window%2 != 0:
-    conv_window += 1
-gap = int(conv_window/2)
-rsq_avg_avg = np.zeros(len(inner_t)-conv_window)
-for i in range(len(rsq_avg_avg)):
-    rsq_avg_avg[i] += np.mean(rsq_avg[i:i+conv_window])
-
-inner_inner_t = inner_t[gap:-gap]
-inner_inner_rsq = inner_rsq[gap:-gap]
-fig, ax = plt.subplots(nrows=2,ncols=1)
-ax[0].plot(inner_inner_t,inner_inner_rsq)
-ax[0].axvline(x=2*np.pi/eps**2, c='r')
-ax[0].set_xlim([inner_inner_t[0],inner_inner_t[-1]])
-ax[1].plot(inner_inner_t,rsq_avg_avg)
-ax[1].axvline(x=2*np.pi/eps**2, c='r')
-ax[1].set_xlim([inner_inner_t[0],inner_inner_t[-1]])
-ax[0].set_title('micro_rsq')
-ax[1].set_title('macro_rsq')
-fig.suptitle('microscopic vs macroscopic rsq with more averaging')
-plt.tight_layout()
-plt.show()
-
-rsq_avg_theory = r0**2*np.exp(eps**2*t)/(1-r0**2+r0**2*np.exp(eps**2*t))
-fig, ax = plt.subplots(nrows=2,ncols=1)
-ax[0].plot(inner_inner_t,rsq_avg_avg)
-ax[0].set_xlim([inner_inner_t[0],inner_inner_t[-1]])
-ax[1].plot(inner_inner_t,rsq_avg_theory[gap:-gap][gap:-gap])
-ax[1].set_xlim([inner_inner_t[0],inner_inner_t[-1]])
-ax[0].set_title('macro_rsq_estimate')
-ax[1].set_title('macro_rsq_theoretical')
-fig.suptitle('macro rsq estimate vs theoretical with more averaging')
-plt.tight_layout()
-plt.show()
-
-
-davgr_dt = (rsq_avg_avg[2:]-rsq_avg_avg[:-2])/(2*dt)
-davgr_dt_theory = eps**2*rsq_avg_avg*(1-rsq_avg_avg)
-davgr_dt_theory = davgr_dt_theory[1:-1]
-fig, ax = plt.subplots(nrows=2,ncols=1)
-ax[0].plot(inner_inner_t[1:-1],davgr_dt)
-ax[0].set_xlim([inner_inner_t[1:-1][0],inner_inner_t[1:-1][-1]])
-ax[1].plot(inner_inner_t[1:-1],davgr_dt_theory)
-ax[1].set_xlim([inner_inner_t[1:-1][0],inner_inner_t[1:-1][-1]])
-ax[0].set_title('avg_rsq_deriv_est')
-ax[1].set_title('avg_rsq_deriv_theory')
-fig.suptitle('macro rsq derivative estimate vs theoretical with more averaging')
-plt.tight_layout()
-plt.show()
+# ### average the average ###
+# avg_len = np.pi/eps
+# # avg_len = np.pi/eps**2
+# conv_window = math.ceil(avg_len/dt)
+# print("num average points =",conv_window)
+# if conv_window%2 != 0:
+#     conv_window += 1
+# gap = int(conv_window/2)
+# rsq_avg_avg = np.zeros(len(inner_t)-conv_window)
+# for i in range(len(rsq_avg_avg)):
+#     rsq_avg_avg[i] += np.mean(rsq_avg[i:i+conv_window])
+#
+# inner_inner_t = inner_t[gap:-gap]
+# inner_inner_rsq = inner_rsq[gap:-gap]
+# fig, ax = plt.subplots(nrows=2,ncols=1)
+# ax[0].plot(inner_inner_t,inner_inner_rsq)
+# ax[0].axvline(x=2*np.pi/eps**2, c='r')
+# ax[0].set_xlim([inner_inner_t[0],inner_inner_t[-1]])
+# ax[1].plot(inner_inner_t,rsq_avg_avg)
+# ax[1].axvline(x=2*np.pi/eps**2, c='r')
+# ax[1].set_xlim([inner_inner_t[0],inner_inner_t[-1]])
+# ax[0].set_title('micro_rsq')
+# ax[1].set_title('macro_rsq')
+# fig.suptitle('microscopic vs macroscopic rsq with more averaging')
+# plt.tight_layout()
+# plt.show()
+#
+# rsq_avg_theory = r0**2*np.exp(eps**2*t)/(1-r0**2+r0**2*np.exp(eps**2*t))
+# fig, ax = plt.subplots(nrows=2,ncols=1)
+# ax[0].plot(inner_inner_t,rsq_avg_avg)
+# ax[0].set_xlim([inner_inner_t[0],inner_inner_t[-1]])
+# ax[1].plot(inner_inner_t,rsq_avg_theory[gap:-gap][gap:-gap])
+# ax[1].set_xlim([inner_inner_t[0],inner_inner_t[-1]])
+# ax[0].set_title('macro_rsq_estimate')
+# ax[1].set_title('macro_rsq_theoretical')
+# fig.suptitle('macro rsq estimate vs theoretical with more averaging')
+# plt.tight_layout()
+# plt.show()
+#
+#
+# davgr_dt = (rsq_avg_avg[2:]-rsq_avg_avg[:-2])/(2*dt)
+# davgr_dt_theory = eps**2*rsq_avg_avg*(1-rsq_avg_avg)
+# davgr_dt_theory = davgr_dt_theory[1:-1]
+# fig, ax = plt.subplots(nrows=2,ncols=1)
+# ax[0].plot(inner_inner_t[1:-1],davgr_dt)
+# ax[0].set_xlim([inner_inner_t[1:-1][0],inner_inner_t[1:-1][-1]])
+# ax[1].plot(inner_inner_t[1:-1],davgr_dt_theory)
+# ax[1].set_xlim([inner_inner_t[1:-1][0],inner_inner_t[1:-1][-1]])
+# ax[0].set_title('avg_rsq_deriv_est')
+# ax[1].set_title('avg_rsq_deriv_theory')
+# fig.suptitle('macro rsq derivative estimate vs theoretical with more averaging')
+# plt.tight_layout()
+# plt.show()
+#
+#
+#
+#
+# ### SAVGOL FILTER ###
+#
+# from scipy.signal import savgol_filter
+# avg_len = 3*np.pi/eps
+# conv_window = math.ceil(avg_len/dt)
+# rsq_avg_2 = savgol_filter(rsq,conv_window,4)
+# print("debug")
+#
+# fig, ax = plt.subplots(nrows=2,ncols=1)
+# ax[0].plot(t,rsq)
+# ax[0].axvline(x=1/eps**2, c='r')
+# ax[0].set_xlim([t[0],t[-1]])
+# ax[1].plot(t,rsq_avg_2)
+# ax[1].axvline(x=1/eps**2, c='r')
+# ax[1].set_xlim([t[0],t[-1]])
+# ax[0].set_title('micro_rsq')
+# ax[1].set_title('macro_rsq')
+# fig.suptitle('microscopic vs macroscopic rsq sav gol')
+# plt.tight_layout()
+# plt.show()
+#
+# rsq_avg_theory = r0**2*np.exp(eps**2*t)/(1-r0**2+r0**2*np.exp(eps**2*t))
+# fig, ax = plt.subplots(nrows=2,ncols=1)
+# ax[0].plot(t,rsq_avg_2)
+# ax[0].set_xlim([t[0],t[-1]])
+# ax[1].plot(t,rsq_avg_theory)
+# ax[1].set_xlim([t[0],t[-1]])
+# ax[0].set_title('macro_rsq_estimate')
+# ax[1].set_title('macro_rsq_theoretical')
+# fig.suptitle('macro rsq estimate vs theoretical sav gol')
+# plt.tight_layout()
+# plt.show()

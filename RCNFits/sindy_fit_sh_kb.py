@@ -34,7 +34,7 @@ description1 = ['|k|', '|k|^2', '|k|^4',
 lhs1 = divk**2
 c1 = TrainSTRidge(lib1,lhs1,1e-1,1e-12,maxit=25, STR_iters=10,l0_penalty=.1)
 print("coefficient vector solution =",c1)
-print_pde(c1, description1)
+print_pde(c1, description1,ut='div(k)^2')
 
 print("Second Fit LHS = div(k)^2 -1 + 2|k|^2 - |k|^4")
 print("RHS should be 0")
@@ -45,7 +45,7 @@ description2 = ['div(k)', 'div(k)^3', 'div(k)^4', '|k|',
 lhs2 = divk**2 - 1 + 2*wavenum**2 - wavenum**4
 c2 = TrainSTRidge(lib2,lhs2,1e-4,1e-4,maxit=25, STR_iters=10)
 print("coefficient vector solution =",c2)
-print_pde(c2, description2)
+print_pde(c2, description2,ut='0')
 
 
 print("Third Fit LHS = 2|k|^2 - |k|^4")
@@ -57,7 +57,7 @@ description3 = ['div(k)', 'div(k)^2', '|k|'
 lhs3 = 2*wavenum**2 - wavenum**4
 c3 = TrainSTRidge(lib3,lhs3,1e-1,1e-16,maxit=25, STR_iters=10)
 print("coefficient vector solution =",c3)
-print_pde(c3, description3)
+print_pde(c3, description3, ut='2|k|^2 - |k|^4')
 
 
 
